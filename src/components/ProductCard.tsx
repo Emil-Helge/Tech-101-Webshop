@@ -10,8 +10,8 @@ function ProductCard({ product }: Props) {
   const {
     getProductQuantity,
     increaseCartQuantity,
-    decreaseCartQuantity,
-    removeFromCart,
+    decreaseCartQuantity, // Not in use yet
+    removeFromCart, // Not in use yet
   } = useShoppingCart();
   const quantity = getProductQuantity(product.id);
   return (
