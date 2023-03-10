@@ -1,4 +1,5 @@
-import { createContext, ReactNode, useContext, useState } from "react";
+import { createContext, ReactNode, useContext } from "react";
+import useLocalStorage from "../hooks/useLocalStorage";
 
 interface CartProduct {
   id: number;
@@ -26,7 +27,10 @@ interface Props {
 }
 
 function ShoppingCartProvider({ children }: Props) {
-  const [cartProducts, setCartProducts] = useState<CartProduct[]>([]);
+  const [cartProducts, setCartProducts] = useLocalStorage<CartProduct[]>(
+    "Shopping cart:",
+    []
+  );
 
   const cartQuantity = cartProducts.reduce(
     (quantity, product) => product.quantity + quantity,
