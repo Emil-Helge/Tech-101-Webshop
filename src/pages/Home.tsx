@@ -1,5 +1,6 @@
 import { Container, SimpleGrid } from "@mantine/core";
 import { useContext } from "react";
+import HeroSlide from "../components/HeroSlide";
 import ProductCard from "../components/ProductCard";
 import { ProductContext } from "../context/ProductContext";
 
@@ -7,6 +8,7 @@ function Home() {
   const { products } = useContext(ProductContext);
   return (
     <Container size="xl">
+      <HeroSlide />
       <SimpleGrid
         cols={3}
         spacing="xl"
