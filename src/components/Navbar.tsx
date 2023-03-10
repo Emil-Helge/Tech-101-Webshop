@@ -12,6 +12,7 @@ import {
 import { useDisclosure } from "@mantine/hooks";
 import { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
+import { useShoppingCart } from "../context/ShoppingCartContext";
 
 const HEADER_HEIGHT = rem(60);
 
@@ -102,6 +103,7 @@ export function HeaderResponsive({ links }: HeaderResponsiveProps) {
   const [opened, { toggle, close }] = useDisclosure(false);
   const [active, setActive] = useState(links[0].link);
   const { classes, cx } = useStyles();
+  const { cartQuantity } = useShoppingCart();
 
   const items = links.map((link, index) => (
     <ul key={index}>
@@ -187,7 +189,7 @@ export function HeaderResponsive({ links }: HeaderResponsiveProps) {
               alignItems: "center",
             }}
           >
-            3
+            {cartQuantity}
           </div>
         </Button>
 

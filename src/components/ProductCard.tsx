@@ -1,4 +1,5 @@
 import { Button, Card, Group, Image, Text } from "@mantine/core";
+import { useShoppingCart } from "../context/ShoppingCartContext";
 import { Product } from "../data";
 
 interface Props {
@@ -6,6 +7,13 @@ interface Props {
 }
 
 function ProductCard({ product }: Props) {
+  const {
+    getProductQuantity,
+    increaseCartQuantity,
+    decreaseCartQuantity,
+    removeFromCart,
+  } = useShoppingCart();
+  const quantity = getProductQuantity(product.id);
   return (
     <>
       <Card shadow="xl" padding="md" radius="lg" withBorder>
@@ -27,7 +35,12 @@ function ProductCard({ product }: Props) {
           <Button variant="outline" mt="md" radius="md">
             Product Page
           </Button>
-          <Button variant="light" mt="md" radius="md">
+          <Button
+            variant="light"
+            mt="md"
+            radius="md"
+            onClick={() => increaseCartQuantity(product.id)}
+          >
             Add to cart
           </Button>
         </Group>
