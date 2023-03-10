@@ -32,7 +32,7 @@ export const mockedProducts: Product[] = [
     description:
       "The GamingBook Pro is the ultimate gaming machine for hardcore gamers. With its powerful graphics card and lightning-fast processor, you can play the latest games at the highest settings. The 17-inch Full HD display delivers immersive visuals, while the backlit keyboard ensures you can keep gaming even in low light.",
     price: 2299,
-    id: 1,
+    id: 3,
   },
   {
     image:
