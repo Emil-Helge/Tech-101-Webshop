@@ -136,14 +136,14 @@ export function HeaderResponsive({ links }: HeaderResponsiveProps) {
 
   useEffect(() => {
     if (headerRef.current) {
-      headerRef.current.style.marginBottom = opened ? "126px" : "0";
+      headerRef.current.style.marginBottom = opened ? "200px" : "0";
     }
   }, [opened]);
 
   return (
     <Header
       height={HEADER_HEIGHT}
-      mb={headerRef.current ? (isBurgerVisible ? 126 : 0) : 0}
+      mb={headerRef.current ? (isBurgerVisible ? 200 : 0) : 0}
       ref={headerRef}
       className={classes.root}
     >
