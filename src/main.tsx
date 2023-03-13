@@ -12,6 +12,7 @@ import ProductProvider from './contexts/ProductContext';
 import ShoppingCartProvider from './contexts/ShoppingCartContext';
 import './index.css';
 import About from './pages/About';
+import Admin from './pages/Admin';
 import Cart from './pages/Cart';
 import Home from './pages/Home';
 import Store from './pages/Store';
@@ -23,6 +24,7 @@ const router = createBrowserRouter(
       <Route path="/about" element={<About />} />
       <Route path="/store" element={<Store />} />
       <Route path="/cart" element={<Cart />} />
+      <Route path="/admin" element={<Admin />} />
     </Route>
   )
 );

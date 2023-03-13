@@ -6,6 +6,7 @@ function App() {
     { link: '/', label: 'Home' },
     { link: '/about', label: 'About' },
     { link: '/store', label: 'Store' },
+    { link: '/admin', label: 'Admin' },
   ];
 
   return (
