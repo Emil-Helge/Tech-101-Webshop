@@ -1,6 +1,6 @@
-import { Button, Card, Group, Image, Text } from "@mantine/core";
-import { useShoppingCart } from "../context/ShoppingCartContext";
-import { mockedProducts } from "../data";
+import { Button, Card, Group, Image, Text } from '@mantine/core';
+import { useShoppingCart } from '../context/ShoppingCartContext';
+import { mockedProducts } from '../data';
 
 interface CartProductProps {
   id: number;
@@ -24,7 +24,7 @@ function CartProduct({ id, quantity }: CartProductProps) {
         </Text>
       </Group>
       <Group position="center" mt="xs" mb="xs">
-        {" "}
+        {' '}
         <Button
           variant="light"
           mt="sm"

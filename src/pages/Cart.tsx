@@ -1,11 +1,10 @@
-import { Button, Card, Container, Grid, Text } from "@mantine/core";
-import CartProduct from "../components/CartProduct";
-import { useShoppingCart } from "../context/ShoppingCartContext";
-import { mockedProducts } from "../data";
+import { Button, Card, Container, Grid, Text } from '@mantine/core';
+import CartProduct from '../components/CartProduct';
+import { useShoppingCart } from '../context/ShoppingCartContext';
+import { mockedProducts } from '../data';
 
 function Cart() {
   const { cartProducts } = useShoppingCart();
-
   return (
     <Container size="md">
       <Grid justify="center" align="flex-start">
@@ -17,34 +16,33 @@ function Cart() {
         <Grid.Col span={12} sm="auto">
           <Card
             sx={{
-              display: "flex",
-              gap: "1rem",
-              flexDirection: "column",
-              justifyItems: "center",
-              alignItems: "center",
+              display: 'flex',
+              gap: '1rem',
+              flexDirection: 'column',
+              justifyItems: 'center',
+              alignItems: 'center',
             }}
           >
             <Text weight={600} size={25}>
               Summary:
             </Text>
             <Text weight={500} size={18}>
-              {cartProducts.map((cartProduct) => {
+              {cartProducts.map((cartproduct) => {
                 const product = mockedProducts.find(
-                  (i) => i.id === cartProduct.id
+                  (i) => i.id === cartproduct.id
                 );
                 return (
-                  <Text key={cartProduct.id}>
-                    {`${product?.title || "undefined"}: `}
-
-                    <Text weight={400}>{`x${cartProduct.quantity} ${
-                      product?.price || 0
-                    }€`}</Text>
-                  </Text>
+                  <>
+                    <Text key={cartproduct.id}>{product?.title}</Text>
+                    <Text weight={400}>
+                      {cartproduct.quantity}x {product?.price}€
+                    </Text>
+                  </>
                 );
               })}
             </Text>
             <Text weight={500} size={29}>
-              total:{" "}
+              total:{' '}
               {cartProducts.reduce((total, cartProduct) => {
                 const product = mockedProducts.find(
                   (i) => i.id === cartProduct.id
