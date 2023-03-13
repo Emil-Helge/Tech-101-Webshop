@@ -1,7 +1,7 @@
 import { Container, SimpleGrid } from '@mantine/core';
 import { useContext } from 'react';
 import ProductCard from '../components/ProductCard';
-import { ProductContext } from '../context/ProductContext';
+import { ProductContext } from '../contexts/ProductContext';
 
 function Home() {
   const { products } = useContext(ProductContext);

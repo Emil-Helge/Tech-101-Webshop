@@ -8,8 +8,8 @@ import {
   RouterProvider,
 } from 'react-router-dom';
 import App from './App';
-import ProductProvider from './context/ProductContext';
-import ShoppingCartProvider from './context/ShoppingCartContext';
+import ProductProvider from './contexts/ProductContext';
+import ShoppingCartProvider from './contexts/ShoppingCartContext';
 import './index.css';
 import About from './pages/About';
 import Cart from './pages/Cart';

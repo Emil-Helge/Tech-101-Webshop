@@ -12,7 +12,7 @@ import {
 import { useDisclosure } from '@mantine/hooks';
 import { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { useShoppingCart } from '../context/ShoppingCartContext';
+import { useShoppingCart } from '../contexts/ShoppingCartContext';
 
 const HEADER_HEIGHT = rem(60);
 

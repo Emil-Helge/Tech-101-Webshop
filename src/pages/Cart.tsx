@@ -1,6 +1,6 @@
 import { Box, Button, Card, Container, Grid, Text } from '@mantine/core';
 import CartProduct from '../components/CartProduct';
-import { useShoppingCart } from '../context/ShoppingCartContext';
+import { useShoppingCart } from '../contexts/ShoppingCartContext';
 import { mockedProducts } from '../data';
 
 function Cart() {
