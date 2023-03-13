@@ -1,5 +1,5 @@
-import { createContext, ReactNode, useContext } from "react";
-import useLocalStorage from "../hooks/useLocalStorage";
+import { createContext, ReactNode, useContext } from 'react';
+import useLocalStorage from '../hooks/useLocalStorage';
 
 interface CartProduct {
   id: number;
@@ -29,7 +29,7 @@ interface Props {
 
 function ShoppingCartProvider({ children }: Props) {
   const [cartProducts, setCartProducts] = useLocalStorage<CartProduct[]>(
-    "Shopping cart:",
+    'Shopping cart:',
     []
   );
 

@@ -1,7 +1,7 @@
-import { Container, SimpleGrid } from "@mantine/core";
-import { useContext } from "react";
-import ProductCard from "../components/ProductCard";
-import { ProductContext } from "../context/ProductContext";
+import { Container, SimpleGrid } from '@mantine/core';
+import { useContext } from 'react';
+import ProductCard from '../components/ProductCard';
+import { ProductContext } from '../context/ProductContext';
 
 function Home() {
   const { products } = useContext(ProductContext);
@@ -12,8 +12,8 @@ function Home() {
         spacing="xl"
         verticalSpacing="xl"
         breakpoints={[
-          { maxWidth: "85rem", cols: 2, spacing: "md" },
-          { maxWidth: "36rem", cols: 1, spacing: "sm" },
+          { maxWidth: '85rem', cols: 2, spacing: 'md' },
+          { maxWidth: '36rem', cols: 1, spacing: 'sm' },
         ]}
       >
         {products.map((product) => (
