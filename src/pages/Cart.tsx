@@ -1,4 +1,4 @@
-import { Button, Card, Container, Grid, Text } from '@mantine/core';
+import { Box, Button, Card, Container, Grid, Text } from '@mantine/core';
 import CartProduct from '../components/CartProduct';
 import { useShoppingCart } from '../context/ShoppingCartContext';
 import { mockedProducts } from '../data';
@@ -32,12 +32,20 @@ function Cart() {
                   (i) => i.id === cartproduct.id
                 );
                 return (
-                  <>
-                    <Text key={cartproduct.id}>{product?.title}</Text>
+                  <Box
+                    key={cartproduct.id}
+                    sx={{
+                      display: 'flex',
+                      flexDirection: 'row',
+                      gap: '1rem',
+                      justifyContent: 'space-between',
+                    }}
+                  >
+                    <Text>{product?.title}</Text>
                     <Text weight={400}>
                       {cartproduct.quantity}x {product?.price}€
                     </Text>
-                  </>
+                  </Box>
                 );
               })}
             </Text>
