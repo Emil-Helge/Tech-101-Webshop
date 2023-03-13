@@ -1,6 +1,6 @@
-import { Button, Card, Group, Image, Text } from '@mantine/core';
-import { useShoppingCart } from '../context/ShoppingCartContext';
-import { mockedProducts } from '../data';
+import { Button, Card, Group, Image, Text } from "@mantine/core";
+import { useShoppingCart } from "../context/ShoppingCartContext";
+import { mockedProducts } from "../data";
 
 interface CartProductProps {
   id: number;
@@ -16,7 +16,7 @@ function CartProduct({ id, quantity }: CartProductProps) {
   return (
     <Card shadow="sm" mt="sm" padding="sm" radius="sm">
       <Card.Section>
-        <Image src={product.image} height={120} fit="cover" />
+        <Image src={product.image} height={190} fit="cover" />
       </Card.Section>
       <Group position="center" mt="sm" mb="sm">
         <Text weight={500} size={20} transform="uppercase">
@@ -24,6 +24,7 @@ function CartProduct({ id, quantity }: CartProductProps) {
         </Text>
       </Group>
       <Group position="center" mt="xs" mb="xs">
+        {" "}
         <Button
           variant="light"
           mt="sm"
@@ -43,6 +44,8 @@ function CartProduct({ id, quantity }: CartProductProps) {
         >
           +
         </Button>
+      </Group>
+      <Group position="center" mt="xs" mb="xs">
         <Button
           variant="light"
           mt="sm"
@@ -51,6 +54,8 @@ function CartProduct({ id, quantity }: CartProductProps) {
         >
           Remove
         </Button>
+      </Group>
+      <Group position="center" mt="xs" mb="xs">
         <Text mt="sm" weight={500} size={15}>
           x{product.price * quantity}€
         </Text>
