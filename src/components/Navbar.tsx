@@ -8,22 +8,22 @@ import {
   Paper,
   rem,
   Transition,
-} from "@mantine/core";
-import { useDisclosure } from "@mantine/hooks";
-import { useEffect, useRef, useState } from "react";
-import { Link } from "react-router-dom";
-import { useShoppingCart } from "../context/ShoppingCartContext";
+} from '@mantine/core';
+import { useDisclosure } from '@mantine/hooks';
+import { useEffect, useRef, useState } from 'react';
+import { Link } from 'react-router-dom';
+import { useShoppingCart } from '../contexts/ShoppingCartContext';
 
 const HEADER_HEIGHT = rem(60);
 
 const useStyles = createStyles((theme) => ({
   root: {
-    position: "relative",
+    position: 'relative',
     zIndex: 1,
   },
 
   dropdown: {
-    position: "absolute",
+    position: 'absolute',
     top: HEADER_HEIGHT,
     left: 0,
     right: 0,
@@ -31,65 +31,65 @@ const useStyles = createStyles((theme) => ({
     borderTopRightRadius: 0,
     borderTopLeftRadius: 0,
     borderTopWidth: 0,
-    overflow: "hidden",
+    overflow: 'hidden',
 
-    [theme.fn.largerThan("sm")]: {
-      display: "none",
+    [theme.fn.largerThan('sm')]: {
+      display: 'none',
     },
   },
 
   header: {
-    display: "flex",
-    justifyContent: "space-between",
-    alignItems: "center",
-    height: "100%",
+    display: 'flex',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    height: '100%',
   },
 
   links: {
-    [theme.fn.smallerThan("sm")]: {
-      display: "none",
+    [theme.fn.smallerThan('sm')]: {
+      display: 'none',
     },
   },
 
   burger: {
-    [theme.fn.largerThan("sm")]: {
-      display: "none",
+    [theme.fn.largerThan('sm')]: {
+      display: 'none',
     },
   },
 
   link: {
-    display: "block",
+    display: 'block',
     lineHeight: 1,
     padding: `${rem(8)} ${rem(12)}`,
     borderRadius: theme.radius.sm,
-    textDecoration: "none",
+    textDecoration: 'none',
     color:
-      theme.colorScheme === "dark"
+      theme.colorScheme === 'dark'
         ? theme.colors.dark[0]
         : theme.colors.gray[7],
     fontSize: theme.fontSizes.sm,
     fontWeight: 500,
 
-    "&:hover": {
+    '&:hover': {
       backgroundColor:
-        theme.colorScheme === "dark"
+        theme.colorScheme === 'dark'
           ? theme.colors.dark[6]
           : theme.colors.gray[0],
     },
 
-    [theme.fn.smallerThan("sm")]: {
+    [theme.fn.smallerThan('sm')]: {
       borderRadius: 0,
       padding: theme.spacing.md,
     },
   },
 
   linkActive: {
-    "&, &:hover": {
+    '&, &:hover': {
       backgroundColor: theme.fn.variant({
-        variant: "light",
+        variant: 'light',
         color: theme.primaryColor,
       }).background,
-      color: theme.fn.variant({ variant: "light", color: theme.primaryColor })
+      color: theme.fn.variant({ variant: 'light', color: theme.primaryColor })
         .color,
     },
   },
@@ -130,15 +130,15 @@ export function HeaderResponsive({ links }: HeaderResponsiveProps) {
       setIsBurgerVisible(window.innerWidth < 768);
     };
     handleResize();
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
   }, []);
 
   const headerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     if (headerRef.current) {
-      headerRef.current.style.marginBottom = opened ? "126px" : "0";
+      headerRef.current.style.marginBottom = opened ? '126px' : '0';
     }
   }, [opened]);
 
@@ -175,18 +175,18 @@ export function HeaderResponsive({ links }: HeaderResponsiveProps) {
             </svg>
             <div
               style={{
-                borderRadius: "10rem",
-                background: "navy",
-                color: "white",
-                width: "1.2rem",
-                height: "1.2rem",
-                position: "absolute",
+                borderRadius: '10rem',
+                background: 'navy',
+                color: 'white',
+                width: '1.2rem',
+                height: '1.2rem',
+                position: 'absolute',
                 bottom: 0,
                 right: 0,
-                display: "flex",
-                transform: "translate(-30%, -75%)",
-                justifyContent: "center",
-                alignItems: "center",
+                display: 'flex',
+                transform: 'translate(-30%, -75%)',
+                justifyContent: 'center',
+                alignItems: 'center',
               }}
             >
               {cartQuantity}

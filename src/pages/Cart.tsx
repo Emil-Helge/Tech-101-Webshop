@@ -1,9 +1,18 @@
-import { Button, Card, Container, Grid, Text } from '@mantine/core';
+import {
+  Box,
+  Button,
+  Card,
+  Container,
+  Grid,
+  Text,
+  useMantineTheme,
+} from '@mantine/core';
 import CartProduct from '../components/CartProduct';
-import { useShoppingCart } from '../context/ShoppingCartContext';
+import { useShoppingCart } from '../contexts/ShoppingCartContext';
 import { mockedProducts } from '../data';
 
 function Cart() {
+  const theme = useMantineTheme();
   const { cartProducts } = useShoppingCart();
   return (
     <Container size="md">
@@ -21,6 +30,9 @@ function Cart() {
               flexDirection: 'column',
               justifyItems: 'center',
               alignItems: 'center',
+              marginTop: '0.7rem',
+              border: '0.15rem solid',
+              borderColor: theme.colors.blue[0],
             }}
           >
             <Text weight={600} size={25}>
@@ -32,12 +44,20 @@ function Cart() {
                   (i) => i.id === cartproduct.id
                 );
                 return (
-                  <>
-                    <Text key={cartproduct.id}>{product?.title}</Text>
+                  <Box
+                    key={cartproduct.id}
+                    sx={{
+                      display: 'flex',
+                      flexDirection: 'row',
+                      gap: '1rem',
+                      justifyContent: 'space-between',
+                    }}
+                  >
+                    <Text>{product?.title}</Text>
                     <Text weight={400}>
                       {cartproduct.quantity}x {product?.price}€
                     </Text>
-                  </>
+                  </Box>
                 );
               })}
             </Text>
