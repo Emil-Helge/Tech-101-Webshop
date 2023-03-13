@@ -24,6 +24,25 @@ function Cart() {
               alignItems: "center",
             }}
           >
+            <Text weight={600} size={25}>
+              Summary:
+            </Text>
+            <Text weight={500} size={18}>
+              {cartProducts.map((cartProduct) => {
+                const product = mockedProducts.find(
+                  (i) => i.id === cartProduct.id
+                );
+                return (
+                  <Text key={cartProduct.id}>
+                    {`${product?.title || "undefined"}: `}
+
+                    <Text weight={400}>{`x${cartProduct.quantity} ${
+                      product?.price || 0
+                    }€`}</Text>
+                  </Text>
+                );
+              })}
+            </Text>
             <Text weight={500} size={29}>
               total:{" "}
               {cartProducts.reduce((total, cartProduct) => {
@@ -34,6 +53,7 @@ function Cart() {
               }, 0)}
               €
             </Text>
+
             <Button>Checkout</Button>
           </Card>
         </Grid.Col>
