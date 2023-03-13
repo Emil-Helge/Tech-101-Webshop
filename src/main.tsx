@@ -9,6 +9,7 @@ import {
 } from "react-router-dom";
 import App from "./App";
 import ProductProvider from "./context/ProductContext";
+import ShoppingCartProvider from "./context/ShoppingCartContext";
 import "./index.css";
 import About from "./pages/About";
 import Home from "./pages/Home";
@@ -33,9 +34,11 @@ ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
       withGlobalStyles
       withNormalizeCSS
     >
-      <ProductProvider>
-        <RouterProvider router={router} />
-      </ProductProvider>
+      <ShoppingCartProvider>
+        <ProductProvider>
+          <RouterProvider router={router} />
+        </ProductProvider>
+      </ShoppingCartProvider>
     </MantineProvider>
   </React.StrictMode>
 );
