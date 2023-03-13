@@ -11,6 +11,7 @@ interface ShoppingCartContext {
   increaseCartQuantity: (id: number) => void;
   decreaseCartQuantity: (id: number) => void;
   removeFromCart: (id: number) => void;
+  cartProducts: CartProduct[];
   cartQuantity: number;
 }
 
@@ -88,6 +89,7 @@ function ShoppingCartProvider({ children }: Props) {
         increaseCartQuantity,
         decreaseCartQuantity,
         removeFromCart,
+        cartProducts,
         cartQuantity,
       }}
     >

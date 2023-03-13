@@ -153,46 +153,46 @@ export function HeaderResponsive({ links }: HeaderResponsiveProps) {
         <Group spacing={5} className={classes.links}>
           {items}
         </Group>
-
-        <Button variant="subtle">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            className="icon icon-tabler icon-tabler-shopping-cart"
-            width="30"
-            height="30"
-            viewBox="0 0 24 24"
-            strokeWidth="1.5"
-            stroke="currentColor"
-            fill="none"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          >
-            <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-            <path d="M6 19m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0"></path>
-            <path d="M17 19m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0"></path>
-            <path d="M17 17h-11v-14h-2"></path>
-            <path d="M6 5l14 1l-1 7h-13"></path>
-          </svg>
-          <div
-            style={{
-              borderRadius: "10rem",
-              background: "navy",
-              color: "white",
-              width: "1.2rem",
-              height: "1.2rem",
-              position: "absolute",
-              bottom: 0,
-              right: 0,
-              display: "flex",
-              transform: "translate(-30%, -75%)",
-              justifyContent: "center",
-              alignItems: "center",
-            }}
-          >
-            {cartQuantity}
-          </div>
-        </Button>
-
+        <Link to="/cart">
+          <Button variant="subtle">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="icon icon-tabler icon-tabler-shopping-cart"
+              width="30"
+              height="30"
+              viewBox="0 0 24 24"
+              strokeWidth="1.5"
+              stroke="currentColor"
+              fill="none"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            >
+              <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+              <path d="M6 19m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0"></path>
+              <path d="M17 19m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0"></path>
+              <path d="M17 17h-11v-14h-2"></path>
+              <path d="M6 5l14 1l-1 7h-13"></path>
+            </svg>
+            <div
+              style={{
+                borderRadius: "10rem",
+                background: "navy",
+                color: "white",
+                width: "1.2rem",
+                height: "1.2rem",
+                position: "absolute",
+                bottom: 0,
+                right: 0,
+                display: "flex",
+                transform: "translate(-30%, -75%)",
+                justifyContent: "center",
+                alignItems: "center",
+              }}
+            >
+              {cartQuantity}
+            </div>
+          </Button>
+        </Link>
         <Burger
           opened={opened}
           onClick={toggle}

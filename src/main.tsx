@@ -12,6 +12,7 @@ import ProductProvider from "./context/ProductContext";
 import ShoppingCartProvider from "./context/ShoppingCartContext";
 import "./index.css";
 import About from "./pages/About";
+import Cart from "./pages/Cart";
 import Home from "./pages/Home";
 import Store from "./pages/Store";
 
@@ -21,6 +22,7 @@ const router = createBrowserRouter(
       <Route index element={<Home />} />
       <Route path="/about" element={<About />} />
       <Route path="/store" element={<Store />} />
+      <Route path="/cart" element={<Cart />} />
     </Route>
   )
 );
