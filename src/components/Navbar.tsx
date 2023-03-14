@@ -18,8 +18,11 @@ const HEADER_HEIGHT = rem(60);
 
 const useStyles = createStyles((theme) => ({
   root: {
-    position: 'relative',
-    zIndex: 1,
+    position: 'sticky',
+    top: 0,
+    left: 0,
+    right: 0,
+    zIndex: 2,
   },
 
   dropdown: {
@@ -43,6 +46,7 @@ const useStyles = createStyles((theme) => ({
     justifyContent: 'space-between',
     alignItems: 'center',
     height: '100%',
+    width: '100%',
   },
 
   links: {
@@ -138,61 +142,49 @@ export function HeaderResponsive({ links }: HeaderResponsiveProps) {
 
   useEffect(() => {
     if (headerRef.current) {
-      headerRef.current.style.marginBottom = opened ? '126px' : '0';
+      headerRef.current.style.marginBottom = opened ? '200px' : '0';
     }
   }, [opened]);
 
   return (
     <Header
       height={HEADER_HEIGHT}
-      mb={headerRef.current ? (isBurgerVisible ? 126 : 0) : 0}
+      mb={headerRef.current ? (isBurgerVisible ? 200 : 0) : 0}
       ref={headerRef}
       className={classes.root}
     >
-      <Container className={classes.header}>
+      <Container sx={{ maxWidth: 'none' }} className={classes.header}>
         <Group spacing={5} className={classes.links}>
           {items}
         </Group>
         <Link to="/cart">
-          <Button variant="subtle">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="icon icon-tabler icon-tabler-shopping-cart"
-              width="30"
-              height="30"
-              viewBox="0 0 24 24"
-              strokeWidth="1.5"
-              stroke="currentColor"
-              fill="none"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            >
-              <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-              <path d="M6 19m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0"></path>
-              <path d="M17 19m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0"></path>
-              <path d="M17 17h-11v-14h-2"></path>
-              <path d="M6 5l14 1l-1 7h-13"></path>
-            </svg>
-            <div
-              style={{
-                borderRadius: '10rem',
-                background: 'navy',
-                color: 'white',
-                width: '1.2rem',
-                height: '1.2rem',
-                position: 'absolute',
-                bottom: 0,
-                right: 0,
-                display: 'flex',
-                transform: 'translate(-30%, -75%)',
-                justifyContent: 'center',
-                alignItems: 'center',
-              }}
-            >
-              {cartQuantity}
-            </div>
-          </Button>
+          <Group spacing={1}>
+            <img src="./assets/admin-icon.svg" alt="admin icon" />
+
+            <Button variant="subtle">
+              <img src="./assets/shopping-cart.svg" alt="shopping cart icon" />
+              <div
+                style={{
+                  borderRadius: '10rem',
+                  background: 'navy',
+                  color: 'white',
+                  width: '1.2rem',
+                  height: '1.2rem',
+                  position: 'absolute',
+                  bottom: 0,
+                  right: 0,
+                  display: 'flex',
+                  transform: 'translate(-30%, -95%)',
+                  justifyContent: 'center',
+                  alignItems: 'center',
+                }}
+              >
+                {cartQuantity}
+              </div>
+            </Button>
+          </Group>
         </Link>
+
         <Burger
           opened={opened}
           onClick={toggle}

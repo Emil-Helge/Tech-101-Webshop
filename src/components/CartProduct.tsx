@@ -1,6 +1,6 @@
 import { Button, Card, Group, Image, Text } from '@mantine/core';
+import { mockedProducts } from '../../data/index';
 import { useShoppingCart } from '../contexts/ShoppingCartContext';
-import { mockedProducts } from '../data';
 
 interface CartProductProps {
   id: number;

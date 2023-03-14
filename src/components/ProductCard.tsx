@@ -1,6 +1,6 @@
 import { Button, Card, Group, Image, Text } from '@mantine/core';
+import { Product } from '../../data/index';
 import { useShoppingCart } from '../contexts/ShoppingCartContext';
-import { Product } from '../data';
 
 interface Props {
   product: Product;
