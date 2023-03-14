@@ -1,4 +1,5 @@
 import {
+  Box,
   Burger,
   Button,
   Container,
@@ -163,24 +164,26 @@ export function HeaderResponsive({ links }: HeaderResponsiveProps) {
 
             <Button variant="subtle">
               <img src="./assets/shopping-cart.svg" alt="shopping cart icon" />
-              <div
-                style={{
-                  borderRadius: '10rem',
-                  background: 'navy',
-                  color: 'white',
-                  width: '1.2rem',
-                  height: '1.2rem',
-                  position: 'absolute',
-                  bottom: 0,
-                  right: 0,
-                  display: 'flex',
-                  transform: 'translate(-30%, -95%)',
-                  justifyContent: 'center',
-                  alignItems: 'center',
-                }}
-              >
-                {cartQuantity}
-              </div>
+              {cartQuantity > 0 && (
+                <Box
+                  sx={{
+                    borderRadius: '10rem',
+                    background: 'navy',
+                    color: 'white',
+                    width: '1.2rem',
+                    height: '1.2rem',
+                    position: 'absolute',
+                    bottom: 0,
+                    right: 0,
+                    display: 'flex',
+                    transform: 'translate(-30%, -95%)',
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                  }}
+                >
+                  {cartQuantity}
+                </Box>
+              )}
             </Button>
           </Group>
         </Link>
