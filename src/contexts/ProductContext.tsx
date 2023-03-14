@@ -1,5 +1,5 @@
-import { createContext, ReactNode, useState } from "react";
-import { mockedProducts, Product } from "../data";
+import { createContext, ReactNode, useState } from 'react';
+import { mockedProducts, Product } from '../../data/index';
 
 interface ContextValue {
   products: Product[];

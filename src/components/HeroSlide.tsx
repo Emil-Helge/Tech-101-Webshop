@@ -1,19 +1,19 @@
-import { Box } from "@mantine/core";
-import { Autoplay, Navigation, Pagination } from "swiper";
-import { Swiper, SwiperSlide } from "swiper/react";
-import "swiper/swiper-bundle.css";
-import "swiper/swiper.min.css";
-import { mockedProducts } from "../data";
-import HeroSlideItem from "./HeroSlideItem";
+import { Box } from '@mantine/core';
+import { Autoplay, Navigation, Pagination } from 'swiper';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import 'swiper/swiper-bundle.css';
+import 'swiper/swiper.min.css';
+import { mockedProducts } from '../../data/index';
+import HeroSlideItem from './HeroSlideItem';
 
 function HeroSlide() {
   return (
     <Box
       sx={{
-        paddingTop: "1rem",
-        paddingBottom: "1rem",
-        width: "100%",
-        margin: "0 auto",
+        paddingTop: '1rem',
+        paddingBottom: '1rem',
+        width: '100%',
+        margin: '0 auto',
       }}
     >
       <Swiper
@@ -26,7 +26,7 @@ function HeroSlide() {
         pagination={{ clickable: true }}
       >
         {mockedProducts.slice(0, 4).map((product) => (
-          <SwiperSlide style={{ height: "22rem" }} key={product.id}>
+          <SwiperSlide style={{ height: '22rem' }} key={product.id}>
             <HeroSlideItem imageSrc={product.image} />
           </SwiperSlide>
         ))}

@@ -1,11 +1,11 @@
-import { Outlet } from "react-router-dom";
-import { HeaderResponsive, HeaderResponsiveProps } from "./components/Navbar";
+import { Outlet } from 'react-router-dom';
+import { HeaderResponsive, HeaderResponsiveProps } from './components/Navbar';
 
 function App() {
-  const links: HeaderResponsiveProps["links"] = [
-    { link: "/", label: "Home" },
-    { link: "/about", label: "About" },
-    { link: "/store", label: "Store" },
+  const links: HeaderResponsiveProps['links'] = [
+    { link: '/', label: 'Home' },
+    { link: '/about', label: 'About' },
+    { link: '/store', label: 'Store' },
   ];
 
   return (

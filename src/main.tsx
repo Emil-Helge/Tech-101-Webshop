@@ -1,19 +1,24 @@
-import { MantineProvider } from "@mantine/core";
-import React from "react";
-import ReactDOM from "react-dom/client";
+import {
+  ColorScheme,
+  ColorSchemeProvider,
+  MantineProvider,
+} from '@mantine/core';
+import React, { useState } from 'react';
+import ReactDOM from 'react-dom/client';
 import {
   createBrowserRouter,
   createRoutesFromElements,
   Route,
   RouterProvider,
-} from "react-router-dom";
-import App from "./App";
-import ProductProvider from "./context/ProductContext";
-import ShoppingCartProvider from "./context/ShoppingCartContext";
-import "./index.css";
-import About from "./pages/About";
-import Home from "./pages/Home";
-import Store from "./pages/Store";
+} from 'react-router-dom';
+import App from './App';
+import ProductProvider from './contexts/ProductContext';
+import ShoppingCartProvider from './contexts/ShoppingCartContext';
+import './index.css';
+import About from './pages/About';
+import Cart from './pages/Cart';
+import Home from './pages/Home';
+import Store from './pages/Store';
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -21,24 +26,40 @@ const router = createBrowserRouter(
       <Route index element={<Home />} />
       <Route path="/about" element={<About />} />
       <Route path="/store" element={<Store />} />
+      <Route path="/cart" element={<Cart />} />
     </Route>
   )
 );
 
-ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
-  <React.StrictMode>
-    <MantineProvider
-      theme={{
-        primaryColor: "blue",
-      }}
-      withGlobalStyles
-      withNormalizeCSS
-    >
-      <ShoppingCartProvider>
-        <ProductProvider>
-          <RouterProvider router={router} />
-        </ProductProvider>
-      </ShoppingCartProvider>
-    </MantineProvider>
-  </React.StrictMode>
+function Root() {
+  const [colorScheme, setColorScheme] = useState<ColorScheme>('light');
+  const toggleColorScheme = (value?: ColorScheme) =>
+    setColorScheme(value || (colorScheme === 'dark' ? 'light' : 'dark'));
+  return (
+    <React.StrictMode>
+      <ColorSchemeProvider
+        colorScheme={colorScheme}
+        toggleColorScheme={toggleColorScheme}
+      >
+        <MantineProvider
+          theme={{
+            colorScheme,
+            primaryColor: 'blue',
+          }}
+          withGlobalStyles
+          withNormalizeCSS
+        >
+          <ShoppingCartProvider>
+            <ProductProvider>
+              <RouterProvider router={router} />
+            </ProductProvider>
+          </ShoppingCartProvider>
+        </MantineProvider>
+      </ColorSchemeProvider>
+    </React.StrictMode>
+  );
+}
+
+ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
+  <Root />
 );
