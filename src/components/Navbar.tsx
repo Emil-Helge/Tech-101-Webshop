@@ -18,13 +18,11 @@ const HEADER_HEIGHT = rem(60);
 
 const useStyles = createStyles((theme) => ({
   root: {
-
-    position: "sticky",
+    position: 'sticky',
     top: 0,
     left: 0,
     right: 0,
     zIndex: 2,
-
   },
 
   dropdown: {
@@ -44,12 +42,11 @@ const useStyles = createStyles((theme) => ({
   },
 
   header: {
-
-    display: "flex",
-    justifyContent: "space-between",
-    alignItems: "center",
-    height: "100%",
-    width: "100%",
+    display: 'flex',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    height: '100%',
+    width: '100%',
   },
 
   links: {
@@ -145,7 +142,7 @@ export function HeaderResponsive({ links }: HeaderResponsiveProps) {
 
   useEffect(() => {
     if (headerRef.current) {
-      headerRef.current.style.marginBottom = opened ? "200px" : "0";
+      headerRef.current.style.marginBottom = opened ? '200px' : '0';
     }
   }, [opened]);
 
@@ -156,42 +153,37 @@ export function HeaderResponsive({ links }: HeaderResponsiveProps) {
       ref={headerRef}
       className={classes.root}
     >
-      <Container sx={{ maxWidth: "none" }} className={classes.header}>
+      <Container sx={{ maxWidth: 'none' }} className={classes.header}>
         <Group spacing={5} className={classes.links}>
           {items}
         </Group>
         <Link to="/cart">
-        <Group spacing={1}>
-          <img src="./assets/admin-icon.svg" alt="admin icon" />
+          <Group spacing={1}>
+            <img src="./assets/admin-icon.svg" alt="admin icon" />
 
-          <Button variant="subtle">
-            <img src="./assets/shopping-cart.svg" alt="shopping cart icon" />
-            <div
-              style={{
-                borderRadius: "10rem",
-                background: "navy",
-                color: "white",
-                width: "1.2rem",
-                height: "1.2rem",
-                position: "absolute",
-                bottom: 0,
-                right: 0,
-                display: "flex",
-                transform: "translate(-30%, -95%)",
-                justifyContent: "center",
-                alignItems: "center",
-
-              }}
-            >
-              {cartQuantity}
-            </div>
-          </Button>
-
+            <Button variant="subtle">
+              <img src="./assets/shopping-cart.svg" alt="shopping cart icon" />
+              <div
+                style={{
+                  borderRadius: '10rem',
+                  background: 'navy',
+                  color: 'white',
+                  width: '1.2rem',
+                  height: '1.2rem',
+                  position: 'absolute',
+                  bottom: 0,
+                  right: 0,
+                  display: 'flex',
+                  transform: 'translate(-30%, -95%)',
+                  justifyContent: 'center',
+                  alignItems: 'center',
+                }}
+              >
+                {cartQuantity}
+              </div>
+            </Button>
+          </Group>
         </Link>
-
-        </Group>
-
-
 
         <Burger
           opened={opened}

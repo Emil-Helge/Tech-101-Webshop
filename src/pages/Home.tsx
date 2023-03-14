@@ -1,4 +1,3 @@
-
 import {
   Box,
   Container,
@@ -7,12 +6,11 @@ import {
   Text,
   Title,
   useMantineTheme,
-} from "@mantine/core";
-import { useContext } from "react";
-import HeroSlide from "../components/HeroSlide";
-import ProductCard from "../components/ProductCard";
-import { ProductContext } from "../context/ProductContext";
-
+} from '@mantine/core';
+import { useContext } from 'react';
+import HeroSlide from '../components/HeroSlide';
+import ProductCard from '../components/ProductCard';
+import { ProductContext } from '../contexts/ProductContext';
 
 function Home() {
   const theme = useMantineTheme();
@@ -22,9 +20,9 @@ function Home() {
       <HeroSlide />
       <Box
         sx={{
-          display: "flex",
-          alignItems: "center",
-          flexDirection: "column",
+          display: 'flex',
+          alignItems: 'center',
+          flexDirection: 'column',
         }}
       >
         <Title>Tech101</Title>
@@ -39,22 +37,22 @@ function Home() {
         query="(max-width: 650px)"
         styles={{
           img: {
-            width: "3.6rem",
-            height: "3.6rem",
+            width: '3.6rem',
+            height: '3.6rem',
           },
         }}
       >
         <Box
           sx={{
-            width: "100%",
+            width: '100%',
             background: theme.colors.blue[0],
             color: theme.colors.blue[9],
-            display: "flex",
-            justifyContent: "space-around",
-            marginBottom: "1.5rem",
-            marginTop: "1rem",
-            padding: ".3rem",
-            boxShadow: "0px 4px 4px rgba(0, 0, 0, 0.25)",
+            display: 'flex',
+            justifyContent: 'space-around',
+            marginBottom: '1.5rem',
+            marginTop: '1rem',
+            padding: '.3rem',
+            boxShadow: '0px 4px 4px rgba(0, 0, 0, 0.25)',
           }}
         >
           <img src="./assets/recycable-parts.svg" alt="recycable parts icon" />
@@ -68,9 +66,9 @@ function Home() {
         </Box>
       </MediaQuery>
       <Title
-        sx={{ marginBottom: "1rem" }}
+        sx={{ marginBottom: '1rem' }}
         variant="gradient"
-        gradient={{ from: "blue", to: "cyan", deg: 45 }}
+        gradient={{ from: 'blue', to: 'cyan', deg: 45 }}
         ta="center"
       >
         Browse our collection
