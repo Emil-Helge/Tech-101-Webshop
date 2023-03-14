@@ -4,11 +4,10 @@ import { useShoppingCart } from '../contexts/ShoppingCartContext';
 
 interface Props {
   product: Product;
-  isAdmin?: boolean;
   onDelete?: () => void;
 }
 
-function AdminProductCard({ product, onDelete, isAdmin }: Props) {
+function AdminProductCard({ product, onDelete }: Props) {
   const {
     getProductQuantity,
     increaseCartQuantity,

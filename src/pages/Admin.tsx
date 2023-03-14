@@ -29,7 +29,6 @@ function Admin() {
           <AdminProductCard
             key={product.id}
             product={product}
-            isAdmin={true}
             onDelete={() => deleteProduct(product.id)}
           />
         ))}
