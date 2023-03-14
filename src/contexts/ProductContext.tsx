@@ -1,8 +1,10 @@
-import { createContext, ReactNode, useState } from 'react';
+import { createContext, ReactNode } from 'react';
 import { mockedProducts, Product } from '../../data/index';
+import useLocalStorage from '../hooks/useLocalStorage';
 
 interface ContextValue {
   products: Product[];
+  deleteProduct: (id: number) => void;
 }
 
 export const ProductContext = createContext<ContextValue>(null as any);
@@ -12,10 +14,19 @@ interface Props {
 }
 
 function ProductProvider({ children }: Props) {
-  const [products, setProducts] = useState(mockedProducts);
+  const [products, setProducts] = useLocalStorage<Product[]>(
+    'Products:',
+    mockedProducts
+  );
+
+  function deleteProduct(id: number) {
+    setProducts((currentProducts) => {
+      return currentProducts.filter((product) => product.id !== id);
+    });
+  }
 
   return (
-    <ProductContext.Provider value={{ products }}>
+    <ProductContext.Provider value={{ products, deleteProduct }}>
       {children}
     </ProductContext.Provider>
   );
