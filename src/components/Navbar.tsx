@@ -17,7 +17,7 @@ import { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useShoppingCart } from '../contexts/ShoppingCartContext';
 
-const HEADER_HEIGHT = rem(60);
+const HEADER_HEIGHT = rem(70);
 
 const useStyles = createStyles((theme) => ({
   root: {
@@ -177,10 +177,13 @@ export function HeaderResponsive({ links }: HeaderResponsiveProps) {
       className={classes.root}
     >
       <Container sx={{ maxWidth: 'none' }} className={classes.header}>
-        <ToggleDarkAndLightMode />
+        <Group spacing={1}>
+          <img src="./assets/T101-logo.svg" alt="T101 logo" />
+        </Group>
         <Group spacing={5} className={classes.links}>
           {items}
         </Group>
+        <ToggleDarkAndLightMode />
         <Link to="/cart">
           <Group spacing={1}>
             <img src="./assets/admin-icon.svg" alt="admin icon" />
