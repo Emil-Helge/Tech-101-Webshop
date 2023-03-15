@@ -14,7 +14,7 @@ function CartProduct({ id, quantity }: CartProductProps) {
   if (product == null) return null;
 
   return (
-    <Card shadow="sm" mt="sm" padding="sm" radius="sm" data-cy="cart-item">
+    <Card shadow="sm" mt="sm" padding="sm" radius="sm">
       <Card.Section>
         <Image src={product.image} height={190} fit="cover" />
       </Card.Section>
