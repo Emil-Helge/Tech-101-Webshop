@@ -1,4 +1,13 @@
-import { Button, Card, Flex, Group, Image, Text, Title } from '@mantine/core';
+import {
+  Button,
+  Card,
+  Container,
+  Flex,
+  Group,
+  Image,
+  Text,
+  Title,
+} from '@mantine/core';
 import { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { mockedProducts, Product } from '../../data/index';
@@ -26,17 +35,17 @@ function ProductDetails() {
 
   if (!product) {
     return (
-      <div>
+      <Container>
         <Button variant="outline" onClick={goBack}>
           Back
         </Button>
         <Title>Sorry! Product not found</Title>;
-      </div>
+      </Container>
     );
   }
 
   return (
-    <div>
+    <Container>
       <Button variant="outline" onClick={goBack}>
         Back
       </Button>
@@ -45,12 +54,7 @@ function ProductDetails() {
       </Title>
       <Flex direction={{ base: 'column', sm: 'row' }}>
         <Card>
-          <Image
-            src={product.image}
-            alt={product.title}
-            height={230}
-            fit="cover"
-          />
+          <Image src={product.image} alt={product.title} fit="contain" />
         </Card>
         <Card>
           <Title order={2} align="center">
@@ -75,7 +79,7 @@ function ProductDetails() {
           </Group>
         </Card>
       </Flex>
-    </div>
+    </Container>
   );
 }
 
