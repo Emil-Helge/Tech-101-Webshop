@@ -21,7 +21,9 @@ function App() {
       <main>
         <Outlet />
       </main>
-      <FooterCentered links={footerLinks} />
+      <footer>
+        <FooterCentered links={footerLinks} />
+      </footer>
     </div>
   );
 }
