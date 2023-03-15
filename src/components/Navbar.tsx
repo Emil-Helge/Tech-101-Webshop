@@ -188,7 +188,7 @@ export function HeaderResponsive({ links }: HeaderResponsiveProps) {
           <Group spacing={1}>
             <img src="./assets/admin-icon.svg" alt="admin icon" />
 
-            <Button variant="subtle">
+            <Button variant="subtle" data-cy="cart-link">
               <img src="./assets/shopping-cart.svg" alt="shopping cart icon" />
               {cartQuantity > 0 && (
                 <Box
@@ -206,6 +206,7 @@ export function HeaderResponsive({ links }: HeaderResponsiveProps) {
                     justifyContent: 'center',
                     alignItems: 'center',
                   }}
+                  data-cy="cart-items-count-badge"
                 >
                   {cartQuantity}
                 </Box>

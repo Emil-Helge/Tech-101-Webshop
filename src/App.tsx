@@ -18,7 +18,9 @@ function App() {
   return (
     <div>
       <HeaderResponsive links={headerLinks} />
-      <Outlet />
+      <main>
+        <Outlet />
+      </main>
       <FooterCentered links={footerLinks} />
     </div>
   );
