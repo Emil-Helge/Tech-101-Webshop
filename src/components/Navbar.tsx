@@ -7,6 +7,7 @@ import {
   createStyles,
   Group,
   Header,
+  MediaQuery,
   Paper,
   rem,
   Transition,
@@ -191,7 +192,17 @@ export function HeaderResponsive({ links }: HeaderResponsiveProps) {
       className={classes.root}
     >
       <Container sx={{ maxWidth: 'none' }} className={classes.header}>
-        <Group spacing={1}>{logo}</Group>
+        <MediaQuery
+          query="(max-width: 460px)"
+          styles={{
+            img: {
+              width: '6rem',
+              height: '6rem',
+            },
+          }}
+        >
+          <Group spacing={1}>{logo}</Group>
+        </MediaQuery>
         <Group spacing={5} className={classes.links}>
           {items}
         </Group>

@@ -17,6 +17,13 @@ const useStyles = createStyles((theme) => ({
     }`,
   },
 
+  actionIcon: {
+    background:
+      theme.colorScheme === 'dark'
+        ? theme.colors.dark[4]
+        : theme.colors.gray[3],
+  },
+
   inner: {
     display: 'flex',
     justifyContent: 'space-between',
@@ -62,7 +69,7 @@ export function FooterCentered({ links }: FooterCenteredProps) {
   const { classes } = useStyles();
   const items = links.map((link) => (
     <Anchor<'a'>
-      color="dimmed"
+      color="gray"
       key={link.label}
       href={link.link}
       sx={{ lineHeight: 1 }}
@@ -98,13 +105,28 @@ export function FooterCentered({ links }: FooterCenteredProps) {
         </form>
 
         <Group spacing="xs" position="right" noWrap mt={10}>
-          <ActionIcon size="lg" variant="default" radius="xl">
+          <ActionIcon
+            size="lg"
+            variant="outline"
+            radius="xl"
+            className={classes.actionIcon}
+          >
             <img src="./assets/instagram-icon.svg" alt="logo of Instagram" />
           </ActionIcon>
-          <ActionIcon size="lg" variant="default" radius="xl">
+          <ActionIcon
+            size="lg"
+            variant="outline"
+            radius="xl"
+            className={classes.actionIcon}
+          >
             <img src="./assets/twitter-icon.svg" alt="logo of Twitter" />
           </ActionIcon>
-          <ActionIcon size="lg" variant="default" radius="xl">
+          <ActionIcon
+            size="lg"
+            variant="outline"
+            radius="xl"
+            className={classes.actionIcon}
+          >
             <img src="./assets/youtube-icon.svg" alt="logo of Youtube" />
           </ActionIcon>
         </Group>
