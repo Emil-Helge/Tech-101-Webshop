@@ -49,7 +49,7 @@ function ProductDetails() {
       <Button variant="outline" onClick={goBack}>
         Back
       </Button>
-      <Title align="center" data-cy="product-title" mb={50}>
+      <Title align="center" mb={50} data-cy="product-title">
         {product.title}
       </Title>
       <Flex direction={{ base: 'column', sm: 'row' }}>
