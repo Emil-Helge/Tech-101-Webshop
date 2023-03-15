@@ -47,7 +47,7 @@ export function FooterCentered({ links }: FooterCenteredProps) {
   ));
 
   return (
-    <div className={classes.footer}>
+    <footer className={classes.footer}>
       <div className={classes.inner}>
         <img src="./assets/T101-logo.svg" alt="The logo of T101" />
         <Group className={classes.links}>{items}</Group>
@@ -64,6 +64,6 @@ export function FooterCentered({ links }: FooterCenteredProps) {
           </ActionIcon>
         </Group>
       </div>
-    </div>
+    </footer>
   );
 }
