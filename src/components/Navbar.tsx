@@ -181,7 +181,7 @@ export function HeaderResponsive({ links }: HeaderResponsiveProps) {
         <Group spacing={5} className={classes.links}>
           {items}
         </Group>
-        <Link to="/cart">
+        <Link to="/checkout">
           <Group spacing={1}>
             <img src="./assets/admin-icon.svg" alt="admin icon" />
 

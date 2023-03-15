@@ -25,12 +25,14 @@ function ProductCard({ product }: Props) {
           </Link>
         </Card.Section>
         <Group position="center" mt="xl" mb="xl">
-          <Title order={2}>{product.title}</Title>
+          <Title order={2} data-cy="product-title">
+            {product.title}
+          </Title>
         </Group>
         {/* <Text size="sm" weight={500} align="center">
           {product.description}
         </Text> */}
-        <Title order={3} align="center">
+        <Title order={3} align="center" data-cy="product-price">
           {product.price}€
         </Title>
         <Group position="center" mt="md" mb="xs">
@@ -44,6 +46,7 @@ function ProductCard({ product }: Props) {
             mt="md"
             radius="md"
             onClick={() => increaseCartQuantity(product.id)}
+            data-cy="product-buy-button"
           >
             Add to cart
           </Button>
