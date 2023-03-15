@@ -14,7 +14,7 @@ function CartProduct({ id, quantity }: CartProductProps) {
   if (product == null) return null;
 
   return (
-    <Card shadow="sm" mt="sm" padding="sm" radius="sm">
+    <Card shadow="sm" mt="sm" padding="sm" radius="sm" data-cy="cart-item">
       <Card.Section>
         <Image src={product.image} height={190} fit="cover" />
       </Card.Section>
@@ -30,10 +30,11 @@ function CartProduct({ id, quantity }: CartProductProps) {
           mt="sm"
           radius="sm"
           onClick={() => decreaseCartQuantity(product.id)}
+          data-cy="decrease-quantity-button"
         >
           -
         </Button>
-        <Text mt="sm" weight={300} size={15}>
+        <Text mt="sm" weight={300} size={15} data-cy="product-quantity">
           x{quantity}
         </Text>
         <Button
@@ -41,6 +42,7 @@ function CartProduct({ id, quantity }: CartProductProps) {
           mt="sm"
           radius="md"
           onClick={() => increaseCartQuantity(product.id)}
+          data-cy="increase-quantity-button"
         >
           +
         </Button>
