@@ -9,7 +9,7 @@ import {
   Title,
 } from '@mantine/core';
 import { useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import { mockedProducts, Product } from '../../data/index';
 import { useShoppingCart } from '../contexts/ShoppingCartContext';
 
@@ -36,10 +36,10 @@ function ProductDetails() {
   if (!product) {
     return (
       <Container>
-        <Button variant="outline" onClick={goBack}>
-          Back
-        </Button>
-        <Title>Sorry! Product not found</Title>;
+        <Link to="/">
+          <Button variant="outline">Back</Button>
+        </Link>
+        <Title>Sorry! Product not found</Title>
       </Container>
     );
   }
@@ -49,7 +49,7 @@ function ProductDetails() {
       <Button variant="outline" onClick={goBack}>
         Back
       </Button>
-      <Title align="center" data-cy="product-title">
+      <Title align="center" data-cy="product-title" mb={50}>
         {product.title}
       </Title>
       <Flex direction={{ base: 'column', sm: 'row' }}>
