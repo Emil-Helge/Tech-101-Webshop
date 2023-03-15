@@ -18,7 +18,7 @@ function ProductCard({ product }: Props) {
   const link = '/' + product.id;
   return (
     <>
-      <Card shadow="xl" padding="md" radius="lg" withBorder>
+      <Card shadow="xl" padding="md" radius="lg" withBorder data-cy="product">
         <Card.Section>
           <Link to={link}>
             <Image src={product.image} height={230} fit="cover" />
