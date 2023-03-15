@@ -18,6 +18,7 @@ import './index.css';
 import About from './pages/About';
 import Cart from './pages/Cart';
 import Home from './pages/Home';
+import ProductDetails from './pages/ProductDetails';
 import Store from './pages/Store';
 
 const router = createBrowserRouter(
