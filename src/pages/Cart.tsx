@@ -7,7 +7,7 @@ import {
   Text,
   useMantineTheme,
 } from '@mantine/core';
-import { mockedProducts } from '../../data/index';
+import { products as mockedProducts } from '../../data/index';
 import CartProduct from '../components/CartProduct';
 import { useShoppingCart } from '../contexts/ShoppingCartContext';
 
