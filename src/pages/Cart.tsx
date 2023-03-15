@@ -14,7 +14,7 @@ import { useShoppingCart } from '../contexts/ShoppingCartContext';
 
 function Cart() {
   const theme = useMantineTheme();
-  const { cartProducts } = useShoppingCart();
+  const { cartProducts, orders } = useShoppingCart();
 
   return (
     <Container size="md">
@@ -75,6 +75,11 @@ function Cart() {
               €
             </Text>
             <Button>Checkout</Button>
+            {orders.map((order) => (
+              <div>
+                <p>{order.id}</p>
+              </div>
+            ))}
           </Card>
         </Grid.Col>
       </Grid>
