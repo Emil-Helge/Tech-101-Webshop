@@ -3,7 +3,7 @@ import { Autoplay, Navigation, Pagination } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/swiper-bundle.css';
 import 'swiper/swiper.min.css';
-import { mockedProducts } from '../../data/index';
+import { products as mockedProducts } from '../../data/index';
 import HeroSlideItem from './HeroSlideItem';
 
 function HeroSlide() {

@@ -15,7 +15,7 @@ function ProductCard({ product }: Props) {
     removeFromCart, // Not in use yet
   } = useShoppingCart();
   const quantity = getProductQuantity(product.id);
-  const link = '/' + product.id;
+  const link = '/product/' + product.id;
   return (
     <>
       <Card shadow="xl" padding="md" radius="lg" withBorder data-cy="product">
@@ -24,8 +24,10 @@ function ProductCard({ product }: Props) {
             <Image src={product.image} height={230} fit="cover" />
           </Link>
         </Card.Section>
-        <Group position="center" mt="xl" mb="xl" data-cy="product-title">
-          <Title order={2}>{product.title}</Title>
+        <Group position="center" mt="xl" mb="xl">
+          <Title order={2} data-cy="product-title">
+            {product.title}
+          </Title>
         </Group>
         {/* <Text size="sm" weight={500} align="center">
           {product.description}
