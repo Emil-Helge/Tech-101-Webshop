@@ -10,7 +10,7 @@ import {
 } from '@mantine/core';
 import { useEffect } from 'react';
 import { Link, useParams } from 'react-router-dom';
-import { mockedProducts, Product } from '../../data/index';
+import { Product, products as mockedProducts } from '../../data/index';
 import { useShoppingCart } from '../contexts/ShoppingCartContext';
 
 function ProductDetails() {
@@ -49,14 +49,14 @@ function ProductDetails() {
       <Button variant="outline" onClick={goBack}>
         Back
       </Button>
-      <Title align="center" mb={50} data-cy="product-title">
-        {product.title}
-      </Title>
       <Flex direction={{ base: 'column', sm: 'row' }}>
         <Card>
           <Image src={product.image} alt={product.title} fit="contain" />
         </Card>
         <Card>
+          <Title align="center" mb={50} data-cy="product-title">
+            {product.title}
+          </Title>
           <Title order={2} align="center">
             Description:
           </Title>

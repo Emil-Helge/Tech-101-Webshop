@@ -15,7 +15,7 @@ function ProductCard({ product }: Props) {
     removeFromCart, // Not in use yet
   } = useShoppingCart();
   const quantity = getProductQuantity(product.id);
-  const link = '/' + product.id;
+  const link = '/product/' + product.id;
   return (
     <>
       <Card shadow="xl" padding="md" radius="lg" withBorder data-cy="product">
