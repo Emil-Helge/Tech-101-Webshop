@@ -11,7 +11,10 @@ function App() {
   return (
     <div>
       <HeaderResponsive links={links} />
-      <Outlet />
+      <main>
+        <Outlet />
+      </main>
+      <footer style={{ height: '1rem' }} />
     </div>
   );
 }
