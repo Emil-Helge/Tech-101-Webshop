@@ -1,4 +1,13 @@
-import { ActionIcon, Anchor, createStyles, Group, rem } from '@mantine/core';
+import {
+  ActionIcon,
+  Anchor,
+  Button,
+  createStyles,
+  Group,
+  Input,
+  rem,
+} from '@mantine/core';
+import { useState } from 'react';
 
 const useStyles = createStyles((theme) => ({
   footer: {
@@ -25,6 +34,24 @@ const useStyles = createStyles((theme) => ({
       marginBottom: theme.spacing.sm,
     },
   },
+
+  form: {
+    display: 'flex',
+    alignItems: 'center',
+    [theme.fn.smallerThan('sm')]: {
+      marginTop: theme.spacing.lg,
+      flexDirection: 'column',
+      alignItems: 'stretch',
+    },
+  },
+
+  input: {
+    marginRight: theme.spacing.md,
+    [theme.fn.smallerThan('sm')]: {
+      marginRight: 0,
+      marginBottom: theme.spacing.md,
+    },
+  },
 }));
 
 interface FooterCenteredProps {
@@ -46,13 +73,31 @@ export function FooterCentered({ links }: FooterCenteredProps) {
     </Anchor>
   ));
 
+  const [email, setEmail] = useState('');
+
+  const handleFormSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+  };
+
   return (
     <div className={classes.footer}>
       <div className={classes.inner}>
-        <img src="./assets/T101-logo.svg" alt="The logo of T101" />
         <Group className={classes.links}>{items}</Group>
 
-        <Group spacing="xs" position="right" noWrap>
+        <form onSubmit={handleFormSubmit} className={classes.form}>
+          <label htmlFor="email"></label>
+          <Input
+            className={classes.input}
+            placeholder="Enter your email"
+            value={email}
+            onChange={(event) => setEmail(event.currentTarget.value)}
+          />
+          <Button type="submit" variant="outline">
+            Sign up
+          </Button>
+        </form>
+
+        <Group spacing="xs" position="right" noWrap mt={10}>
           <ActionIcon size="lg" variant="default" radius="xl">
             <img src="./assets/instagram-icon.svg" alt="logo of Instagram" />
           </ActionIcon>

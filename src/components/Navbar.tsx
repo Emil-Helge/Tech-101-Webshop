@@ -111,6 +111,20 @@ export function HeaderResponsive({ links }: HeaderResponsiveProps) {
   const [active, setActive] = useState(links[0].link);
   const { classes, cx } = useStyles();
   const { cartQuantity } = useShoppingCart();
+  const { colorScheme, toggleColorScheme } = useMantineColorScheme();
+  const [logoType, setLogoType] = useState('dark');
+
+  const handleToggle = () => {
+    toggleColorScheme();
+    setLogoType(colorScheme === 'dark' ? 'dark' : 'light');
+  };
+
+  const logo =
+    logoType === 'dark' ? (
+      <img src="./assets/T101-logo.svg" alt="T101 logo" />
+    ) : (
+      <img src="./assets/T101-logo-darkmode.svg" alt="T101 logo" />
+    );
 
   const items = links.map((link, index) => (
     <ul key={index}>
@@ -157,7 +171,7 @@ export function HeaderResponsive({ links }: HeaderResponsiveProps) {
       <ActionIcon
         variant="outline"
         color={dark ? 'gray' : 'blue'}
-        onClick={() => toggleColorScheme()}
+        onClick={handleToggle}
         title="Toggle color scheme"
       >
         {dark ? (
@@ -177,9 +191,7 @@ export function HeaderResponsive({ links }: HeaderResponsiveProps) {
       className={classes.root}
     >
       <Container sx={{ maxWidth: 'none' }} className={classes.header}>
-        <Group spacing={1}>
-          <img src="./assets/T101-logo.svg" alt="T101 logo" />
-        </Group>
+        <Group spacing={1}>{logo}</Group>
         <Group spacing={5} className={classes.links}>
           {items}
         </Group>
