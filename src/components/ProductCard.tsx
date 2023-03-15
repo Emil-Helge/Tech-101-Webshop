@@ -1,4 +1,4 @@
-import { Button, Card, Group, Image, Text } from '@mantine/core';
+import { Button, Card, Group, Image, Text, Title } from '@mantine/core';
 import { Product } from '../../data/index';
 import { useShoppingCart } from '../contexts/ShoppingCartContext';
 
@@ -21,16 +21,14 @@ function ProductCard({ product }: Props) {
           <Image src={product.image} height={230} fit="cover" />
         </Card.Section>
         <Group position="center" mt="xl" mb="xl">
-          <Text weight={500} size={29} transform="uppercase">
-            {product.title}
-          </Text>
+          <Title order={2}>{product.title}</Title>
         </Group>
-        <Text size="sm" color="dimmed" align="center">
+        <Text size="sm" weight={500} align="center">
           {product.description}
         </Text>
-        <Text weight={500} size="lg" color="dark" align="center">
+        <Title order={3} align="center">
           {product.price}€
-        </Text>
+        </Title>
         <Group position="center" mt="md" mb="xs">
           <Button variant="outline" mt="md" radius="md">
             Product Page
