@@ -3,6 +3,7 @@ import {
   ColorSchemeProvider,
   MantineProvider,
 } from '@mantine/core';
+import { Notifications } from '@mantine/notifications';
 import React, { useState } from 'react';
 import ReactDOM from 'react-dom/client';
 import {
@@ -49,6 +50,7 @@ function Root() {
           withGlobalStyles
           withNormalizeCSS
         >
+          <Notifications />
           <ShoppingCartProvider>
             <ProductProvider>
               <RouterProvider router={router} />
