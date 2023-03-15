@@ -1,4 +1,4 @@
-import { Button, Card, Group, Image, Text, Title } from '@mantine/core';
+import { Button, Card, Flex, Group, Image, Text, Title } from '@mantine/core';
 import { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { mockedProducts, Product } from '../../data/index';
@@ -40,36 +40,41 @@ function ProductDetails() {
       <Button variant="outline" onClick={goBack}>
         Back
       </Button>
-      <Title align="center">{product.title}</Title>
-      <Card>
-        <Image
-          src={product.image}
-          alt={product.title}
-          height={230}
-          fit="cover"
-        />
-      </Card>
-      <Card>
-        <Title order={2} align="center">
-          Description:
-        </Title>
-        <Text size="md" align="center" data-cy="product-description">
-          {product.description}
-        </Text>
-        <Group position="center">
-          <Title order={3} data-cy="product-price">
-            {product.price}€
+      <Title align="center" data-cy="product-title">
+        {product.title}
+      </Title>
+      <Flex direction={{ base: 'column', sm: 'row' }}>
+        <Card>
+          <Image
+            src={product.image}
+            alt={product.title}
+            height={230}
+            fit="cover"
+          />
+        </Card>
+        <Card>
+          <Title order={2} align="center">
+            Description:
           </Title>
-          <Button
-            variant="light"
-            mt="md"
-            radius="md"
-            onClick={() => increaseCartQuantity(product.id)}
-          >
-            Add to cart
-          </Button>
-        </Group>
-      </Card>
+          <Text size="md" align="center" data-cy="product-description">
+            {product.description}
+          </Text>
+          <Group position="center">
+            <Title order={3} data-cy="product-price">
+              {product.price}€
+            </Title>
+            <Button
+              variant="light"
+              mt="md"
+              radius="md"
+              onClick={() => increaseCartQuantity(product.id)}
+              data-cy="product-buy-button"
+            >
+              Add to cart
+            </Button>
+          </Group>
+        </Card>
+      </Flex>
     </div>
   );
 }
