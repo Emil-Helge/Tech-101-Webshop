@@ -33,7 +33,13 @@ function AdminProductCard({ product, onDelete }: Props) {
           {product.price}€
         </Text>
         <Group position="center" mt="md" mb="xs">
-          <Button variant="danger" mt="md" radius="md" onClick={onDelete}>
+          <Button
+            sx={{ color: 'red', borderColor: 'red' }}
+            variant="outline"
+            mt="md"
+            radius="md"
+            onClick={onDelete}
+          >
             Delete Product
           </Button>
           <Button
