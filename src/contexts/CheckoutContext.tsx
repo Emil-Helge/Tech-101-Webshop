@@ -1,99 +1,76 @@
-import { createContext, ReactNode, useContext } from 'react';
-import useLocalStorage from '../hooks/useLocalStorage';
+// import { createContext, ReactNode, useContext, useState } from 'react';
+// import { useShoppingCart } from '../contexts/ShoppingCartContext';
 
-interface CartProduct {
-  id: number;
-  quantity: number;
-}
+// interface CheckoutProviderProps {
+//   children: ReactNode;
+// }
 
-interface CheckoutContext {
-  getProductQuantity: (id: number) => number;
-  // increaseCartQuantity: (id: number) => void;
-  // decreaseCartQuantity: (id: number) => void;
-  removeFromCart: (id: number) => void;
-  cartProducts: CartProduct[];
-  cartQuantity: number;
-}
+// interface CheckoutContext {}
+// export const CheckoutContext = createContext<CheckoutContext>(null as any);
 
-export function useCheckout() {
-  return useContext(CheckoutContext);
-}
+// export const useCheckout = () => useContext(CheckoutContext);
 
-export const CheckoutContext = createContext<CheckoutContext>(null as any);
+// export const CheckoutProvider: React.FC<CheckoutProviderProps> = ({
+//   children,
+// }) => {
+//   const [orders, setOrders] = useState(0);
+//   const { cartProducts } = useShoppingCart();
 
-interface Props {
-  children: ReactNode;
-}
+//   // setOrders((prevOrders) => [...prevOrders, newOrder]);
 
-function CheckoutProvider({ children }: Props) {
-  const [cartProducts, setCartProducts] = useLocalStorage<CartProduct[]>(
-    'Shopping cart:',
-    []
-  );
+//   return (
+//     <CheckoutContext.Provider value={{ orders }}>
+//       {children}
+//     </CheckoutContext.Provider>
+//   );
+// };
 
-  const cartQuantity = cartProducts.reduce(
-    (quantity, product) => product.quantity + quantity,
-    0
-  );
+// export default CheckoutContext;
 
-  function getProductQuantity(id: number) {
-    return cartProducts.find((product) => product.id === id)?.quantity || 0;
-  }
+// ---------------------------------------------------------------------------------
 
-  // function increaseCartQuantity(id: number) {
-  //   setCartProducts((currentProducts) => {
-  //     if (currentProducts.find((product) => product.id === id) == null) {
-  //       return [...currentProducts, { id, quantity: 1 }];
-  //     } else {
-  //       return currentProducts.map((product) => {
-  //         if (product.id === id) {
-  //           return { ...product, quantity: product.quantity + 1 };
-  //         } else {
-  //           return product;
-  //         }
-  //       });
-  //     }
-  //   });
-  // }
+// import { createContext, ReactNode, useContext, useState } from 'react';
+// import { FormValues } from '../components/CheckoutForm';
+// interface Order {
+//   id: number;
+//   cartProducts: any[]; // Replace 'any' with your cartProduct type
+//   formData: FormValues; // Import FormValues from your CheckoutForm component
+// }
+// interface CheckoutProviderProps {
+//   children: ReactNode;
+// }
 
-  // function decreaseCartQuantity(id: number) {
-  //   setCartProducts((currentProducts) => {
-  //     if (
-  //       currentProducts.find((product) => product.id === id)?.quantity === 1
-  //     ) {
-  //       return currentProducts.filter((product) => product.id !== id);
-  //     } else {
-  //       return currentProducts.map((product) => {
-  //         if (product.id === id) {
-  //           return { ...product, quantity: product.quantity - 1 };
-  //         } else {
-  //           return product;
-  //         }
-  //       });
-  //     }
-  //   });
-  // }
+// const CheckoutContext = createContext<{
+//   orders: Order[];
+//   addOrder: (cartProducts: [], formData: FormValues) => void;
+// }>({
+//   orders: [],
+//   addOrder: () => {},
+// });
 
-  function removeFromCart(id: number) {
-    setCartProducts((currentProducts) => {
-      return currentProducts.filter((product) => product.id !== id);
-    });
-  }
+// export const useCheckout = () => useContext(CheckoutContext);
 
-  return (
-    <CheckoutContext.Provider
-      value={{
-        getProductQuantity,
-        // increaseCartQuantity,
-        // decreaseCartQuantity,
-        removeFromCart,
-        cartProducts,
-        cartQuantity,
-      }}
-    >
-      {children}
-    </CheckoutContext.Provider>
-  );
-}
+// export const CheckoutProvider: React.FC<CheckoutProviderProps> = ({
+//   children,
+// }) => {
+//   const [orders, setOrders] = useState<Order[]>([]);
 
-export default CheckoutProvider;
+//   const addOrder = (cartProducts: any[], formData: FormValues) => {
+//     // Replace 'any' with your cartProduct type
+//     const newOrder: Order = {
+//       id: orders.length,
+//       cartProducts,
+//       formData,
+//     };
+
+//     setOrders((prevOrders) => [...prevOrders, newOrder]);
+//   };
+
+//   return (
+//     <CheckoutContext.Provider value={{ orders, addOrder }}>
+//       {children}
+//     </CheckoutContext.Provider>
+//   );
+// };
+
+// export default CheckoutContext;

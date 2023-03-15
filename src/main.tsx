@@ -3,7 +3,7 @@ import {
   ColorSchemeProvider,
   MantineProvider,
 } from '@mantine/core';
-import React, { useState } from 'react';
+import { useState } from 'react';
 import ReactDOM from 'react-dom/client';
 import {
   createBrowserRouter,
@@ -36,27 +36,27 @@ function Root() {
   const toggleColorScheme = (value?: ColorScheme) =>
     setColorScheme(value || (colorScheme === 'dark' ? 'light' : 'dark'));
   return (
-    <React.StrictMode>
-      <ColorSchemeProvider
-        colorScheme={colorScheme}
-        toggleColorScheme={toggleColorScheme}
+    // <React.StrictMode>
+    <ColorSchemeProvider
+      colorScheme={colorScheme}
+      toggleColorScheme={toggleColorScheme}
+    >
+      <MantineProvider
+        theme={{
+          colorScheme,
+          primaryColor: 'blue',
+        }}
+        withGlobalStyles
+        withNormalizeCSS
       >
-        <MantineProvider
-          theme={{
-            colorScheme,
-            primaryColor: 'blue',
-          }}
-          withGlobalStyles
-          withNormalizeCSS
-        >
-          <ShoppingCartProvider>
-            <ProductProvider>
-              <RouterProvider router={router} />
-            </ProductProvider>
-          </ShoppingCartProvider>
-        </MantineProvider>
-      </ColorSchemeProvider>
-    </React.StrictMode>
+        <ShoppingCartProvider>
+          <ProductProvider>
+            <RouterProvider router={router} />
+          </ProductProvider>
+        </ShoppingCartProvider>
+      </MantineProvider>
+    </ColorSchemeProvider>
+    // </React.StrictMode>
   );
 }
 

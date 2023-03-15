@@ -9,11 +9,13 @@ import {
 } from '@mantine/core';
 import { mockedProducts } from '../../data/index';
 import CartProduct from '../components/CartProduct';
+import CheckoutForm from '../components/CheckoutForm';
 import { useShoppingCart } from '../contexts/ShoppingCartContext';
 
 function Cart() {
   const theme = useMantineTheme();
   const { cartProducts } = useShoppingCart();
+
   return (
     <Container size="md">
       <Grid justify="center" align="flex-start">
@@ -21,6 +23,7 @@ function Cart() {
           {cartProducts.map((product) => (
             <CartProduct key={product.id} {...product} />
           ))}
+          <CheckoutForm />
         </Grid.Col>
         <Grid.Col span={12} sm="auto">
           <Card
@@ -71,7 +74,6 @@ function Cart() {
               }, 0)}
               €
             </Text>
-
             <Button>Checkout</Button>
           </Card>
         </Grid.Col>
@@ -81,5 +83,3 @@ function Cart() {
 }
 
 export default Cart;
-
-// test with emil comment
