@@ -6,6 +6,14 @@ export interface Product {
   price: number;
 }
 
+export interface CartItem {
+  id: number;
+  image: string;
+  title: string;
+  price: number;
+  quantity: number;
+}
+
 export const products: Product[] = [
   {
     image:
