@@ -54,11 +54,13 @@ function CheckoutForm() {
           placeholder="ex: Bigboiroad 31"
           {...form.getInputProps('adress')}
         />
-        <TextInput
+        <NumberInput
+          min={0}
           withAsterisk
-          label="Country"
-          placeholder="ex: Sweden"
-          {...form.getInputProps('country')}
+          hideControls={true}
+          label="Mobile nr"
+          placeholder="ex: 0700415160"
+          {...form.getInputProps('mobileNr')}
         />
         <NumberInput
           withAsterisk
