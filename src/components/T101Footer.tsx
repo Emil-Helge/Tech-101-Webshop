@@ -1,4 +1,18 @@
-import { ActionIcon, Anchor, createStyles, Group, rem } from '@mantine/core';
+import {
+  ActionIcon,
+  Anchor,
+  Button,
+  createStyles,
+  Group,
+  Input,
+  rem,
+} from '@mantine/core';
+import {
+  IconBrandInstagram,
+  IconBrandTwitter,
+  IconBrandYoutube,
+} from '@tabler/icons-react';
+import { useState } from 'react';
 
 const useStyles = createStyles((theme) => ({
   footer: {
@@ -6,6 +20,20 @@ const useStyles = createStyles((theme) => ({
     borderTop: `${rem(1)} solid ${
       theme.colorScheme === 'dark' ? theme.colors.dark[5] : theme.colors.gray[2]
     }`,
+  },
+
+  actionIcon: {
+    background:
+      theme.colorScheme === 'dark'
+        ? theme.colors.dark[6]
+        : theme.colors.gray[0],
+
+    '&:hover': {
+      background:
+        theme.colorScheme === 'dark'
+          ? theme.colors.dark[8]
+          : theme.colors.gray[2],
+    },
   },
 
   inner: {
@@ -25,6 +53,24 @@ const useStyles = createStyles((theme) => ({
       marginBottom: theme.spacing.sm,
     },
   },
+
+  form: {
+    display: 'flex',
+    alignItems: 'center',
+    [theme.fn.smallerThan('sm')]: {
+      marginTop: theme.spacing.lg,
+      flexDirection: 'column',
+      alignItems: 'stretch',
+    },
+  },
+
+  input: {
+    marginRight: theme.spacing.md,
+    [theme.fn.smallerThan('sm')]: {
+      marginRight: 0,
+      marginBottom: theme.spacing.md,
+    },
+  },
 }));
 
 interface FooterCenteredProps {
@@ -35,7 +81,7 @@ export function FooterCentered({ links }: FooterCenteredProps) {
   const { classes } = useStyles();
   const items = links.map((link) => (
     <Anchor<'a'>
-      color="dimmed"
+      color="gray"
       key={link.label}
       href={link.link}
       sx={{ lineHeight: 1 }}
@@ -46,21 +92,54 @@ export function FooterCentered({ links }: FooterCenteredProps) {
     </Anchor>
   ));
 
+  const [email, setEmail] = useState('');
+
+  const handleFormSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+  };
+
   return (
     <footer className={classes.footer}>
       <div className={classes.inner}>
-        <img src="./assets/T101-logo.svg" alt="The logo of T101" />
         <Group className={classes.links}>{items}</Group>
 
-        <Group spacing="xs" position="right" noWrap>
-          <ActionIcon size="lg" variant="default" radius="xl">
-            <img src="./assets/instagram-icon.svg" alt="logo of Instagram" />
+        <form onSubmit={handleFormSubmit} className={classes.form}>
+          <label htmlFor="email"></label>
+          <Input
+            className={classes.input}
+            placeholder="Enter your email"
+            value={email}
+            onChange={(event) => setEmail(event.currentTarget.value)}
+          />
+          <Button type="submit" variant="outline">
+            Sign up
+          </Button>
+        </form>
+
+        <Group spacing="xs" position="right" noWrap mt={10}>
+          <ActionIcon
+            size="lg"
+            variant="outline"
+            radius="xl"
+            className={classes.actionIcon}
+          >
+            <IconBrandInstagram size="1.5rem" stroke="1.4" />
           </ActionIcon>
-          <ActionIcon size="lg" variant="default" radius="xl">
-            <img src="./assets/twitter-icon.svg" alt="logo of Twitter" />
+          <ActionIcon
+            size="lg"
+            variant="outline"
+            radius="xl"
+            className={classes.actionIcon}
+          >
+            <IconBrandTwitter size="1.5rem" stroke="1.4" />
           </ActionIcon>
-          <ActionIcon size="lg" variant="default" radius="xl">
-            <img src="./assets/youtube-icon.svg" alt="logo of Youtube" />
+          <ActionIcon
+            size="lg"
+            variant="outline"
+            radius="xl"
+            className={classes.actionIcon}
+          >
+            <IconBrandYoutube size="1.5rem" stroke="1.4" />
           </ActionIcon>
         </Group>
       </div>
