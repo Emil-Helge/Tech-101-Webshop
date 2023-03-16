@@ -1,7 +1,16 @@
-import { Button, Card, Group, Image, Text, Title } from '@mantine/core';
+import {
+  Button,
+  Card,
+  Container,
+  Flex,
+  Group,
+  Image,
+  Text,
+  Title,
+} from '@mantine/core';
 import { useEffect } from 'react';
-import { useParams } from 'react-router-dom';
-import { mockedProducts, Product } from '../../data/index';
+import { Link, useParams } from 'react-router-dom';
+import { Product, products as mockedProducts } from '../../data/index';
 import { useShoppingCart } from '../contexts/ShoppingCartContext';
 
 function ProductDetails() {
@@ -26,51 +35,51 @@ function ProductDetails() {
 
   if (!product) {
     return (
-      <div>
-        <Button variant="outline" onClick={goBack}>
-          Back
-        </Button>
-        <Title>Sorry! Product not found</Title>;
-      </div>
+      <Container>
+        <Link to="/">
+          <Button variant="outline">Back</Button>
+        </Link>
+        <Title>Sorry! Product not found</Title>
+      </Container>
     );
   }
 
   return (
-    <div>
+    <Container>
       <Button variant="outline" onClick={goBack}>
         Back
       </Button>
-      <Title align="center">{product.title}</Title>
-      <Card>
-        <Image
-          src={product.image}
-          alt={product.title}
-          height={230}
-          fit="cover"
-        />
-      </Card>
-      <Card>
-        <Title order={2} align="center">
-          Description:
-        </Title>
-        <Text size="md" align="center" data-cy="product-description">
-          {product.description}
-        </Text>
-        <Group position="center">
-          <Title order={3} data-cy="product-price">
-            {product.price}€
+      <Flex direction={{ base: 'column', sm: 'row' }}>
+        <Card>
+          <Image src={product.image} alt={product.title} fit="contain" />
+        </Card>
+        <Card>
+          <Title align="center" mb={50} data-cy="product-title">
+            {product.title}
           </Title>
-          <Button
-            variant="light"
-            mt="md"
-            radius="md"
-            onClick={() => increaseCartQuantity(product.id)}
-          >
-            Add to cart
-          </Button>
-        </Group>
-      </Card>
-    </div>
+          <Title order={2} align="center">
+            Description:
+          </Title>
+          <Text size="md" align="center" data-cy="product-description">
+            {product.description}
+          </Text>
+          <Group position="center">
+            <Title order={3} data-cy="product-price">
+              {product.price}€
+            </Title>
+            <Button
+              variant="light"
+              mt="md"
+              radius="md"
+              onClick={() => increaseCartQuantity(product.id)}
+              data-cy="product-buy-button"
+            >
+              Add to cart
+            </Button>
+          </Group>
+        </Card>
+      </Flex>
+    </Container>
   );
 }
 

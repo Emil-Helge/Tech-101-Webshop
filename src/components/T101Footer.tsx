@@ -94,7 +94,7 @@ export function FooterCentered({ links }: FooterCenteredProps) {
   };
 
   return (
-    <div className={classes.footer}>
+    <footer className={classes.footer}>
       <div className={classes.inner}>
         <Group className={classes.links}>{items}</Group>
 
@@ -138,6 +138,6 @@ export function FooterCentered({ links }: FooterCenteredProps) {
           </ActionIcon>
         </Group>
       </div>
-    </div>
+    </footer>
   );
 }
