@@ -1,5 +1,6 @@
-import { createContext, ReactNode, useState } from 'react';
+import { createContext, ReactNode } from 'react';
 import { Product, products as mockedProducts } from '../../data/index';
+import useLocalStorage from '../hooks/useLocalStorage';
 
 interface ContextValue {
   products: Product[];
@@ -12,7 +13,10 @@ interface Props {
 }
 
 function ProductProvider({ children }: Props) {
-  const [products, setProducts] = useState(mockedProducts);
+  const [products, setProducts] = useLocalStorage<Product[]>(
+    'products',
+    mockedProducts
+  );
 
   return (
     <ProductContext.Provider value={{ products }}>
