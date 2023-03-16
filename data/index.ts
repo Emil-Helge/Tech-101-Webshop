@@ -6,7 +6,7 @@ export interface Product {
   price: number;
 }
 
-export const mockedProducts: Product[] = [
+export const products: Product[] = [
   {
     image:
       'https://images.pexels.com/photos/2047905/pexels-photo-2047905.jpeg?auto=compress&cs=tinysrgb&w=1600',

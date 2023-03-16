@@ -45,8 +45,10 @@ function Home() {
         <Box
           sx={{
             width: '100%',
-            background: theme.colors.blue[0],
-            color: theme.colors.blue[9],
+            background:
+              theme.colorScheme === 'dark'
+                ? theme.colors.dark[0]
+                : theme.colors.blue[0],
             display: 'flex',
             justifyContent: 'space-around',
             marginBottom: '1.5rem',
@@ -65,12 +67,7 @@ function Home() {
           <img src="./assets/free-returns.svg" alt="free returns icon" />
         </Box>
       </MediaQuery>
-      <Title
-        sx={{ marginBottom: '1rem' }}
-        variant="gradient"
-        gradient={{ from: 'blue', to: 'cyan', deg: 45 }}
-        ta="center"
-      >
+      <Title sx={{ marginBottom: '1rem' }} ta="center">
         Browse our collection
       </Title>
       <SimpleGrid

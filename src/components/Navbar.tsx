@@ -1,4 +1,6 @@
 import {
+  ActionIcon,
+  Box,
   Burger,
   Button,
   Container,
@@ -8,6 +10,7 @@ import {
   Paper,
   rem,
   Transition,
+  useMantineColorScheme,
 } from '@mantine/core';
 import { useDisclosure } from '@mantine/hooks';
 import { useEffect, useRef, useState } from 'react';
@@ -146,6 +149,26 @@ export function HeaderResponsive({ links }: HeaderResponsiveProps) {
     }
   }, [opened]);
 
+  function ToggleDarkAndLightMode() {
+    const { colorScheme, toggleColorScheme } = useMantineColorScheme();
+    const dark = colorScheme === 'dark';
+
+    return (
+      <ActionIcon
+        variant="outline"
+        color={dark ? 'gray' : 'blue'}
+        onClick={() => toggleColorScheme()}
+        title="Toggle color scheme"
+      >
+        {dark ? (
+          <img src="./assets/lightmode.svg" alt="switch to dark mode" />
+        ) : (
+          <img src="./assets/darkmode.svg" alt="switch to light mode" />
+        )}
+      </ActionIcon>
+    );
+  }
+
   return (
     <Header
       height={HEADER_HEIGHT}
@@ -154,44 +177,46 @@ export function HeaderResponsive({ links }: HeaderResponsiveProps) {
       className={classes.root}
     >
       <Container sx={{ maxWidth: 'none' }} className={classes.header}>
+        <ToggleDarkAndLightMode />
         <Group spacing={5} className={classes.links}>
           {items}
         </Group>
-        <Link to="/cart">
+        <Link to="/checkout">
           <Group spacing={1}>
             <img src="./assets/admin-icon.svg" alt="admin icon" />
 
-            <Button variant="subtle">
+            <Button variant="subtle" data-cy="cart-link">
               <img src="./assets/shopping-cart.svg" alt="shopping cart icon" />
-              <div
-                style={{
-                  borderRadius: '10rem',
-                  background: 'navy',
-                  color: 'white',
-                  width: '1.2rem',
-                  height: '1.2rem',
-                  position: 'absolute',
-                  bottom: 0,
-                  right: 0,
-                  display: 'flex',
-                  transform: 'translate(-30%, -95%)',
-                  justifyContent: 'center',
-                  alignItems: 'center',
-                }}
-              >
-                {cartQuantity}
-              </div>
+              {cartQuantity > 0 && (
+                <Box
+                  sx={{
+                    borderRadius: '10rem',
+                    background: 'navy',
+                    color: 'white',
+                    width: '1.2rem',
+                    height: '1.2rem',
+                    position: 'absolute',
+                    bottom: 0,
+                    right: 0,
+                    display: 'flex',
+                    transform: 'translate(-30%, -95%)',
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                  }}
+                  data-cy="cart-items-count-badge"
+                >
+                  {cartQuantity}
+                </Box>
+              )}
             </Button>
           </Group>
         </Link>
-
         <Burger
           opened={opened}
           onClick={toggle}
           className={classes.burger}
           size="sm"
         />
-
         <Transition transition="pop-top-right" duration={200} mounted={opened}>
           {(styles) => (
             <Paper className={classes.dropdown} withBorder style={styles}>

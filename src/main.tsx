@@ -19,6 +19,7 @@ import './index.css';
 import About from './pages/About';
 import Cart from './pages/Cart';
 import Home from './pages/Home';
+import ProductDetails from './pages/ProductDetails';
 import Store from './pages/Store';
 
 const router = createBrowserRouter(
@@ -27,7 +28,8 @@ const router = createBrowserRouter(
       <Route index element={<Home />} />
       <Route path="/about" element={<About />} />
       <Route path="/store" element={<Store />} />
-      <Route path="/cart" element={<Cart />} />
+      <Route path="/product/:id" element={<ProductDetails />} />
+      <Route path="/checkout" element={<Cart />} />
     </Route>
   )
 );
