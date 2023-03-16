@@ -62,7 +62,7 @@ function Home() {
             src="./assets/sustainable-transports.svg"
             alt="sustainable transports icon"
           />
-          <img src="./assets/free-deliveries.svg" alt="recycable parts icon" />
+          <img src="./assets/free-deliveries.svg" alt="free deliveries icon" />
           <img src="./assets/price-guarantee.svg" alt="price guarantee icon" />
           <img src="./assets/free-returns.svg" alt="free returns icon" />
         </Box>

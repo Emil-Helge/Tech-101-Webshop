@@ -7,17 +7,25 @@ import {
   createStyles,
   Group,
   Header,
+  MediaQuery,
   Paper,
   rem,
   Transition,
   useMantineColorScheme,
+  useMantineTheme,
 } from '@mantine/core';
 import { useDisclosure } from '@mantine/hooks';
+import {
+  IconMoonStars,
+  IconShoppingCart,
+  IconSunHigh,
+  IconUserShield,
+} from '@tabler/icons-react';
 import { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useShoppingCart } from '../contexts/ShoppingCartContext';
 
-const HEADER_HEIGHT = rem(60);
+const HEADER_HEIGHT = rem(70);
 
 const useStyles = createStyles((theme) => ({
   root: {
@@ -101,7 +109,6 @@ const useStyles = createStyles((theme) => ({
     },
   },
 }));
-
 export interface HeaderResponsiveProps {
   links: { link: string; label: string }[];
 }
@@ -111,6 +118,21 @@ export function HeaderResponsive({ links }: HeaderResponsiveProps) {
   const [active, setActive] = useState(links[0].link);
   const { classes, cx } = useStyles();
   const { cartQuantity } = useShoppingCart();
+  const { colorScheme, toggleColorScheme } = useMantineColorScheme();
+  const [logoType, setLogoType] = useState('dark');
+  const theme = useMantineTheme();
+
+  const handleToggle = () => {
+    toggleColorScheme();
+    setLogoType(colorScheme === 'dark' ? 'dark' : 'light');
+  };
+
+  const logo =
+    logoType === 'dark' ? (
+      <img src="./assets/T101-logo.svg" alt="T101 logo" />
+    ) : (
+      <img src="./assets/T101-logo-darkmode.svg" alt="T101 logo" />
+    );
 
   const items = links.map((link, index) => (
     <ul key={index}>
@@ -157,13 +179,14 @@ export function HeaderResponsive({ links }: HeaderResponsiveProps) {
       <ActionIcon
         variant="outline"
         color={dark ? 'gray' : 'blue'}
-        onClick={() => toggleColorScheme()}
+        onClick={handleToggle}
         title="Toggle color scheme"
+        sx={{ marginRight: '1rem' }}
       >
         {dark ? (
-          <img src="./assets/lightmode.svg" alt="switch to dark mode" />
+          <IconSunHigh size="1.3rem" stroke="1.6" />
         ) : (
-          <img src="./assets/darkmode.svg" alt="switch to light mode" />
+          <IconMoonStars size="1.3rem" stroke="1.6" />
         )}
       </ActionIcon>
     );
@@ -177,24 +200,36 @@ export function HeaderResponsive({ links }: HeaderResponsiveProps) {
       className={classes.root}
     >
       <Container sx={{ maxWidth: 'none' }} className={classes.header}>
-        <ToggleDarkAndLightMode />
+        <MediaQuery
+          query="(max-width: 460px)"
+          styles={{
+            img: {
+              width: '6rem',
+              height: '6rem',
+            },
+          }}
+        >
+          <Group spacing={1}>{logo}</Group>
+        </MediaQuery>
         <Group spacing={5} className={classes.links}>
           {items}
         </Group>
-        <Link to="/checkout">
-          <Group spacing={1}>
-            <img src="./assets/admin-icon.svg" alt="admin icon" />
-
-            <Button variant="subtle" data-cy="cart-link">
-              <img src="./assets/shopping-cart.svg" alt="shopping cart icon" />
+        <Group spacing={1}>
+          <ToggleDarkAndLightMode />
+          <Link to="/checkout">
+            <Button size="xs" variant="subtle" radius="xl">
+              <IconUserShield size="1.8rem" stroke="1.3" />
+            </Button>
+            <Button size="xs" variant="subtle" data-cy="cart-link" radius="xl">
+              <IconShoppingCart size="1.8rem" stroke="1.2" />
               {cartQuantity > 0 && (
                 <Box
                   sx={{
                     borderRadius: '10rem',
-                    background: 'navy',
+                    background: theme.colors.blue[4],
                     color: 'white',
-                    width: '1.2rem',
-                    height: '1.2rem',
+                    width: '1.1rem',
+                    height: '1.1rem',
                     position: 'absolute',
                     bottom: 0,
                     right: 0,
@@ -209,8 +244,8 @@ export function HeaderResponsive({ links }: HeaderResponsiveProps) {
                 </Box>
               )}
             </Button>
-          </Group>
-        </Link>
+          </Link>
+        </Group>
         <Burger
           opened={opened}
           onClick={toggle}
