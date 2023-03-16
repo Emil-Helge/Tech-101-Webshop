@@ -6,13 +6,19 @@ export interface Product {
   price: number;
 }
 
-export interface CartItem {
-  id: number;
-  image: string;
-  title: string;
-  price: number;
+export interface CartItem extends Product {
   quantity: number;
 }
+
+/**
+ * function that returns a unique Id, both numbers and letters
+ */
+export const generateId = () => {
+  const newId = Math.floor(1 + Math.random() * 0x1000)
+    .toString(16)
+    .substring(1);
+  return newId;
+};
 
 export const products: Product[] = [
   {
