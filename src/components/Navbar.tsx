@@ -12,8 +12,15 @@ import {
   rem,
   Transition,
   useMantineColorScheme,
+  useMantineTheme,
 } from '@mantine/core';
 import { useDisclosure } from '@mantine/hooks';
+import {
+  IconMoonStars,
+  IconShoppingCart,
+  IconSunHigh,
+  IconUserShield,
+} from '@tabler/icons-react';
 import { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useShoppingCart } from '../contexts/ShoppingCartContext';
@@ -102,7 +109,6 @@ const useStyles = createStyles((theme) => ({
     },
   },
 }));
-
 export interface HeaderResponsiveProps {
   links: { link: string; label: string }[];
 }
@@ -114,6 +120,7 @@ export function HeaderResponsive({ links }: HeaderResponsiveProps) {
   const { cartQuantity } = useShoppingCart();
   const { colorScheme, toggleColorScheme } = useMantineColorScheme();
   const [logoType, setLogoType] = useState('dark');
+  const theme = useMantineTheme();
 
   const handleToggle = () => {
     toggleColorScheme();
@@ -174,11 +181,12 @@ export function HeaderResponsive({ links }: HeaderResponsiveProps) {
         color={dark ? 'gray' : 'blue'}
         onClick={handleToggle}
         title="Toggle color scheme"
+        sx={{ marginRight: '1rem' }}
       >
         {dark ? (
-          <img src="./assets/lightmode.svg" alt="switch to dark mode" />
+          <IconSunHigh size="1.3rem" stroke="1.6" />
         ) : (
-          <img src="./assets/darkmode.svg" alt="switch to light mode" />
+          <IconMoonStars size="1.3rem" stroke="1.6" />
         )}
       </ActionIcon>
     );
@@ -206,20 +214,22 @@ export function HeaderResponsive({ links }: HeaderResponsiveProps) {
         <Group spacing={5} className={classes.links}>
           {items}
         </Group>
-        <Link to="/checkout">
-          <Group spacing={1}>
-            <img src="./assets/admin-icon.svg" alt="admin icon" />
-
-            <Button variant="subtle" data-cy="cart-link">
-              <img src="./assets/shopping-cart.svg" alt="shopping cart icon" />
+        <Group spacing={1}>
+          <ToggleDarkAndLightMode />
+          <Link to="/checkout">
+            <Button size="xs" variant="subtle" radius="xl">
+              <IconUserShield size="1.8rem" stroke="1.3" />
+            </Button>
+            <Button size="xs" variant="subtle" data-cy="cart-link" radius="xl">
+              <IconShoppingCart size="1.8rem" stroke="1.2" />
               {cartQuantity > 0 && (
                 <Box
                   sx={{
                     borderRadius: '10rem',
-                    background: 'navy',
+                    background: theme.colors.blue[4],
                     color: 'white',
-                    width: '1.2rem',
-                    height: '1.2rem',
+                    width: '1.1rem',
+                    height: '1.1rem',
                     position: 'absolute',
                     bottom: 0,
                     right: 0,
@@ -234,8 +244,8 @@ export function HeaderResponsive({ links }: HeaderResponsiveProps) {
                 </Box>
               )}
             </Button>
-          </Group>
-        </Link>
+          </Link>
+        </Group>
         <Burger
           opened={opened}
           onClick={toggle}

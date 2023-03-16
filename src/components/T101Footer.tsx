@@ -7,6 +7,11 @@ import {
   Input,
   rem,
 } from '@mantine/core';
+import {
+  IconBrandInstagram,
+  IconBrandTwitter,
+  IconBrandYoutube,
+} from '@tabler/icons-react';
 import { useState } from 'react';
 
 const useStyles = createStyles((theme) => ({
@@ -118,7 +123,7 @@ export function FooterCentered({ links }: FooterCenteredProps) {
             radius="xl"
             className={classes.actionIcon}
           >
-            <img src="./assets/instagram-icon.svg" alt="logo of Instagram" />
+            <IconBrandInstagram size="1.5rem" stroke="1.4" />
           </ActionIcon>
           <ActionIcon
             size="lg"
@@ -126,7 +131,7 @@ export function FooterCentered({ links }: FooterCenteredProps) {
             radius="xl"
             className={classes.actionIcon}
           >
-            <img src="./assets/twitter-icon.svg" alt="logo of Twitter" />
+            <IconBrandTwitter size="1.5rem" stroke="1.4" />
           </ActionIcon>
           <ActionIcon
             size="lg"
@@ -134,7 +139,7 @@ export function FooterCentered({ links }: FooterCenteredProps) {
             radius="xl"
             className={classes.actionIcon}
           >
-            <img src="./assets/youtube-icon.svg" alt="logo of Youtube" />
+            <IconBrandYoutube size="1.5rem" stroke="1.4" />
           </ActionIcon>
         </Group>
       </div>
