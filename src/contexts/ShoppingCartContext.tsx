@@ -1,17 +1,13 @@
 import { createContext, ReactNode, useContext } from 'react';
+import { CartItem, products } from '../../data';
 import useLocalStorage from '../hooks/useLocalStorage';
-
-interface CartProduct {
-  id: number;
-  quantity: number;
-}
 
 interface ShoppingCartContext {
   getProductQuantity: (id: number) => number;
   increaseCartQuantity: (id: number) => void;
   decreaseCartQuantity: (id: number) => void;
   removeFromCart: (id: number) => void;
-  cartProducts: CartProduct[];
+  cartProducts: CartItem[];
   cartQuantity: number;
 }
 
@@ -28,8 +24,8 @@ interface Props {
 }
 
 function ShoppingCartProvider({ children }: Props) {
-  const [cartProducts, setCartProducts] = useLocalStorage<CartProduct[]>(
-    'Shopping cart:',
+  const [cartProducts, setCartProducts] = useLocalStorage<CartItem[]>(
+    'cc-cart',
     []
   );
 
@@ -43,9 +39,14 @@ function ShoppingCartProvider({ children }: Props) {
   }
 
   function increaseCartQuantity(id: number) {
+    const productToAdd = products.find((product) => product.id === id);
+    if (!productToAdd) {
+      return;
+    }
+
     setCartProducts((currentProducts) => {
       if (currentProducts.find((product) => product.id === id) == null) {
-        return [...currentProducts, { id, quantity: 1 }];
+        return [...currentProducts, { ...productToAdd, quantity: 1 }];
       } else {
         return currentProducts.map((product) => {
           if (product.id === id) {
