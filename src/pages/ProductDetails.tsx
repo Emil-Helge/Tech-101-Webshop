@@ -8,6 +8,7 @@ import {
   Text,
   Title,
 } from '@mantine/core';
+import { notifications } from '@mantine/notifications';
 import { useEffect } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { Product, products as mockedProducts } from '../../data/index';
@@ -71,7 +72,20 @@ function ProductDetails() {
               variant="light"
               mt="md"
               radius="md"
-              onClick={() => increaseCartQuantity(product.id)}
+              onClick={() => {
+                increaseCartQuantity(product.id);
+                notifications.show({
+                  icon: (
+                    <img
+                      src="/assets/checked-icon.svg"
+                      width="38px"
+                      alt="checked icon"
+                    />
+                  ),
+                  title: `${product.title}`,
+                  message: 'has been added',
+                });
+              }}
               data-cy="product-buy-button"
             >
               Add to cart
