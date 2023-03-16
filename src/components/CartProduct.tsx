@@ -1,4 +1,4 @@
-import { Button, Card, Group, Image, Text } from '@mantine/core';
+import { Button, Card, Group, Image, Input, Text } from '@mantine/core';
 import { products as mockedProducts } from '../../data/index';
 import { useShoppingCart } from '../contexts/ShoppingCartContext';
 
@@ -14,16 +14,21 @@ function CartProduct({ id, quantity }: CartProductProps) {
   if (product == null) return null;
 
   return (
-    <Card shadow="sm" mt="sm" padding="sm" radius="sm">
+    <Card shadow="sm" mt="sm" padding="sm" radius="sm" data-cy="cart-item">
       <Card.Section>
         <Image src={product.image} height={190} fit="cover" />
       </Card.Section>
       <Group position="center" mt="sm" mb="sm">
-        <Text weight={500} size={20} transform="uppercase">
+        <Text
+          weight={500}
+          size={20}
+          transform="uppercase"
+          data-cy="product-title"
+        >
           {product.title}
         </Text>
       </Group>
-      <Group position="center" mt="xs" mb="xs">
+      <Group position="center" mt="xs" mb="xs" data-cy="product-quantity">
         {' '}
         <Button
           variant="light"
@@ -34,9 +39,17 @@ function CartProduct({ id, quantity }: CartProductProps) {
         >
           -
         </Button>
-        <Text mt="sm" weight={300} size={15} data-cy="product-quantity">
-          x{quantity}
-        </Text>
+        <Input
+          mt="sm"
+          readOnly
+          variant="unstyled"
+          type="number"
+          value={quantity}
+          rightSectionWidth="0px"
+          sx={{
+            width: '1.2rem',
+          }}
+        />
         <Button
           variant="light"
           mt="sm"
@@ -58,7 +71,7 @@ function CartProduct({ id, quantity }: CartProductProps) {
         </Button>
       </Group>
       <Group position="center" mt="xs" mb="xs">
-        <Text mt="sm" weight={500} size={15}>
+        <Text mt="sm" weight={500} size={15} data-cy="product-price">
           x{product.price * quantity}€
         </Text>
       </Group>
