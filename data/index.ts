@@ -1,5 +1,5 @@
 export interface Product {
-  id: number;
+  id: string;
   image: string;
   title: string;
   description: string;
@@ -12,7 +12,7 @@ export interface CartItem extends Product {
 
 export const products: Product[] = [
   {
-    id: 1,
+    id: '1',
     image:
       'https://images.pexels.com/photos/2047905/pexels-photo-2047905.jpeg?auto=compress&cs=tinysrgb&w=1600',
     title: 'UltraBook X9',
@@ -21,7 +21,7 @@ export const products: Product[] = [
     price: 1599,
   },
   {
-    id: 2,
+    id: '2',
     image:
       'https://images.pexels.com/photos/2148216/pexels-photo-2148216.jpeg?auto=compress&cs=tinysrgb&w=1600',
     title: 'PowerBook 13',
@@ -30,7 +30,7 @@ export const products: Product[] = [
     price: 3919,
   },
   {
-    id: 3,
+    id: '3',
     image:
       'https://images.pexels.com/photos/7974/pexels-photo.jpg?auto=compress&cs=tinysrgb&w=1600',
     title: 'GamingBook Pro',
@@ -39,7 +39,7 @@ export const products: Product[] = [
     price: 2299,
   },
   {
-    id: 4,
+    id: '4',
     image:
       'https://images.pexels.com/photos/129208/pexels-photo-129208.jpeg?auto=compress&cs=tinysrgb&w=1600',
     title: 'BookAir S',
@@ -48,7 +48,7 @@ export const products: Product[] = [
     price: 1299,
   },
   {
-    id: 5,
+    id: '5',
     image:
       'https://images.pexels.com/photos/669228/pexels-photo-669228.jpeg?auto=compress&cs=tinysrgb&w=1600',
     title: 'WorkBook Plus',
@@ -57,7 +57,7 @@ export const products: Product[] = [
     price: 999,
   },
   {
-    id: 6,
+    id: '6',
     image:
       'https://images.pexels.com/photos/159394/pc-computer-android-android-pc-159394.jpeg?auto=compress&cs=tinysrgb&w=1600',
     title: 'TravelBook Mini',

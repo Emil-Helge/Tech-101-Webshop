@@ -3,10 +3,10 @@ import { CartItem, products } from '../../data';
 import useLocalStorage from '../hooks/useLocalStorage';
 
 interface ShoppingCartContext {
-  getProductQuantity: (id: number) => number;
-  increaseCartQuantity: (id: number) => void;
-  decreaseCartQuantity: (id: number) => void;
-  removeFromCart: (id: number) => void;
+  getProductQuantity: (id: string) => number;
+  increaseCartQuantity: (id: string) => void;
+  decreaseCartQuantity: (id: string) => void;
+  removeFromCart: (id: string) => void;
   cartProducts: CartItem[];
   cartQuantity: number;
 }
@@ -34,11 +34,11 @@ function ShoppingCartProvider({ children }: Props) {
     0
   );
 
-  function getProductQuantity(id: number) {
+  function getProductQuantity(id: string) {
     return cartProducts.find((product) => product.id === id)?.quantity || 0;
   }
 
-  function increaseCartQuantity(id: number) {
+  function increaseCartQuantity(id: string) {
     const productToAdd = products.find((product) => product.id === id);
     if (!productToAdd) {
       return;
@@ -59,7 +59,7 @@ function ShoppingCartProvider({ children }: Props) {
     });
   }
 
-  function decreaseCartQuantity(id: number) {
+  function decreaseCartQuantity(id: string) {
     setCartProducts((currentProducts) => {
       if (
         currentProducts.find((product) => product.id === id)?.quantity === 1
@@ -77,7 +77,7 @@ function ShoppingCartProvider({ children }: Props) {
     });
   }
 
-  function removeFromCart(id: number) {
+  function removeFromCart(id: string) {
     setCartProducts((currentProducts) => {
       return currentProducts.filter((product) => product.id !== id);
     });
