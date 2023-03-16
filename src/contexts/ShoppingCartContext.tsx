@@ -25,7 +25,7 @@ interface Props {
 
 function ShoppingCartProvider({ children }: Props) {
   const [cartProducts, setCartProducts] = useLocalStorage<CartItem[]>(
-    'cc-cart',
+    'cart',
     []
   );
 
