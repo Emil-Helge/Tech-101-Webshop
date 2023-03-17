@@ -1,22 +1,20 @@
 import { Button, Card, Group, Image, Input, Text } from '@mantine/core';
-import { products as mockedProducts } from '../../data/index';
+import { CartItem, products } from '../../data/index';
 import { useShoppingCart } from '../contexts/ShoppingCartContext';
 
-interface CartProductProps {
-  id: number;
-  quantity: number;
+interface Props {
+  cartItem: CartItem;
 }
 
-function CartProduct({ id, quantity }: CartProductProps) {
+function CartProduct({ cartItem }: Props) {
   const { increaseCartQuantity, decreaseCartQuantity, removeFromCart } =
     useShoppingCart();
-  const product = mockedProducts.find((i) => i.id === id);
-  if (product == null) return null;
+  products.find((i) => i.id === cartItem.id);
 
   return (
     <Card shadow="sm" mt="sm" padding="sm" radius="sm" data-cy="cart-item">
       <Card.Section>
-        <Image src={product.image} height={190} fit="cover" />
+        <Image src={cartItem.image} height={190} fit="cover" />
       </Card.Section>
       <Group position="center" mt="sm" mb="sm">
         <Text
@@ -25,7 +23,7 @@ function CartProduct({ id, quantity }: CartProductProps) {
           transform="uppercase"
           data-cy="product-title"
         >
-          {product.title}
+          {cartItem.title}
         </Text>
       </Group>
       <Group position="center" mt="xs" mb="xs" data-cy="product-quantity">
@@ -34,7 +32,7 @@ function CartProduct({ id, quantity }: CartProductProps) {
           variant="light"
           mt="sm"
           radius="sm"
-          onClick={() => decreaseCartQuantity(product.id)}
+          onClick={() => decreaseCartQuantity(cartItem.id)}
           data-cy="decrease-quantity-button"
         >
           -
@@ -44,7 +42,7 @@ function CartProduct({ id, quantity }: CartProductProps) {
           readOnly
           variant="unstyled"
           type="number"
-          value={quantity}
+          value={cartItem.quantity}
           rightSectionWidth="0px"
           sx={{
             width: '1.2rem',
@@ -54,7 +52,7 @@ function CartProduct({ id, quantity }: CartProductProps) {
           variant="light"
           mt="sm"
           radius="md"
-          onClick={() => increaseCartQuantity(product.id)}
+          onClick={() => increaseCartQuantity(cartItem.id)}
           data-cy="increase-quantity-button"
         >
           +
@@ -65,14 +63,14 @@ function CartProduct({ id, quantity }: CartProductProps) {
           variant="light"
           mt="sm"
           radius="md"
-          onClick={() => removeFromCart(product.id)}
+          onClick={() => removeFromCart(cartItem.id)}
         >
           Remove
         </Button>
       </Group>
       <Group position="center" mt="xs" mb="xs">
         <Text mt="sm" weight={500} size={15} data-cy="product-price">
-          x{product.price * quantity}€
+          x{cartItem.price * cartItem.quantity}€
         </Text>
       </Group>
     </Card>
