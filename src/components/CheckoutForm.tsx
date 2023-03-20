@@ -120,7 +120,7 @@ function CheckoutForm() {
           data-cy="customer-email"
         />
         <TextInput
-          autoComplete="street-adress"
+          autoComplete="street-address"
           type="tel"
           // required
           withAsterisk
