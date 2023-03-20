@@ -20,6 +20,7 @@ import About from './pages/About';
 import Admin from './pages/Admin';
 import Cart from './pages/Cart';
 import Home from './pages/Home';
+import NewProduct from './pages/NewProduct';
 import ProductDetails from './pages/ProductDetails';
 import Store from './pages/Store';
 
@@ -32,6 +33,7 @@ const router = createBrowserRouter(
       <Route path="/product/:id" element={<ProductDetails />} />
       <Route path="/checkout" element={<Cart />} />
       <Route path="/admin" element={<Admin />} />
+      <Route path="/admin/product/new" element={<NewProduct />} />
     </Route>
   )
 );
