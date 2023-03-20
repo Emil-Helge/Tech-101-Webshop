@@ -6,7 +6,21 @@ export interface Product {
   price: number;
 }
 
-export const mockedProducts: Product[] = [
+export interface CartItem extends Product {
+  quantity: number;
+}
+
+/**
+ * function that returns a unique Id, both numbers and letters
+ */
+export const generateId = () => {
+  const newId = Math.floor(1 + Math.random() * 0x1000)
+    .toString(16)
+    .substring(1);
+  return newId;
+};
+
+export const products: Product[] = [
   {
     image:
       'https://images.pexels.com/photos/2047905/pexels-photo-2047905.jpeg?auto=compress&cs=tinysrgb&w=1600',

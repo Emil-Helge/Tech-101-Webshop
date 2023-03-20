@@ -1,5 +1,5 @@
 import { createContext, ReactNode } from 'react';
-import { mockedProducts, Product } from '../../data/index';
+import { Product, products as mockedProducts } from '../../data/index';
 import useLocalStorage from '../hooks/useLocalStorage';
 
 interface ContextValue {

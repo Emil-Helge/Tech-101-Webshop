@@ -1,5 +1,5 @@
 import { Button, Card, Group, Image, Text } from '@mantine/core';
-import { mockedProducts } from '../../data/index';
+import { products as mockedProducts } from '../../data/index';
 import { useShoppingCart } from '../contexts/ShoppingCartContext';
 
 interface CartProductProps {
@@ -30,10 +30,11 @@ function CartProduct({ id, quantity }: CartProductProps) {
           mt="sm"
           radius="sm"
           onClick={() => decreaseCartQuantity(product.id)}
+          data-cy="decrease-quantity-button"
         >
           -
         </Button>
-        <Text mt="sm" weight={300} size={15}>
+        <Text mt="sm" weight={300} size={15} data-cy="product-quantity">
           x{quantity}
         </Text>
         <Button
@@ -41,6 +42,7 @@ function CartProduct({ id, quantity }: CartProductProps) {
           mt="sm"
           radius="md"
           onClick={() => increaseCartQuantity(product.id)}
+          data-cy="increase-quantity-button"
         >
           +
         </Button>

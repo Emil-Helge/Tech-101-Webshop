@@ -7,7 +7,7 @@ import {
   Text,
   useMantineTheme,
 } from '@mantine/core';
-import { mockedProducts } from '../../data/index';
+import { products as mockedProducts } from '../../data/index';
 import CartProduct from '../components/CartProduct';
 import { useShoppingCart } from '../contexts/ShoppingCartContext';
 
@@ -61,7 +61,7 @@ function Cart() {
                 );
               })}
             </Text>
-            <Text weight={500} size={29}>
+            <Text weight={500} size={29} data-cy="total-price">
               total:{' '}
               {cartProducts.reduce((total, cartProduct) => {
                 const product = mockedProducts.find(

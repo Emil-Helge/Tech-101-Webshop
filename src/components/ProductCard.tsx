@@ -1,4 +1,6 @@
-import { Button, Card, Group, Image, Text } from '@mantine/core';
+import { notifications } from '@mantine/notifications';
+import { Button, Card, Group, Image, Title, Text } from '@mantine/core';
+import { Link } from 'react-router-dom';
 import { Product } from '../../data/index';
 import { useShoppingCart } from '../contexts/ShoppingCartContext';
 
@@ -14,32 +16,51 @@ function ProductCard({ product }: Props) {
     removeFromCart, // Not in use yet
   } = useShoppingCart();
   const quantity = getProductQuantity(product.id);
+  const link = '/product/' + product.id;
   return (
     <>
-      <Card shadow="xl" padding="md" radius="lg" withBorder>
+      <Card shadow="xl" padding="md" radius="lg" withBorder data-cy="product">
         <Card.Section>
-          <Image src={product.image} height={230} fit="cover" />
+          <Link to={link}>
+            <Image src={product.image} height={230} fit="cover" />
+          </Link>
         </Card.Section>
         <Group position="center" mt="xl" mb="xl">
-          <Text weight={500} size={29} transform="uppercase">
+          <Title order={2} data-cy="product-title">
             {product.title}
-          </Text>
+          </Title>
         </Group>
-        <Text size="sm" color="dimmed" align="center">
+        {/* <Text size="sm" weight={500} align="center">
           {product.description}
-        </Text>
-        <Text weight={500} size="lg" color="dark" align="center">
+        </Text> */}
+        <Title order={3} align="center" data-cy="product-price">
           {product.price}€
-        </Text>
+        </Title>
         <Group position="center" mt="md" mb="xs">
-          <Button variant="outline" mt="md" radius="md">
-            Product Page
-          </Button>
+          <Link to={link}>
+            <Button variant="outline" mt="md" radius="md">
+              Product Page
+            </Button>
+          </Link>
           <Button
             variant="light"
             mt="md"
             radius="md"
-            onClick={() => increaseCartQuantity(product.id)}
+            onClick={() => {
+              increaseCartQuantity(product.id);
+              notifications.show({
+                icon: (
+                  <img
+                    src="/assets/checked-icon.svg"
+                    width="38px"
+                    alt="checked icon"
+                  />
+                ),
+                title: 'Product added to cart',
+                message: `${product.title}`,
+              });
+            }}
+            data-cy="product-buy-button"
           >
             Add to cart
           </Button>
