@@ -16,8 +16,8 @@ import App from './App';
 import ProductProvider from './contexts/ProductContext';
 import ShoppingCartProvider from './contexts/ShoppingCartContext';
 import './index.css';
-import About from './pages/About';
 import Cart from './pages/Cart';
+import Confirmation from './pages/confirmation';
 import Home from './pages/Home';
 import ProductDetails from './pages/ProductDetails';
 import Store from './pages/Store';
@@ -26,10 +26,10 @@ const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<App />}>
       <Route index element={<Home />} />
-      <Route path="/about" element={<About />} />
       <Route path="/store" element={<Store />} />
       <Route path="/product/:id" element={<ProductDetails />} />
       <Route path="/checkout" element={<Cart />} />
+      <Route path="/confirmation" element={<Confirmation />} />
     </Route>
   )
 );

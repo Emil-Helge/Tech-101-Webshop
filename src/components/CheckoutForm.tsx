@@ -1,5 +1,6 @@
 import { Box, Button, Group, NumberInput, TextInput } from '@mantine/core';
 import { useForm } from '@mantine/form';
+import { useNavigate } from 'react-router';
 import { useShoppingCart } from '../contexts/ShoppingCartContext';
 
 export interface FormValues {
@@ -11,19 +12,29 @@ export interface FormValues {
   city: string;
 }
 function CheckoutForm() {
+  const navigate = useNavigate();
   const { addOrder, cartProducts } = useShoppingCart();
   const onSubmit = (data: FormValues) => {
     addOrder(cartProducts, data);
+    navigate('/confirmation');
   };
   const form = useForm<FormValues>({
     validate: {
-      email: (value) => (/^\S+@\S+$/.test(value) ? null : 'Invalid email'),
+      email: (value) =>
+        /^\S+@\S+$/.test(value) ? null : (
+          <p data-cy="product-description-error">Invalid email</p>
+        ),
+
       fullName: (value) => {
         // if (value.length < 2) {
         //   return 'Is your name really this short? 😉';
         // }
         if (/\d/.test(value)) {
-          return 'This input should not contain any numbers.';
+          return (
+            <p data-cy="customer-name-error">
+              This input should not contain any numbers.
+            </p>
+          );
         }
         return null;
       },
