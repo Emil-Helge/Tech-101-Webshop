@@ -59,7 +59,7 @@ function ProductForm({ onSubmit, addProduct }: ProductFormProps) {
           {...form.getInputProps('price')}
           data-cy="product-price"
         />
-        <Group position="right">
+        <Group mt="xl">
           <Button type="submit">Add new Product</Button>
         </Group>
       </form>
