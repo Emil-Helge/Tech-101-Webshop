@@ -21,7 +21,7 @@ function Admin() {
         gradient={{ from: 'blue', to: 'cyan', deg: 45 }}
         ta="center"
       >
-        Admin Panel - Product Management
+        Admin - Product Management
       </Title>
       <Group position="center" mb="xl">
         <Link to="/admin/product/new" data-cy="admin-add-product">
