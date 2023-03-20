@@ -1,6 +1,7 @@
 import { Container, SimpleGrid, Title } from '@mantine/core';
 import { useContext } from 'react';
 import AdminProductCard from '../components/AdminProductCard';
+import ProductForm from '../components/ProductForm';
 import { ProductContext } from '../contexts/ProductContext';
 
 function Admin() {
@@ -16,6 +17,7 @@ function Admin() {
       >
         Admin Panel - Product Management
       </Title>
+      <ProductForm />
       <SimpleGrid
         cols={3}
         spacing="xl"
