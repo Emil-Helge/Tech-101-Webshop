@@ -17,19 +17,34 @@ function AdminProductCard({ product, onDelete }: Props) {
   const quantity = getProductQuantity(product.id);
   return (
     <>
-      <Card shadow="xl" padding="md" radius="lg" withBorder>
+      <Card shadow="xl" padding="md" radius="lg" withBorder data-cy="product">
         <Card.Section>
           <Image src={product.image} height={230} fit="cover" />
         </Card.Section>
         <Group position="center" mt="xl" mb="xl">
-          <Text weight={500} size={29} transform="uppercase">
+          <Text
+            weight={500}
+            size={29}
+            transform="uppercase"
+            data-cy="product-title"
+          >
             {product.title}
           </Text>
+        </Group>
+        <Group position="center" mt="xl" mb="xl">
+          <Text>id:</Text>
+          <Text data-cy="product-id">{product.id}</Text>
         </Group>
         <Text size="sm" color="dimmed" align="center">
           {product.description}
         </Text>
-        <Text weight={500} size="lg" color="dark" align="center">
+        <Text
+          weight={500}
+          size="lg"
+          color="dark"
+          align="center"
+          data-cy="product-price"
+        >
           {product.price}€
         </Text>
         <Group position="center" mt="md" mb="xs">
@@ -39,6 +54,7 @@ function AdminProductCard({ product, onDelete }: Props) {
             mt="md"
             radius="md"
             onClick={onDelete}
+            data-cy="admin-remove-product"
           >
             Delete Product
           </Button>
@@ -57,5 +73,3 @@ function AdminProductCard({ product, onDelete }: Props) {
 }
 
 export default AdminProductCard;
-
-//-------------------------------------------
