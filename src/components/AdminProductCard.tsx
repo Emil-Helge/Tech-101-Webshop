@@ -1,4 +1,5 @@
 import { Button, Card, Group, Image, Text } from '@mantine/core';
+import { useState } from 'react';
 import { Product } from '../../data/index';
 import { useShoppingCart } from '../contexts/ShoppingCartContext';
 
@@ -15,6 +16,17 @@ function AdminProductCard({ product, onDelete }: Props) {
     removeFromCart, // Not in use yet
   } = useShoppingCart();
   const quantity = getProductQuantity(product.id);
+
+  const [showConfirmDelete, setShowConfirmDelete] = useState(false);
+
+  const handleDelete = () => {
+    if (showConfirmDelete) {
+      onDelete?.();
+    } else {
+      setShowConfirmDelete(true);
+    }
+  };
+
   return (
     <>
       <Card shadow="xl" padding="md" radius="lg" withBorder data-cy="product">
@@ -48,16 +60,30 @@ function AdminProductCard({ product, onDelete }: Props) {
           {product.price}€
         </Text>
         <Group position="center" mt="md" mb="xs">
-          <Button
-            sx={{ color: 'red', borderColor: 'red' }}
-            variant="outline"
-            mt="md"
-            radius="md"
-            onClick={onDelete}
-            data-cy="admin-remove-product"
-          >
-            Delete Product
-          </Button>
+          {showConfirmDelete ? (
+            <Button
+              sx={{ color: 'red', borderColor: 'red' }}
+              variant="outline"
+              mt="md"
+              radius="md"
+              onClick={handleDelete}
+              data-cy="confirm-delete-button"
+            >
+              Are you sure?
+            </Button>
+          ) : (
+            <Button
+              sx={{ color: 'red', borderColor: 'red' }}
+              variant="outline"
+              mt="md"
+              radius="md"
+              onClick={handleDelete}
+              data-cy="admin-remove-product"
+            >
+              Delete Product
+            </Button>
+          )}
+
           <Button
             variant="light"
             mt="md"
