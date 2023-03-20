@@ -4,7 +4,7 @@ import useLocalStorage from '../hooks/useLocalStorage';
 
 interface ContextValue {
   products: Product[];
-  deleteProduct: (id: number) => void;
+  deleteProduct: (id: string) => void;
 }
 
 export const ProductContext = createContext<ContextValue>(null as any);
@@ -19,7 +19,7 @@ function ProductProvider({ children }: Props) {
     mockedProducts
   );
 
-  function deleteProduct(id: number) {
+  function deleteProduct(id: string) {
     setProducts((currentProducts) => {
       return currentProducts.filter((product) => product.id !== id);
     });
