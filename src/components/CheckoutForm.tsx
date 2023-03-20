@@ -1,4 +1,4 @@
-import { Box, Button, Group, NumberInput, TextInput } from '@mantine/core';
+import { Box, Button, Group, TextInput } from '@mantine/core';
 import { useForm } from '@mantine/form';
 import { useNavigate } from 'react-router';
 import { useShoppingCart } from '../contexts/ShoppingCartContext';
@@ -7,7 +7,7 @@ export interface FormValues {
   fullName: string;
   email: string;
   adress: string;
-  zipCode: number | '';
+  zipCode: string;
   mobileNr: string;
   city: string;
 }
@@ -21,20 +21,14 @@ function CheckoutForm() {
   const form = useForm<FormValues>({
     validate: {
       email: (value) =>
-        /^\S+@\S+$/.test(value) ? null : (
-          <p data-cy="product-description-error">Invalid email</p>
+        /^\S+@\S+\.\S+$/.test(value) ? null : (
+          <p data-cy="customer-email-error">Invalid email</p>
         ),
-
       fullName: (value) => {
-        // if (value.length < 2) {
-        //   return 'Is your name really this short? 😉';
-        // }
         if (value.length < 1) {
-          // if (/\d/.test(value)) {
           return (
             <span data-cy="customer-name-error">
-              TOO SHORT MISTAH!!
-              {/* This input should not contain any numbers. */}
+              Is your name really this short? 😉
             </span>
           );
         }
@@ -42,13 +36,53 @@ function CheckoutForm() {
       },
       adress: (value) => {
         if (value.length < 1) {
-          return 'Please enter your adress';
+          return (
+            <span data-cy="customer-address-error">
+              Please enter your adress
+            </span>
+          );
         }
         if (!/\d/.test(value)) {
-          return 'The address should contain at least one number';
+          return (
+            <span data-cy="customer-address-error">
+              The address should contain at least one number
+            </span>
+          );
         }
         if (!/[a-zA-Z]/.test(value)) {
-          return 'The address should contain at least one letter';
+          return (
+            <span data-cy="customer-address-error">
+              The address should contain at least one letter
+            </span>
+          );
+        }
+        return null;
+      },
+      zipCode: (value) => {
+        if (value.length !== 5) {
+          return (
+            <span data-cy="customer-zipcode-error">
+              Please enter your entire zipCode
+            </span>
+          );
+        }
+        return null;
+      },
+      mobileNr: (value) => {
+        if (value.length < 9) {
+          return (
+            <span data-cy="customer-phone-error">
+              Please enter your entire phone nr
+            </span>
+          );
+        }
+        return null;
+      },
+      city: (value) => {
+        if (value.length < 2) {
+          return (
+            <span data-cy="customer-city-error">Please enter your city</span>
+          );
         }
         return null;
       },
@@ -105,11 +139,11 @@ function CheckoutForm() {
           {...form.getInputProps('mobileNr')}
           data-cy="customer-phone"
         />
-        <NumberInput
+        <TextInput
           autoComplete="postal-code"
           // required
           withAsterisk
-          hideControls={true}
+          type="number"
           label="Zip Code"
           placeholder="ex: 43152"
           {...form.getInputProps('zipCode')}

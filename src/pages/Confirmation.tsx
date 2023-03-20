@@ -55,6 +55,7 @@ function Confirmation() {
                 )
             )}
           </ul>
+          <h2>{calculateLastOrderTotal()} €</h2>
         </>
       )}
     </div>
