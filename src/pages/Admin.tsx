@@ -3,7 +3,6 @@ import { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { Product } from '../../data';
 import AdminProductCard from '../components/AdminProductCard';
-import ProductForm from '../components/ProductForm';
 import { ProductContext } from '../contexts/ProductContext';
 
 interface ProductFormProps {
@@ -29,10 +28,10 @@ function Admin() {
           <Button>+ Add new Product</Button>
         </Link>
       </Group>
-      <ProductForm
+      {/* <ProductForm
         onSubmit={(product) => console.log(product)}
         addProduct={addProduct}
-      />
+      /> */}
       <SimpleGrid
         cols={3}
         spacing="xl"
