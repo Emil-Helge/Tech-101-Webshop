@@ -1,5 +1,6 @@
-import { Container, SimpleGrid, Title } from '@mantine/core';
+import { Button, Container, Group, SimpleGrid, Title } from '@mantine/core';
 import { useContext } from 'react';
+import { Link } from 'react-router-dom';
 import { Product } from '../../data';
 import AdminProductCard from '../components/AdminProductCard';
 import ProductForm from '../components/ProductForm';
@@ -23,6 +24,11 @@ function Admin() {
       >
         Admin Panel - Product Management
       </Title>
+      <Group position="center" mb="xl">
+        <Link to="/admin/product/new" data-cy="admin-add-product">
+          <Button>+ Add new Product</Button>
+        </Link>
+      </Group>
       <ProductForm
         onSubmit={(product) => console.log(product)}
         addProduct={addProduct}
