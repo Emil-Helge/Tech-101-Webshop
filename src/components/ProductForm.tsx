@@ -1,6 +1,8 @@
 import { Box, Button, Group, TextInput } from '@mantine/core';
 import { useForm } from '@mantine/form';
+import { useNavigate } from 'react-router';
 import { Product } from '../../data';
+import generateID from '../utils/generateID';
 
 interface ProductFormProps {
   onSubmit: (product: Product) => void;
@@ -8,6 +10,7 @@ interface ProductFormProps {
 }
 
 function ProductForm({ onSubmit, addProduct }: ProductFormProps) {
+  const navigate = useNavigate();
   const form = useForm<Product>({
     initialValues: {
       id: '',
@@ -20,9 +23,11 @@ function ProductForm({ onSubmit, addProduct }: ProductFormProps) {
 
   const handleSubmit = () => {
     const values = form.getTransformedValues();
-    onSubmit(values);
+    const product = { ...values, id: generateID() };
+    onSubmit(product);
+    addProduct(product);
     form.reset();
-    addProduct(values);
+    navigate('/admin');
   };
 
   return (
@@ -33,12 +38,6 @@ function ProductForm({ onSubmit, addProduct }: ProductFormProps) {
           required
           {...form.getInputProps('title')}
           data-cy="product-title"
-        />
-        <TextInput
-          label="ID"
-          required
-          {...form.getInputProps('id')}
-          data-cy="product-id"
         />
         <TextInput
           label="Image URL"
