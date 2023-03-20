@@ -54,7 +54,7 @@ function Root() {
           withGlobalStyles
           withNormalizeCSS
         >
-          <Notifications />
+          <Notifications data-cy="added-to-cart-toast" />
           <ShoppingCartProvider>
             <ProductProvider>
               <RouterProvider router={router} />

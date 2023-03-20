@@ -15,7 +15,7 @@ interface Props {
 
 function ProductProvider({ children }: Props) {
   const [products, setProducts] = useLocalStorage<Product[]>(
-    'Products:',
+    'products',
     mockedProducts
   );
 
