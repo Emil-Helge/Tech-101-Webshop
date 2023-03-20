@@ -150,7 +150,7 @@ function CheckoutForm() {
           data-cy="customer-zipcode"
         />
         <TextInput
-          autoComplete="adress-level2" // om detta inte funkar så ska det vara level1
+          autoComplete="city"
           // required
           withAsterisk
           label="City"
