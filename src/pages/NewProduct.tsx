@@ -1,16 +1,10 @@
 import { Container, Group, Title } from '@mantine/core';
 import { useContext } from 'react';
-import { Product } from '../../data';
 import ProductForm from '../components/ProductForm';
 import { ProductContext } from '../contexts/ProductContext';
 
-interface ProductFormProps {
-  onSubmit: (product: Product) => void;
-  addProduct: (product: Product) => void;
-}
-
 function NewProduct() {
-  const { products, deleteProduct, addProduct } = useContext(ProductContext);
+  const { addProduct } = useContext(ProductContext);
 
   return (
     <Container>
