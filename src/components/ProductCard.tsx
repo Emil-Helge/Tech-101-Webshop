@@ -1,5 +1,6 @@
 import { Button, Card, Group, Image, Title } from '@mantine/core';
 import { notifications } from '@mantine/notifications';
+import { IconShoppingCartPlus } from '@tabler/icons-react';
 import { Link } from 'react-router-dom';
 import { Product } from '../../data/index';
 import { useShoppingCart } from '../contexts/ShoppingCartContext';
@@ -49,13 +50,7 @@ function ProductCard({ product }: Props) {
             onClick={() => {
               increaseCartQuantity(product.id);
               notifications.show({
-                icon: (
-                  <img
-                    src="/assets/checked-icon.svg"
-                    width="38px"
-                    alt="checked icon"
-                  />
-                ),
+                icon: <IconShoppingCartPlus />,
                 title: 'Product added to cart',
                 message: `${product.title}`,
               });

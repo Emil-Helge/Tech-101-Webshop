@@ -11,6 +11,7 @@ import {
   useMantineTheme,
 } from '@mantine/core';
 import { notifications } from '@mantine/notifications';
+import { IconShoppingCartPlus } from '@tabler/icons-react';
 import { useEffect } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { Product, products as mockedProducts } from '../../data/index';
@@ -90,13 +91,7 @@ function ProductDetails() {
             onClick={() => {
               increaseCartQuantity(product.id);
               notifications.show({
-                icon: (
-                  <img
-                    src="/assets/checked-icon.svg"
-                    width="38px"
-                    alt="checked icon"
-                  />
-                ),
+                icon: <IconShoppingCartPlus />,
                 title: 'Product added to cart',
                 message: `${product.title}`,
               });
