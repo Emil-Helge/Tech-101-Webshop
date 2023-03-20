@@ -27,24 +27,37 @@ function ProductForm({ onSubmit, addProduct }: ProductFormProps) {
 
   return (
     <Box maw={300} mx="auto">
-      <form onSubmit={handleSubmit}>
-        <TextInput label="Title" required {...form.getInputProps('title')} />
-        <TextInput label="ID" required {...form.getInputProps('id')} />
+      <form onSubmit={handleSubmit} data-cy="product-form">
+        <TextInput
+          label="Title"
+          required
+          {...form.getInputProps('title')}
+          data-cy="product-title"
+        />
+        <TextInput
+          label="ID"
+          required
+          {...form.getInputProps('id')}
+          data-cy="product-id"
+        />
         <TextInput
           label="Image URL"
           required
           {...form.getInputProps('image')}
+          data-cy="product-image"
         />
         <TextInput
           label="Description"
           required
           {...form.getInputProps('description')}
+          data-cy="product-description"
         />
         <TextInput
           type="number"
           label="Price"
           required
           {...form.getInputProps('price')}
+          data-cy="product-price"
         />
         <Group position="right">
           <Button type="submit">Add new Product</Button>
