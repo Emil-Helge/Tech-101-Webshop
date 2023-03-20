@@ -14,21 +14,16 @@ import { notifications } from '@mantine/notifications';
 import { IconShoppingCartPlus } from '@tabler/icons-react';
 import { useEffect } from 'react';
 import { Link, useParams } from 'react-router-dom';
-import { Product, products as mockedProducts } from '../../data/index';
+import { products } from '../../data/index';
 import { useShoppingCart } from '../contexts/ShoppingCartContext';
 
 function ProductDetails() {
-  const { id } = useParams<{ id: string }>();
-  const parseID = parseInt(id ?? '');
-  const product: Product | undefined = mockedProducts.find(
-    (product) => product.id == parseID
-  );
-  const {
-    getProductQuantity,
-    increaseCartQuantity,
-    decreaseCartQuantity, // Not in use yet
-    removeFromCart, // Not in use yet
-  } = useShoppingCart();
+  const { id } = useParams();
+
+  const product = products.find((p) => p.id === id);
+
+  const { increaseCartQuantity } = useShoppingCart();
+
   const goBack = () => {
     window.history.back();
   };
@@ -106,7 +101,9 @@ function ProductDetails() {
               variant="outline"
               mt="md"
               radius="md"
-              onClick={() => increaseCartQuantity(product.id)}
+              onClick={() => {
+                increaseCartQuantity(product.id);
+              }}
               data-cy="product-buy-button"
             >
               Buy now

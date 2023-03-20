@@ -1,17 +1,13 @@
 import { createContext, ReactNode, useContext } from 'react';
+import { CartItem, products } from '../../data';
 import useLocalStorage from '../hooks/useLocalStorage';
 
-interface CartProduct {
-  id: number;
-  quantity: number;
-}
-
 interface ShoppingCartContext {
-  getProductQuantity: (id: number) => number;
-  increaseCartQuantity: (id: number) => void;
-  decreaseCartQuantity: (id: number) => void;
-  removeFromCart: (id: number) => void;
-  cartProducts: CartProduct[];
+  getProductQuantity: (id: string) => number;
+  increaseCartQuantity: (id: string) => void;
+  decreaseCartQuantity: (id: string) => void;
+  removeFromCart: (id: string) => void;
+  cartProducts: CartItem[];
   cartQuantity: number;
 }
 
@@ -28,8 +24,8 @@ interface Props {
 }
 
 function ShoppingCartProvider({ children }: Props) {
-  const [cartProducts, setCartProducts] = useLocalStorage<CartProduct[]>(
-    'Shopping cart:',
+  const [cartProducts, setCartProducts] = useLocalStorage<CartItem[]>(
+    'cart',
     []
   );
 
@@ -38,14 +34,19 @@ function ShoppingCartProvider({ children }: Props) {
     0
   );
 
-  function getProductQuantity(id: number) {
+  function getProductQuantity(id: string) {
     return cartProducts.find((product) => product.id === id)?.quantity || 0;
   }
 
-  function increaseCartQuantity(id: number) {
+  function increaseCartQuantity(id: string) {
+    const productToAdd = products.find((product) => product.id === id);
+    if (!productToAdd) {
+      return;
+    }
+
     setCartProducts((currentProducts) => {
       if (currentProducts.find((product) => product.id === id) == null) {
-        return [...currentProducts, { id, quantity: 1 }];
+        return [...currentProducts, { ...productToAdd, quantity: 1 }];
       } else {
         return currentProducts.map((product) => {
           if (product.id === id) {
@@ -58,7 +59,7 @@ function ShoppingCartProvider({ children }: Props) {
     });
   }
 
-  function decreaseCartQuantity(id: number) {
+  function decreaseCartQuantity(id: string) {
     setCartProducts((currentProducts) => {
       if (
         currentProducts.find((product) => product.id === id)?.quantity === 1
@@ -76,7 +77,7 @@ function ShoppingCartProvider({ children }: Props) {
     });
   }
 
-  function removeFromCart(id: number) {
+  function removeFromCart(id: string) {
     setCartProducts((currentProducts) => {
       return currentProducts.filter((product) => product.id !== id);
     });

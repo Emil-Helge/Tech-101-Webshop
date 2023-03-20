@@ -19,7 +19,7 @@ function Cart() {
       <Grid justify="center" align="flex-start">
         <Grid.Col span={10} md={8} sm="auto">
           {cartProducts.map((product) => (
-            <CartProduct key={product.id} {...product} />
+            <CartProduct key={product.id} cartItem={product} />
           ))}
         </Grid.Col>
         <Grid.Col span={12} sm="auto">
