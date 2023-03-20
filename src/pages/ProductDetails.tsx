@@ -87,8 +87,8 @@ function ProductDetails() {
               increaseCartQuantity(product.id);
               notifications.show({
                 icon: <IconShoppingCartPlus />,
-                title: 'Product added to cart',
-                message: `${product.title}`,
+                title: `${product.title}`,
+                message: 'has been added',
               });
             }}
             data-cy="product-buy-button"
@@ -104,7 +104,6 @@ function ProductDetails() {
               onClick={() => {
                 increaseCartQuantity(product.id);
               }}
-              data-cy="product-buy-button"
             >
               Buy now
             </Button>
