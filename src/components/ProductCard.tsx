@@ -1,5 +1,5 @@
+import { Button, Card, Group, Image, Title } from '@mantine/core';
 import { notifications } from '@mantine/notifications';
-import { Button, Card, Group, Image, Title, Text } from '@mantine/core';
 import { Link } from 'react-router-dom';
 import { Product } from '../../data/index';
 import { useShoppingCart } from '../contexts/ShoppingCartContext';
