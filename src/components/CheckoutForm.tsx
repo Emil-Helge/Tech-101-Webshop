@@ -29,11 +29,13 @@ function CheckoutForm() {
         // if (value.length < 2) {
         //   return 'Is your name really this short? 😉';
         // }
-        if (/\d/.test(value)) {
+        if (value.length < 1) {
+          // if (/\d/.test(value)) {
           return (
-            <p data-cy="customer-name-error">
-              This input should not contain any numbers.
-            </p>
+            <span data-cy="customer-name-error">
+              TOO SHORT MISTAH!!
+              {/* This input should not contain any numbers. */}
+            </span>
           );
         }
         return null;
@@ -67,7 +69,7 @@ function CheckoutForm() {
         {/* <form onSubmit={form.onSubmit((values) => console.log(values))}> */}
         <TextInput
           autoComplete="name"
-          required
+          // required
           withAsterisk
           label="Full Name"
           placeholder="Firstname Lastname"
@@ -76,7 +78,7 @@ function CheckoutForm() {
         />
         <TextInput
           autoComplete="email"
-          required
+          // required
           withAsterisk
           label="Email"
           placeholder="your@email.com"
@@ -86,7 +88,7 @@ function CheckoutForm() {
         <TextInput
           autoComplete="street-adress"
           type="tel"
-          required
+          // required
           withAsterisk
           label="Adress"
           placeholder="ex: Bigboiroad 31"
@@ -95,7 +97,7 @@ function CheckoutForm() {
         />
         <TextInput
           autoComplete="tel"
-          required
+          // required
           type="number"
           withAsterisk
           label="Mobile nr"
@@ -105,7 +107,7 @@ function CheckoutForm() {
         />
         <NumberInput
           autoComplete="postal-code"
-          required
+          // required
           withAsterisk
           hideControls={true}
           label="Zip Code"
@@ -115,7 +117,7 @@ function CheckoutForm() {
         />
         <TextInput
           autoComplete="adress-level2" // om detta inte funkar så ska det vara level1
-          required
+          // required
           withAsterisk
           label="City"
           placeholder="ex: Gothenburg"
