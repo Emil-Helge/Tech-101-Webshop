@@ -1,4 +1,4 @@
-import { Box, TextInput } from '@mantine/core';
+import { Box, Button, Group, TextInput } from '@mantine/core';
 import { useForm } from '@mantine/form';
 
 function ProductForm() {
@@ -15,20 +15,27 @@ function ProductForm() {
   return (
     <Box maw={300} mx="auto">
       <form onSubmit={form.onSubmit((values) => console.log(values))}>
-        <TextInput label="Title" required value={form.values.title} />
-        <TextInput label="ID" required value={form.values.id} />
-        <TextInput label="Image URL" required value={form.values.image} />
+        <TextInput label="Title" required {...form.getInputProps('title')} />
+        <TextInput label="ID" required {...form.getInputProps('id')} />
+        <TextInput
+          label="Image URL"
+          required
+          {...form.getInputProps('image')}
+        />
         <TextInput
           label="Description"
           required
-          value={form.values.description}
+          {...form.getInputProps('description')}
         />
         <TextInput
           type="number"
           label="Price"
           required
-          value={form.values.image}
+          {...form.getInputProps('price')}
         />
+        <Group position="right">
+          <Button type="submit">Add new Product</Button>
+        </Group>
       </form>
     </Box>
   );
