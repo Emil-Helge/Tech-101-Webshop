@@ -5,6 +5,7 @@ import useLocalStorage from '../hooks/useLocalStorage';
 interface ContextValue {
   products: Product[];
   deleteProduct: (id: string) => void;
+  addProduct: (product: Product) => void;
 }
 
 export const ProductContext = createContext<ContextValue>(null as any);
@@ -25,8 +26,12 @@ function ProductProvider({ children }: Props) {
     });
   }
 
+  function addProduct(product: Product) {
+    setProducts((currentProducts) => [...currentProducts, product]);
+  }
+
   return (
-    <ProductContext.Provider value={{ products, deleteProduct }}>
+    <ProductContext.Provider value={{ products, deleteProduct, addProduct }}>
       {children}
     </ProductContext.Provider>
   );
