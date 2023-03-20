@@ -52,7 +52,7 @@ function CheckoutForm() {
 
   return (
     <Box maw={300} mx="auto">
-      <form onSubmit={form.onSubmit(onSubmit)}>
+      <form onSubmit={form.onSubmit(onSubmit)} data-cy="customer-form">
         {/* <form onSubmit={form.onSubmit((values) => console.log(values))}> */}
         <TextInput
           autoComplete="name"
@@ -61,6 +61,7 @@ function CheckoutForm() {
           label="Full Name"
           placeholder="Firstname Lastname"
           {...form.getInputProps('fullName')}
+          data-cy="customer-name"
         />
         <TextInput
           autoComplete="email"
@@ -69,6 +70,7 @@ function CheckoutForm() {
           label="Email"
           placeholder="your@email.com"
           {...form.getInputProps('email')}
+          data-cy="customer-email"
         />
         <TextInput
           autoComplete="street-adress"
@@ -78,6 +80,7 @@ function CheckoutForm() {
           label="Adress"
           placeholder="ex: Bigboiroad 31"
           {...form.getInputProps('adress')}
+          data-cy="customer-address"
         />
         <TextInput
           autoComplete="tel"
@@ -87,6 +90,7 @@ function CheckoutForm() {
           label="Mobile nr"
           placeholder="ex: 0700415160"
           {...form.getInputProps('mobileNr')}
+          data-cy="customer-phone"
         />
         <NumberInput
           autoComplete="postal-code"
@@ -96,6 +100,7 @@ function CheckoutForm() {
           label="Zip Code"
           placeholder="ex: 43152"
           {...form.getInputProps('zipCode')}
+          data-cy="customer-zipcode"
         />
         <TextInput
           autoComplete="adress-level2" // om detta inte funkar så ska det vara level1
@@ -104,6 +109,7 @@ function CheckoutForm() {
           label="City"
           placeholder="ex: Gothenburg"
           {...form.getInputProps('city')}
+          data-cy="customer-city"
         />
 
         <Group position="right" mt="md">
