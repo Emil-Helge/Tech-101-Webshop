@@ -1,8 +1,14 @@
 import { Box, Button, Group, TextInput } from '@mantine/core';
 import { useForm } from '@mantine/form';
+import { Product } from '../../data';
 
-function ProductForm() {
-  const form = useForm({
+interface ProductFormProps {
+  onSubmit: (product: Product) => void;
+  addProduct: (product: Product) => void;
+}
+
+function ProductForm({ onSubmit, addProduct }: ProductFormProps) {
+  const form = useForm<Product>({
     initialValues: {
       id: '',
       image: '',
@@ -12,9 +18,16 @@ function ProductForm() {
     },
   });
 
+  const handleSubmit = () => {
+    const values = form.getTransformedValues();
+    onSubmit(values);
+    form.reset();
+    addProduct(values);
+  };
+
   return (
     <Box maw={300} mx="auto">
-      <form onSubmit={form.onSubmit((values) => console.log(values))}>
+      <form onSubmit={handleSubmit}>
         <TextInput label="Title" required {...form.getInputProps('title')} />
         <TextInput label="ID" required {...form.getInputProps('id')} />
         <TextInput

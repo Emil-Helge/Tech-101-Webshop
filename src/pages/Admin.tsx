@@ -1,11 +1,17 @@
 import { Container, SimpleGrid, Title } from '@mantine/core';
 import { useContext } from 'react';
+import { Product } from '../../data';
 import AdminProductCard from '../components/AdminProductCard';
 import ProductForm from '../components/ProductForm';
 import { ProductContext } from '../contexts/ProductContext';
 
+interface ProductFormProps {
+  onSubmit: (product: Product) => void;
+  addProduct: (product: Product) => void;
+}
+
 function Admin() {
-  const { products, deleteProduct } = useContext(ProductContext);
+  const { products, deleteProduct, addProduct } = useContext(ProductContext);
 
   return (
     <Container size="xl">
@@ -17,7 +23,10 @@ function Admin() {
       >
         Admin Panel - Product Management
       </Title>
-      <ProductForm />
+      <ProductForm
+        onSubmit={(product) => console.log(product)}
+        addProduct={addProduct}
+      />
       <SimpleGrid
         cols={3}
         spacing="xl"
