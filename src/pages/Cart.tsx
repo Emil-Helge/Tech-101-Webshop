@@ -158,7 +158,7 @@ function Cart() {
                   );
                 })}
               </Text>
-              <Text weight={500} size={29}>
+              <Text data-cy="total-price" weight={500} size={29}>
                 total:{' '}
                 {cartProducts.reduce((total, cartProduct) => {
                   const product = mockedProducts.find(
