@@ -1,4 +1,4 @@
-import { Box, Button, Group, TextInput } from '@mantine/core';
+import { Box, Button, Group, NumberInput, TextInput } from '@mantine/core';
 import { useForm } from '@mantine/form';
 import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
@@ -73,8 +73,8 @@ function ProductForm({
           {...form.getInputProps('description')}
           data-cy="product-description"
         />
-        <TextInput
-          type="number"
+        <NumberInput
+          hideControls
           label="Price"
           required
           {...form.getInputProps('price')}

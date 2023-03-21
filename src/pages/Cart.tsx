@@ -1,10 +1,10 @@
 import { Box, Button, Card, Container, Grid, Text } from '@mantine/core';
 import { useMantineTheme } from '@mantine/styles';
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { products as mockedProducts } from '../../data/index';
 import CartProduct from '../components/CartProduct';
 import CheckoutForm from '../components/CheckoutForm';
+import { ProductContext } from '../contexts/ProductContext';
 import { useShoppingCart } from '../contexts/ShoppingCartContext';
 
 function Cart() {
@@ -12,6 +12,7 @@ function Cart() {
   const { cartProducts, orders, cartQuantity } = useShoppingCart();
   const [showLastOrder, setShowLastOrder] = useState(false);
   const lastOrder = orders[orders.length - 1];
+  const { products } = useContext(ProductContext);
 
   function showOrderOnSubmit() {
     setShowLastOrder(true);
@@ -20,7 +21,7 @@ function Cart() {
   <Text weight={500} size={29}>
     total:{' '}
     {cartProducts.reduce((total, cartProduct) => {
-      const product = mockedProducts.find((i) => i.id === cartProduct.id);
+      const product = products.find((i) => i.id === cartProduct.id);
       return total + (product?.price || 0) * cartProduct.quantity;
     }, 0)}
     €
@@ -82,9 +83,7 @@ function Cart() {
               </Text>
               <Text weight={500} size={18}>
                 {cartProducts.map((cartproduct) => {
-                  const product = mockedProducts.find(
-                    (i) => i.id === cartproduct.id
-                  );
+                  const product = products.find((i) => i.id === cartproduct.id);
                   return (
                     <Box
                       key={cartproduct.id}
@@ -106,9 +105,7 @@ function Cart() {
               <Text data-cy="total-price" weight={500} size={29}>
                 total:{' '}
                 {cartProducts.reduce((total, cartProduct) => {
-                  const product = mockedProducts.find(
-                    (i) => i.id === cartProduct.id
-                  );
+                  const product = products.find((i) => i.id === cartProduct.id);
                   return total + (product?.price || 0) * cartProduct.quantity;
                 }, 0)}
                 €

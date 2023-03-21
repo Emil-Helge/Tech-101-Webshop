@@ -16,11 +16,10 @@ import App from './App';
 import ProductProvider from './contexts/ProductContext';
 import ShoppingCartProvider from './contexts/ShoppingCartContext';
 import './index.css';
-import About from './pages/About';
 import Admin from './pages/Admin';
 import Cart from './pages/Cart';
-import EditProduct from './pages/EditProduct';
 import Confirmation from './pages/Confirmation';
+import EditProduct from './pages/EditProduct';
 import Home from './pages/Home';
 import NewProduct from './pages/NewProduct';
 import ProductDetails from './pages/ProductDetails';
@@ -61,11 +60,11 @@ function Root() {
           withNormalizeCSS
         >
           <Notifications data-cy="added-to-cart-toast" />
-          <ShoppingCartProvider>
-            <ProductProvider>
+          <ProductProvider>
+            <ShoppingCartProvider>
               <RouterProvider router={router} />
-            </ProductProvider>
-          </ShoppingCartProvider>
+            </ShoppingCartProvider>
+          </ProductProvider>
         </MantineProvider>
       </ColorSchemeProvider>
     </React.StrictMode>

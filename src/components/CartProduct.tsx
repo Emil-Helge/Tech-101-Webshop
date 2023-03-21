@@ -1,5 +1,7 @@
 import { Button, Card, Group, Image, Input, Text } from '@mantine/core';
-import { CartItem, products } from '../../data/index';
+import { useContext } from 'react';
+import { CartItem } from '../../data/index';
+import { ProductContext } from '../contexts/ProductContext';
 import { useShoppingCart } from '../contexts/ShoppingCartContext';
 
 interface Props {
@@ -7,6 +9,7 @@ interface Props {
 }
 
 function CartProduct({ cartItem }: Props) {
+  const { products } = useContext(ProductContext);
   const { increaseCartQuantity, decreaseCartQuantity, removeFromCart } =
     useShoppingCart();
   products.find((i) => i.id === cartItem.id);
