@@ -47,13 +47,13 @@ function Confirmation() {
               alignItems: 'center',
               marginTop: '0.7rem',
               border: '0.15rem solid',
-              borderColor: theme.colors.blue[0],
-              // maxWidth: '40rem',
+              borderColor: theme.colors.blue[1],
+              maxWidth: '40rem',
               padding: '0 5rem',
             }}
           >
-            <h1>Order Details</h1>
-            <h2>Customer Information</h2>
+            <h1>Thank you for your order!</h1>
+            <h2>Order details:</h2>
             <Text>Name: {formData.fullName}</Text>
             <Text>Email: {formData.email}</Text>
             <Text>Address: {formData.adress}</Text>
