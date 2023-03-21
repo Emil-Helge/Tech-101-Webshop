@@ -48,7 +48,7 @@ function ProductDetails() {
       </Button>
       <Flex direction={{ base: 'column', sm: 'row' }}>
         <Card>
-          <Image src={product.image} alt={product.title} fit="cover" />
+          <Image src={product.image} alt={product.title} fit="contain" />
         </Card>
         <Card>
           <Title align="center" mb={50} data-cy="product-title">
