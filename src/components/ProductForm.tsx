@@ -22,7 +22,7 @@ function ProductForm({ onSubmit, addProduct }: ProductFormProps) {
   });
 
   const handleSubmit = () => {
-    const values = form.getTransformedValues();
+    const values = form.values;
     const product = { ...values, id: generateID() };
     onSubmit(product);
     addProduct(product);
