@@ -26,66 +26,6 @@ function Cart() {
     €
   </Text>;
 
-  // function renderLastOrder() {
-  //   if (orders.length === 0) return null;
-  //   const lastOrder = orders[orders.length - 1];
-  //   return (
-  //     <Card
-  //       sx={{
-  //         display: 'flex',
-  //         gap: '1rem',
-  //         flexDirection: 'column',
-  //         justifyItems: 'center',
-  //         alignItems: 'center',
-  //         marginTop: '0.7rem',
-  //         border: '0.15rem solid',
-  //         borderColor: theme.colors.blue[0],
-  //       }}
-  //     >
-  //       <Title order={3}>Thank you for your order!</Title>
-  //       {lastOrder.cartProducts.map((item) => {
-  //         if ('id' in item) {
-  //           const product = mockedProducts.find((i) => i.id === item.id);
-  //           const pricez = product!.price * item.quantity;
-  //           return (
-  //             <>
-  //               <Box
-  //                 sx={{
-  //                   display: 'flex',
-  //                   gap: '1rem',
-  //                   margin: '0.3rem',
-  //                   padding: '0',
-  //                   height: '0',
-  //                 }}
-  //                 key={`product-${item.id}`}
-  //               >
-  //                 <Text>{product?.title}</Text>
-  //                 <Text>
-  //                   <b>x{item.quantity}</b>
-  //                 </Text>
-  //                 <Text>{pricez}€</Text>
-  //               </Box>
-  //             </>
-  //           );
-  //         } else {
-  //           return (
-  //             <>
-  //               <Box key="form-data" sx={{ marginTop: '1rem' }}>
-  //                 <Text>Full Name: {item.formData.fullName}</Text>
-  //                 <Text>Email: {item.formData.email}</Text>
-  //                 <Text>Address: {item.formData.adress}</Text>
-  //                 <Text>Zip Code: {item.formData.zipCode}</Text>
-  //                 <Text>Phone nr: {item.formData.mobileNr}</Text>
-  //                 <Text>City: {item.formData.city}</Text>
-  //               </Box>
-  //             </>
-  //           );
-  //         }
-  //       })}
-  //     </Card>
-  //   );
-  // }
-
   if (cartQuantity < 1) {
     return (
       <Container
