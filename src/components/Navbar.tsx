@@ -129,9 +129,9 @@ export function HeaderResponsive({ links }: HeaderResponsiveProps) {
 
   const logo =
     logoType === 'dark' ? (
-      <img src="./assets/T101-logo.svg" alt="T101 logo" />
+      <img src="/assets/T101-logo.svg" alt="T101 logo" />
     ) : (
-      <img src="./assets/T101-logo-darkmode.svg" alt="T101 logo" />
+      <img src="/assets/T101-logo-darkmode.svg" alt="T101 logo" />
     );
 
   const items = links.map((link, index) => (
