@@ -111,9 +111,7 @@ export function FooterCentered({ links }: FooterCenteredProps) {
             value={email}
             onChange={(event) => setEmail(event.currentTarget.value)}
           />
-          <Button type="submit" variant="outline">
-            Sign up
-          </Button>
+          <Button variant="outline">Sign up</Button>
         </form>
 
         <Group spacing="xs" position="right" noWrap mt={10}>

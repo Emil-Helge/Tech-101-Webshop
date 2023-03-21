@@ -216,10 +216,12 @@ export function HeaderResponsive({ links }: HeaderResponsiveProps) {
         </Group>
         <Group spacing={1}>
           <ToggleDarkAndLightMode />
-          <Link to="/checkout">
+          <Link to="/admin" data-cy="admin-link">
             <Button size="xs" variant="subtle" radius="xl">
               <IconUserShield size="1.8rem" stroke="1.3" />
             </Button>
+          </Link>
+          <Link to="/checkout">
             <Button size="xs" variant="subtle" data-cy="cart-link" radius="xl">
               <IconShoppingCart size="1.8rem" stroke="1.2" />
               {cartQuantity > 0 && (
