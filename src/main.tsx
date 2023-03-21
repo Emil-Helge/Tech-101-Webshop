@@ -17,7 +17,7 @@ import ProductProvider from './contexts/ProductContext';
 import ShoppingCartProvider from './contexts/ShoppingCartContext';
 import './index.css';
 import Cart from './pages/Cart';
-import Confirmation from './pages/confirmation';
+import Confirmation from './pages/Confirmation';
 import Home from './pages/Home';
 import ProductDetails from './pages/ProductDetails';
 import Store from './pages/Store';
