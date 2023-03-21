@@ -19,6 +19,7 @@ import './index.css';
 import About from './pages/About';
 import Admin from './pages/Admin';
 import Cart from './pages/Cart';
+import EditProduct from './pages/EditProduct';
 import Home from './pages/Home';
 import NewProduct from './pages/NewProduct';
 import ProductDetails from './pages/ProductDetails';
@@ -33,6 +34,7 @@ const router = createBrowserRouter(
       <Route path="/product/:id" element={<ProductDetails />} />
       <Route path="/checkout" element={<Cart />} />
       <Route path="/admin" element={<Admin />} />
+      <Route path="/admin/product" element={<EditProduct />} />
       <Route path="/admin/product/new" element={<NewProduct />} />
     </Route>
   )

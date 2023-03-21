@@ -1,5 +1,6 @@
 import { Button, Card, Group, Image, Text } from '@mantine/core';
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { Product } from '../../data/index';
 import { useShoppingCart } from '../contexts/ShoppingCartContext';
 
@@ -84,14 +85,9 @@ function AdminProductCard({ product, onDelete }: Props) {
             </Button>
           )}
 
-          <Button
-            variant="light"
-            mt="md"
-            radius="md"
-            onClick={() => increaseCartQuantity(product.id)}
-          >
-            Add to cart
-          </Button>
+          <Link to="/admin/product">
+            <Button>Edit product</Button>
+          </Link>
         </Group>
       </Card>
     </>
