@@ -6,6 +6,7 @@ interface ContextValue {
   products: Product[];
   deleteProduct: (id: string) => void;
   addProduct: (product: Product) => void;
+  updateProduct: (id: string, updates: Partial<Product>) => void;
 }
 
 export const ProductContext = createContext<ContextValue>(null as any);
@@ -30,8 +31,22 @@ function ProductProvider({ children }: Props) {
     setProducts((currentProducts) => [...currentProducts, product]);
   }
 
+  function updateProduct(id: string, updates: Partial<Product>) {
+    setProducts((currentProducts) => {
+      const index = currentProducts.findIndex((product) => product.id === id);
+      if (index === -1) return currentProducts;
+
+      const updatedProduct = { ...currentProducts[index], ...updates };
+      const newProducts = [...currentProducts];
+      newProducts[index] = updatedProduct;
+      return newProducts;
+    });
+  }
+
   return (
-    <ProductContext.Provider value={{ products, deleteProduct, addProduct }}>
+    <ProductContext.Provider
+      value={{ products, deleteProduct, addProduct, updateProduct }}
+    >
       {children}
     </ProductContext.Provider>
   );
