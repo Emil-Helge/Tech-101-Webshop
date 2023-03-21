@@ -18,7 +18,7 @@ function AdminProductCard({ product, onDelete }: Props) {
   } = useShoppingCart();
   const quantity = getProductQuantity(product.id);
 
-  const edit = '/admin/product/' + product.id;
+  const edit = '/admin/product/' + product.id + '/edit';
 
   const [showConfirmDelete, setShowConfirmDelete] = useState(false);
 

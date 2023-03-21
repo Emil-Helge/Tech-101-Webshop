@@ -1,15 +1,23 @@
 import { Box, Button, Group, TextInput } from '@mantine/core';
 import { useForm } from '@mantine/form';
-import { useNavigate } from 'react-router';
+import { useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Product } from '../../data';
 import generateID from '../utils/generateID';
 
 interface ProductFormProps {
   onSubmit: (product: Product) => void;
   addProduct: (product: Product) => void;
+  isEditing: boolean;
+  product?: Product;
 }
 
-function ProductForm({ onSubmit, addProduct }: ProductFormProps) {
+function ProductForm({
+  onSubmit,
+  addProduct,
+  isEditing,
+  product,
+}: ProductFormProps) {
   const navigate = useNavigate();
   const form = useForm<Product>({
     initialValues: {
@@ -21,18 +29,32 @@ function ProductForm({ onSubmit, addProduct }: ProductFormProps) {
     },
   });
 
-  const handleSubmit = () => {
+  useEffect(() => {
+    if (isEditing && product) {
+      form.setValues(product);
+    }
+  }, [product]);
+
+  const handleSubmit = (event: React.FormEvent) => {
+    event.preventDefault();
     const values = form.values;
-    const product = { ...values, id: generateID() };
-    onSubmit(product);
-    addProduct(product);
+    const editedProduct = { ...values, id: product?.id || '' };
+    if (isEditing) {
+      onSubmit(editedProduct);
+    } else {
+      addProduct({ ...editedProduct, id: generateID() });
+    }
     form.reset();
     navigate('/admin');
   };
 
   return (
     <Box maw={300} mx="auto">
-      <form onSubmit={handleSubmit} data-cy="product-form">
+      <form
+        onSubmit={(event) => handleSubmit(event)}
+        data-cy="product-form"
+        id="product-form"
+      >
         <TextInput
           label="Title"
           required
@@ -59,7 +81,9 @@ function ProductForm({ onSubmit, addProduct }: ProductFormProps) {
           data-cy="product-price"
         />
         <Group mt="xl">
-          <Button type="submit">Add new Product</Button>
+          <Button type="submit">
+            {isEditing ? 'Save changes' : 'Add new Product'}
+          </Button>
         </Group>
       </form>
     </Box>

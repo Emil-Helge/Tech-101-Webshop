@@ -14,6 +14,7 @@ function NewProduct() {
       <ProductForm
         onSubmit={(product) => console.log(product)}
         addProduct={addProduct}
+        isEditing={false}
       />
     </Container>
   );
