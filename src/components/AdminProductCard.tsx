@@ -18,6 +18,8 @@ function AdminProductCard({ product, onDelete }: Props) {
   } = useShoppingCart();
   const quantity = getProductQuantity(product.id);
 
+  const edit = '/admin/product/' + product.id;
+
   const [showConfirmDelete, setShowConfirmDelete] = useState(false);
 
   const handleDelete = () => {
@@ -85,8 +87,10 @@ function AdminProductCard({ product, onDelete }: Props) {
             </Button>
           )}
 
-          <Link to="/admin/product">
-            <Button>Edit product</Button>
+          <Link to={edit} data-cy="admin-edit-product">
+            <Button variant="outline" mt="md" radius="md">
+              Edit product
+            </Button>
           </Link>
         </Group>
       </Card>
