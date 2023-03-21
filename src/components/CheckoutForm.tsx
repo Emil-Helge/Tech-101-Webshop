@@ -1,6 +1,7 @@
 import { Box, Button, Group, TextInput } from '@mantine/core';
-import { useForm } from '@mantine/form';
+import { useForm, yupResolver } from '@mantine/form';
 import { useNavigate } from 'react-router';
+import * as Yup from 'yup';
 import { useShoppingCart } from '../contexts/ShoppingCartContext';
 
 export interface FormValues {
@@ -11,6 +12,32 @@ export interface FormValues {
   mobileNr: string;
   city: string;
 }
+
+const schema = Yup.object().shape({
+  fullName: Yup.string()
+    .min(2, 'Name should have at least 2 letters')
+    .required('This field is required'),
+  email: Yup.string()
+    .email('Invalid email')
+    .matches(/^[^\s@]+@[^\s@]+\.[^\s@]+$/, 'Invalid email')
+    .required('Email is required'),
+  adress: Yup.string()
+    .min(2, 'Your adress should have at least 2 letters')
+    .required('This field is required'),
+  zipCode: Yup.string()
+    .min(5, 'this field should be 5 numbers long')
+    .max(5, 'this field should be 5 numbers long')
+    .required('This field is required'),
+  mobileNr: Yup.string()
+    .min(10, 'Your phone nr should be 10 numbers long')
+    .max(10, 'Your phone nr should be 10 numbers long')
+    .required('This field is required'),
+  city: Yup.string()
+    .min(2, 'Name should have at least 2 letters')
+    .max(50, 'This field is too big')
+    .required('This field is required'),
+});
+
 function CheckoutForm() {
   const navigate = useNavigate();
   const { addOrder, cartProducts } = useShoppingCart();
@@ -18,75 +45,9 @@ function CheckoutForm() {
     addOrder(cartProducts, data);
     navigate('/confirmation');
   };
+
   const form = useForm<FormValues>({
-    validate: {
-      email: (value) =>
-        /^\S+@\S+\.\S+$/.test(value) ? null : (
-          <p data-cy="customer-email-error">Invalid email</p>
-        ),
-      fullName: (value) => {
-        if (value.length < 1) {
-          return (
-            <span data-cy="customer-name-error">
-              Is your name really this short? 😉
-            </span>
-          );
-        }
-        return null;
-      },
-      adress: (value) => {
-        if (value.length < 1) {
-          return (
-            <span data-cy="customer-address-error">
-              Please enter your adress
-            </span>
-          );
-        }
-        if (!/\d/.test(value)) {
-          return (
-            <span data-cy="customer-address-error">
-              The address should contain at least one number
-            </span>
-          );
-        }
-        if (!/[a-zA-Z]/.test(value)) {
-          return (
-            <span data-cy="customer-address-error">
-              The address should contain at least one letter
-            </span>
-          );
-        }
-        return null;
-      },
-      zipCode: (value) => {
-        if (value.length !== 5) {
-          return (
-            <span data-cy="customer-zipcode-error">
-              Please enter your entire zipCode
-            </span>
-          );
-        }
-        return null;
-      },
-      mobileNr: (value) => {
-        if (value.length < 9) {
-          return (
-            <span data-cy="customer-phone-error">
-              Please enter your entire phone nr
-            </span>
-          );
-        }
-        return null;
-      },
-      city: (value) => {
-        if (value.length < 2) {
-          return (
-            <span data-cy="customer-city-error">Please enter your city</span>
-          );
-        }
-        return null;
-      },
-    },
+    validate: yupResolver(schema),
     initialValues: {
       fullName: '',
       email: '',
@@ -100,64 +61,61 @@ function CheckoutForm() {
   return (
     <Box maw={300} mx="auto">
       <form onSubmit={form.onSubmit(onSubmit)} data-cy="customer-form">
-        {/* <form onSubmit={form.onSubmit((values) => console.log(values))}> */}
         <TextInput
           autoComplete="name"
-          // required
           withAsterisk
           label="Full Name"
           placeholder="Firstname Lastname"
           {...form.getInputProps('fullName')}
           data-cy="customer-name"
-          errorProps={{ 'data-cy': '' }}
+          errorProps={{ 'data-cy': 'customer-name-error' }}
         />
         <TextInput
           autoComplete="email"
-          // required
           withAsterisk
           label="Email"
           placeholder="your@email.com"
           {...form.getInputProps('email')}
+          errorProps={{ 'data-cy': 'customer-email-error' }}
           data-cy="customer-email"
         />
         <TextInput
           autoComplete="street-address"
-          type="tel"
-          // required
           withAsterisk
           label="Adress"
           placeholder="ex: Bigboiroad 31"
           {...form.getInputProps('adress')}
           data-cy="customer-address"
+          errorProps={{ 'data-cy': 'customer-address-error' }}
         />
         <TextInput
           autoComplete="tel"
-          // required
           type="number"
           withAsterisk
           label="Mobile nr"
           placeholder="ex: 0700415160"
           {...form.getInputProps('mobileNr')}
           data-cy="customer-phone"
+          errorProps={{ 'data-cy': 'customer-phone-error' }}
         />
         <TextInput
           autoComplete="postal-code"
-          // required
           withAsterisk
           type="number"
           label="Zip Code"
           placeholder="ex: 43152"
           {...form.getInputProps('zipCode')}
           data-cy="customer-zipcode"
+          errorProps={{ 'data-cy': 'customer-zipcode-error' }}
         />
         <TextInput
           autoComplete="city"
-          // required
           withAsterisk
           label="City"
           placeholder="ex: Gothenburg"
           {...form.getInputProps('city')}
           data-cy="customer-city"
+          errorProps={{ 'data-cy': 'customer-city-error' }}
         />
 
         <Group position="right" mt="md">
