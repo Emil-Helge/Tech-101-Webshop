@@ -109,6 +109,7 @@ function CheckoutForm() {
           placeholder="Firstname Lastname"
           {...form.getInputProps('fullName')}
           data-cy="customer-name"
+          errorProps={{ 'data-cy': '' }}
         />
         <TextInput
           autoComplete="email"
