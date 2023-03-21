@@ -11,7 +11,11 @@ import {
   useMantineTheme,
 } from '@mantine/core';
 import { notifications } from '@mantine/notifications';
-import { IconShoppingCartPlus } from '@tabler/icons-react';
+import {
+  IconShoppingCartPlus,
+  IconStarFilled,
+  IconUserStar,
+} from '@tabler/icons-react';
 import { useEffect } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { products } from '../../data/index';
@@ -54,6 +58,28 @@ function ProductDetails() {
           <Title align="center" mb={50} data-cy="product-title">
             {product.title}
           </Title>
+          <Box sx={{ display: 'flex' }}>
+            <Box
+              mb="xs"
+              mr="sm"
+              sx={{
+                background: theme.colors.blue[7],
+                color: theme.colors.gray[1],
+                width: '15%',
+                borderRadius: '.2rem',
+                display: 'flex',
+                justifyContent: 'space-around',
+                alignItems: 'center',
+              }}
+            >
+              <IconStarFilled size="1.1rem" />
+              {product.rating}
+            </Box>
+            <Box sx={{ display: 'flex' }}>
+              <IconUserStar stroke="0.1rem" size="1.5rem" />
+              {product.usersRated}
+            </Box>
+          </Box>
           <Image src={product.image} alt={product.title} fit="contain" />
         </Card>
         <Card mt="md">
