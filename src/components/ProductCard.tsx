@@ -1,4 +1,4 @@
-import { Button, Card, Group, Image, Title } from '@mantine/core';
+import { Badge, Button, Card, Group, Image, Title } from '@mantine/core';
 import { notifications } from '@mantine/notifications';
 import { IconShoppingCartPlus } from '@tabler/icons-react';
 import { Link } from 'react-router-dom';
@@ -18,6 +18,7 @@ function ProductCard({ product }: Props) {
   } = useShoppingCart();
   const quantity = getProductQuantity(product.id);
   const link = '/product/' + product.id;
+
   return (
     <>
       <Card shadow="xl" padding="md" radius="lg" withBorder data-cy="product">
@@ -26,18 +27,22 @@ function ProductCard({ product }: Props) {
             <Image src={product.image} height={230} fit="cover" />
           </Link>
         </Card.Section>
-        <Group position="center" mt="xl" mb="xl">
+        <Group
+          mt="xl"
+          mb="xl"
+          style={{ display: 'flex', justifyContent: 'space-between' }}
+        >
           <Title order={2} data-cy="product-title">
             {product.title}
           </Title>
+          <Badge color="blue" variant="light" size="lg">
+            New!
+          </Badge>
         </Group>
         {/* <Text size="sm" weight={500} align="center">
           {product.description}
         </Text> */}
-        <Title order={3} align="center" data-cy="product-price">
-          {product.price}€
-        </Title>
-        <Group position="center" mt="md" mb="xs">
+        <Group position="left" mt="md" mb="xs">
           <Link to={link}>
             <Button variant="outline" mt="md" radius="md">
               Product Page
@@ -59,6 +64,14 @@ function ProductCard({ product }: Props) {
           >
             Add to cart
           </Button>
+          <Title
+            style={{ marginLeft: 'auto' }}
+            order={2}
+            align="left"
+            data-cy="product-price"
+          >
+            {product.price}€
+          </Title>
         </Group>
       </Card>
     </>

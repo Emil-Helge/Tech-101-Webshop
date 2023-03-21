@@ -3,6 +3,7 @@ export interface Product {
   image: string;
   title: string;
   description: string;
+  summary: string;
   price: number;
   rating: number;
   usersRated: number;
@@ -20,6 +21,7 @@ export const products: Product[] = [
     title: 'UltraBook X9',
     description:
       'The UltraBook X9 is the ultimate productivity machine for professionals on-the-go. With its lightweight design and powerful hardware, you can breeze through any task without breaking a sweat. The X9 also features a stunning 15-inch display with 4K resolution, perfect for streaming your favorite shows or editing photos.',
+    summary: 'hi',
     price: 1599,
     rating: 4.5,
     usersRated: 7,
@@ -31,6 +33,7 @@ export const products: Product[] = [
     title: 'PowerBook 13',
     description:
       'The PowerBook 13 is the perfect laptop for students and creative professionals. With its compact size and powerful performance, you can take your work wherever you go. The 13-inch Retina display delivers crisp and clear visuals, while the powerful processor ensures speedy performance.',
+    summary: 'hi',
     price: 3919,
     rating: 3.2,
     usersRated: 5,
@@ -42,6 +45,7 @@ export const products: Product[] = [
     title: 'GamingBook Pro',
     description:
       'The GamingBook Pro is the ultimate gaming machine for hardcore gamers. With its powerful graphics card and lightning-fast processor, you can play the latest games at the highest settings. The 17-inch Full HD display delivers immersive visuals, while the backlit keyboard ensures you can keep gaming even in low light.',
+    summary: 'hi',
     price: 2299,
     rating: 3.8,
     usersRated: 3,
@@ -53,6 +57,7 @@ export const products: Product[] = [
     title: 'BookAir S',
     description:
       'The BookAir S is the perfect laptop for those who value style and portability. With its slim and lightweight design, you can take it with you wherever you go. The 14-inch Full HD display delivers stunning visuals, while the long-lasting battery ensures you can work or play all day.',
+    summary: 'hi',
     price: 1299,
     rating: 4.2,
     usersRated: 8,
@@ -64,6 +69,7 @@ export const products: Product[] = [
     title: 'WorkBook Plus',
     description:
       'The WorkBook Plus is the ultimate workstation for professionals who need to run demanding applications. With its powerful hardware and spacious 17-inch display, you can work on multiple projects at once without any lag. The workstation also features a backlit keyboard for typing in low light conditions.',
+    summary: 'hi',
     price: 999,
     rating: 3.5,
     usersRated: 2,
@@ -75,6 +81,7 @@ export const products: Product[] = [
     title: 'TravelBook Mini',
     description:
       'The TravelBook Mini is the perfect laptop for those who are always on-the-go. With its compact size and long-lasting battery, you can take it with you wherever you go. The 11-inch display delivers crisp visuals, while the lightweight design ensures you can carry it with ease.',
+    summary: 'hi',
     price: 5499,
     rating: 5.4,
     usersRated: 1,

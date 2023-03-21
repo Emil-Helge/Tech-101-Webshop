@@ -75,10 +75,12 @@ function ProductDetails() {
               <IconStarFilled size="1.1rem" />
               {product.rating}
             </Box>
-            <Box sx={{ display: 'flex' }}>
-              <IconUserStar stroke="0.1rem" size="1.5rem" />
-              {product.usersRated}
-            </Box>
+            <IconUserStar
+              style={{ marginRight: '.2rem' }}
+              stroke="0.04rem"
+              size="1.5rem"
+            />
+            {product.usersRated}
           </Box>
           <Image src={product.image} alt={product.title} fit="contain" />
         </Card>
