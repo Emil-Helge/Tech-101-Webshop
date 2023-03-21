@@ -95,10 +95,15 @@ function Cart() {
           justifyContent: 'center',
           marginTop: '2rem',
         }}
-        size="md"
+        size="xs"
       >
-        <img src="./assets/empty-cart.png" alt="recycable parts icon" />
-        <Text style={{ color: 'red', fontWeight: '500', fontSize: '1.5rem' }}>
+        <img
+          src="./assets/sad-cart.svg"
+          alt="a sad box indicating that the cart is empty"
+        />
+        <Text
+          style={{ color: '#E92D37', fontWeight: '500', fontSize: '1.5rem' }}
+        >
           Oops! Your cart is empty!
         </Text>
         <Text>Looks like you haven´t added anything to your cart yet</Text>
