@@ -28,10 +28,6 @@ function Admin() {
           <Button>+ Add new Product</Button>
         </Link>
       </Group>
-      {/* <ProductForm
-        onSubmit={(product) => console.log(product)}
-        addProduct={addProduct}
-      /> */}
       <SimpleGrid
         cols={3}
         spacing="xl"
