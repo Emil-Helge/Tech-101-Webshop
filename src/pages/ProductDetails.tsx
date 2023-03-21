@@ -9,17 +9,18 @@ import {
   Title,
 } from '@mantine/core';
 import { notifications } from '@mantine/notifications';
-import { useEffect } from 'react';
+import { useContext, useEffect } from 'react';
 import { Link, useParams } from 'react-router-dom';
-import { products } from '../../data/index';
+import { ProductContext } from '../contexts/ProductContext';
 import { useShoppingCart } from '../contexts/ShoppingCartContext';
 
 function ProductDetails() {
   const { id } = useParams();
-
+  const { products } = useContext(ProductContext);
   const product = products.find((p) => p.id === id);
 
   const { increaseCartQuantity } = useShoppingCart();
+  console.log(products);
 
   const goBack = () => {
     window.history.back();
@@ -47,7 +48,7 @@ function ProductDetails() {
       </Button>
       <Flex direction={{ base: 'column', sm: 'row' }}>
         <Card>
-          <Image src={product.image} alt={product.title} fit="contain" />
+          <Image src={product.image} alt={product.title} fit="cover" />
         </Card>
         <Card>
           <Title align="center" mb={50} data-cy="product-title">
