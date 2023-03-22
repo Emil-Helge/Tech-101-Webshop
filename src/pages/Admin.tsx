@@ -1,4 +1,5 @@
 import { Button, Container, Group, SimpleGrid, Title } from '@mantine/core';
+import { IconShieldPlus } from '@tabler/icons-react';
 import { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { Product } from '../../data';
@@ -15,17 +16,15 @@ function Admin() {
 
   return (
     <Container size="xl">
-      <Title
-        sx={{ marginBottom: '1rem' }}
-        variant="gradient"
-        gradient={{ from: 'blue', to: 'cyan', deg: 45 }}
-        ta="center"
-      >
+      <Title sx={{ marginBottom: '1rem' }} ta="center">
         Admin - Product Management
       </Title>
       <Group position="center" mb="xl">
         <Link to="/admin/product/new" data-cy="admin-add-product">
-          <Button>+ Add new Product</Button>
+          <Button leftIcon={<IconShieldPlus size="1.2rem" />}>
+            {' '}
+            Add new Product
+          </Button>
         </Link>
       </Group>
       <SimpleGrid

@@ -39,6 +39,10 @@ function ProductCard({ product }: Props) {
             New!
           </Badge>
         </Group>
+        <ul>
+          {Array.isArray(product.summary) &&
+            product.summary.map((item) => <li key={item}>{item}</li>)}
+        </ul>
         {/* <Text size="sm" weight={500} align="center">
           {product.description}
         </Text> */}

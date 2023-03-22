@@ -1,4 +1,4 @@
-import { Button, Card, Group, Image, Text } from '@mantine/core';
+import { Button, Card, Group, Image, Text, Title } from '@mantine/core';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Product } from '../../data/index';
@@ -36,7 +36,7 @@ function AdminProductCard({ product, onDelete }: Props) {
         <Card.Section>
           <Image src={product.image} height={230} fit="cover" />
         </Card.Section>
-        <Group position="center" mt="xl" mb="xl">
+        <Group position="left" mt="xl" mb="xl">
           <Text
             weight={500}
             size={29}
@@ -46,23 +46,14 @@ function AdminProductCard({ product, onDelete }: Props) {
             {product.title}
           </Text>
         </Group>
-        <Group position="center" mt="xl" mb="xl">
-          <Text>id:</Text>
+        <Group position="left" mt="xl" mb="xl">
+          <Text>Product id:</Text>
           <Text data-cy="product-id">{product.id}</Text>
         </Group>
-        <Text size="sm" color="dimmed" align="center">
+        <Text size="md" color="dimmed" align="left">
           {product.description}
         </Text>
-        <Text
-          weight={500}
-          size="lg"
-          color="dark"
-          align="center"
-          data-cy="product-price"
-        >
-          {product.price}€
-        </Text>
-        <Group position="center" mt="md" mb="xs">
+        <Group position="left" mt="md" mb="xs">
           {showConfirmDelete ? (
             <Button
               sx={{ color: 'red', borderColor: 'red' }}
@@ -92,6 +83,14 @@ function AdminProductCard({ product, onDelete }: Props) {
               Edit product
             </Button>
           </Link>
+          <Title
+            order={2}
+            sx={{ marginLeft: '1rem' }}
+            align="right"
+            data-cy="product-price"
+          >
+            {product.price}€
+          </Title>
         </Group>
       </Card>
     </>

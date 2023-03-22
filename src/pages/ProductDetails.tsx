@@ -16,8 +16,12 @@ import {
   IconStarFilled,
   IconUserStar,
 } from '@tabler/icons-react';
-import { useEffect } from 'react';
+import { useContext, useEffect } from 'react';
 import { Link, useParams } from 'react-router-dom';
+import { Autoplay, Navigation, Pagination } from 'swiper';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import 'swiper/swiper-bundle.css';
+import 'swiper/swiper.min.css';
 import { ProductContext } from '../contexts/ProductContext';
 import { useShoppingCart } from '../contexts/ShoppingCartContext';
 
@@ -56,9 +60,6 @@ function ProductDetails() {
       </Button>
       <Flex direction={{ base: 'column', sm: 'row' }}>
         <Card sx={{ flex: 1 }}>
-          <Image src={product.image} alt={product.title} fit="contain" />
-        </Card>
-        <Card sx={{ flex: 1 }}>
           <Title align="center" mb={50} data-cy="product-title">
             {product.title}
           </Title>
@@ -86,9 +87,33 @@ function ProductDetails() {
             />
             {product.usersRated}
           </Box>
-          <Image src={product.image} alt={product.title} fit="contain" />
+          <Swiper
+            spaceBetween={0}
+            slidesPerView={1}
+            grabCursor={true}
+            modules={[Autoplay, Navigation, Pagination]}
+            autoplay={{ delay: 5000, disableOnInteraction: false }}
+            navigation
+            pagination={{ clickable: true }}
+          >
+            <SwiperSlide>
+              <Image
+                src={product.image}
+                key={product.id}
+                alt={product.title}
+                fit="contain"
+              />
+            </SwiperSlide>
+            <SwiperSlide>
+              <Image
+                src={product.secondImage}
+                alt={product.title}
+                fit="contain"
+              />
+            </SwiperSlide>
+          </Swiper>
         </Card>
-        <Card mt="md">
+        <Card sx={{ flex: 1 }}>
           <Box
             sx={{
               background: theme.colors.blue[7],
