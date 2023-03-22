@@ -47,10 +47,12 @@ function AdminProductCard({ product, onDelete }: Props) {
           </Text>
         </Group>
         <Group position="left" mt="xl" mb="xl">
-          <Text>Product id:</Text>
-          <Text data-cy="product-id">{product.id}</Text>
+          <Text color="dimmed">Product id:</Text>
+          <Text color="dimmed" data-cy="product-id">
+            {product.id}
+          </Text>
         </Group>
-        <Text size="md" color="dimmed" align="left">
+        <Text size="md" align="left">
           {product.description}
         </Text>
         <Group position="left" mt="md" mb="xs">
