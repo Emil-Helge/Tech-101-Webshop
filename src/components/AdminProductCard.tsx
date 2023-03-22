@@ -53,13 +53,7 @@ function AdminProductCard({ product, onDelete }: Props) {
         <Text size="sm" color="dimmed" align="center">
           {product.description}
         </Text>
-        <Text
-          weight={500}
-          size="lg"
-          color="dark"
-          align="center"
-          data-cy="product-price"
-        >
+        <Text weight={500} size="lg" align="center" data-cy="product-price">
           {product.price}€
         </Text>
         <Group position="center" mt="md" mb="xs">
