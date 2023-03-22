@@ -69,7 +69,7 @@ function ProductCard({ product }: Props) {
             Add to cart
           </Button>
           <Title
-            style={{ marginLeft: 'auto' }}
+            style={{ marginLeft: 'auto', marginTop: '.5rem' }}
             order={2}
             align="left"
             data-cy="product-price"

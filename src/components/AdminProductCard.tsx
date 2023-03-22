@@ -85,7 +85,7 @@ function AdminProductCard({ product, onDelete }: Props) {
           </Link>
           <Title
             order={2}
-            sx={{ marginLeft: '1rem' }}
+            sx={{ marginLeft: '1rem', marginTop: '.5rem' }}
             align="right"
             data-cy="product-price"
           >

@@ -5,7 +5,7 @@ import {
   rem,
   Title,
   useMantineTheme,
-} from "@mantine/core";
+} from '@mantine/core';
 
 interface HeroSlideItemProps {
   imageSrc?: string;
@@ -14,20 +14,20 @@ interface HeroSlideItemProps {
 function HeroSlideItem({ imageSrc }: HeroSlideItemProps) {
   const theme = useMantineTheme();
   return (
-    <MediaQuery query="(max-width: 730px)" styles={{ flexDirection: "row" }}>
-      <Box sx={{ display: "flex", height: "100%", width: "100%" }}>
-        <MediaQuery query="(max-width: 730px)" styles={{ width: "50%" }}>
+    <MediaQuery query="(max-width: 730px)" styles={{ flexDirection: 'row' }}>
+      <Box sx={{ display: 'flex', height: '100%', width: '100%' }}>
+        <MediaQuery query="(max-width: 730px)" styles={{ width: '50%' }}>
           <Box
             sx={{
-              width: "50%",
-              height: "100%",
+              width: '50%',
+              height: '100%',
               backgroundColor: theme.colors.blue[9],
-              display: "flex",
-              flexDirection: "column",
-              alignItems: "center",
-              justifyContent: "center",
-              color: "white",
-              padding: "2rem",
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'center',
+              justifyContent: 'center',
+              color: 'white',
+              padding: '2rem',
             }}
           >
             <MediaQuery
@@ -40,7 +40,7 @@ function HeroSlideItem({ imageSrc }: HeroSlideItemProps) {
             </MediaQuery>
             <MediaQuery
               query="(max-width: 640px)"
-              styles={{ fontSize: rem(13), marginTop: ".5rem" }}
+              styles={{ fontSize: rem(13), marginTop: '.5rem' }}
             >
               <Title order={4}>
                 We got you covered on all the latest releases in tech.
@@ -48,23 +48,23 @@ function HeroSlideItem({ imageSrc }: HeroSlideItemProps) {
             </MediaQuery>
             <MediaQuery
               query="(max-width: 640px)"
-              styles={{ width: "6rem", height: "2rem", fontSize: rem(12) }}
+              styles={{ width: '6.3rem', height: '2rem', fontSize: rem(12) }}
             >
               <Button
                 sx={{
                   background: theme.colors.blue[0],
                   color: theme.colors.blue[7],
-                  fontWeight: "bold",
-                  marginTop: "1rem",
-                  height: "2.4rem",
-                  width: "8rem",
-                  borderRadius: ".5rem",
-                  borderStyle: "none",
-                  cursor: "pointer",
-                  "&:hover": {
+                  fontWeight: 'bold',
+                  marginTop: '1rem',
+                  height: '2.4rem',
+                  width: '8rem',
+                  borderRadius: '.5rem',
+                  borderStyle: 'none',
+                  cursor: 'pointer',
+                  '&:hover': {
                     background: theme.colors.blue[4],
                     color: theme.colors.blue[0],
-                    border: "2px solid white",
+                    border: '2px solid white',
                   },
                 }}
               >
@@ -75,11 +75,11 @@ function HeroSlideItem({ imageSrc }: HeroSlideItemProps) {
         </MediaQuery>
         <MediaQuery
           query="(max-width: 640px)"
-          styles={{ height: "100%", width: "50%" }}
+          styles={{ height: '100%', width: '50%' }}
         >
-          <Box sx={{ width: "50%", height: "100%" }}>
+          <Box sx={{ width: '50%', height: '100%' }}>
             <img
-              style={{ width: "100%", height: "100%", objectFit: "cover" }}
+              style={{ width: '100%', height: '100%', objectFit: 'cover' }}
               src={imageSrc}
               alt="product-image"
             />

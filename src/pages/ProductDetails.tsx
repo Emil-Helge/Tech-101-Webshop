@@ -55,7 +55,7 @@ function ProductDetails() {
 
   return (
     <Container>
-      <Button variant="outline" mt="sm" onClick={goBack}>
+      <Button variant="outline" mb="sm" mt="sm" onClick={goBack}>
         Back
       </Button>
       <Flex direction={{ base: 'column', sm: 'row' }}>

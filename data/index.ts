@@ -27,7 +27,7 @@ export const products: Product[] = [
     rating: 4.5,
     usersRated: 7,
     secondImage:
-      'https://img.freepik.com/free-photo/laptop-wooden-table_53876-20635.jpg?w=1800&t=st=1679499181~exp=1679499781~hmac=f6d0d05ebf7737fa45bea4a59eb3554878f724ed68cab8880aa0a2f8423b1064',
+      'https://img.freepik.com/free-photo/laptop-wooden-table_53876-20635.jpg?w=1060&t=st=1679504274~exp=1679504874~hmac=572261dfc89d5e011d9d356e7a4f0042a16ee509474b9c67299ca6dedce6bac5',
   },
   {
     id: '2',
@@ -63,7 +63,7 @@ export const products: Product[] = [
     rating: 3.8,
     usersRated: 3,
     secondImage:
-      'https://img.freepik.com/free-photo/desk-arrangement-with-laptop-top-view_23-2149073069.jpg?w=1800&t=st=1679499431~exp=1679500031~hmac=60bd5553efb8ae654fba19919e375c56bf22aad167a7b23b6fedccc4773e9329',
+      'https://img.freepik.com/free-photo/desk-arrangement-with-laptop-top-view_23-2149073069.jpg?w=1060&t=st=1679504654~exp=1679505254~hmac=de6d45ec753c07e4f7fdadf7a4d0ddceb1c859e23f0cbc0610c802607a7a74f7',
   },
   {
     id: '4',
@@ -104,7 +104,7 @@ export const products: Product[] = [
   {
     id: '6',
     image:
-      'https://img.freepik.com/free-photo/laptop-wooden-table_1252-909.jpg?w=1800&t=st=1679502360~exp=1679502960~hmac=e6bd67b3eea9d09efcce62f2ff5fc23fbe2fcfbd198e55d172b77cc4848391f4',
+      'https://img.freepik.com/free-photo/laptop-wooden-table_1252-909.jpg?w=1060&t=st=1679504066~exp=1679504666~hmac=256bb895cdf56ad66145625f453c4fdc6a477c66a96b7cdf22bf62c26d094fed',
     title: 'TravelBook Mini',
     description:
       'The TravelBook Mini is the perfect laptop for those who are always on-the-go. With its compact size and long-lasting battery, you can take it with you wherever you go. The 11-inch display delivers crisp visuals, while the lightweight design ensures you can carry it with ease.',
