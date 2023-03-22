@@ -18,15 +18,16 @@ import {
 } from '@tabler/icons-react';
 import { useEffect } from 'react';
 import { Link, useParams } from 'react-router-dom';
-import { products } from '../../data/index';
+import { ProductContext } from '../contexts/ProductContext';
 import { useShoppingCart } from '../contexts/ShoppingCartContext';
 
 function ProductDetails() {
   const { id } = useParams();
-
+  const { products } = useContext(ProductContext);
   const product = products.find((p) => p.id === id);
 
   const { increaseCartQuantity } = useShoppingCart();
+  console.log(products);
 
   const goBack = () => {
     window.history.back();
@@ -54,7 +55,10 @@ function ProductDetails() {
         Back
       </Button>
       <Flex direction={{ base: 'column', sm: 'row' }}>
-        <Card mt="md">
+        <Card sx={{ flex: 1 }}>
+          <Image src={product.image} alt={product.title} fit="contain" />
+        </Card>
+        <Card sx={{ flex: 1 }}>
           <Title align="center" mb={50} data-cy="product-title">
             {product.title}
           </Title>
