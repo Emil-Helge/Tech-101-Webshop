@@ -1,6 +1,8 @@
 import { Card, List, Text, useMantineTheme } from '@mantine/core';
-import { CartItem, products } from '../../data';
+import { useContext } from 'react';
+import { CartItem } from '../../data';
 import { FormValues } from '../components/CheckoutForm';
+import { ProductContext } from '../contexts/ProductContext';
 import { useShoppingCart } from '../contexts/ShoppingCartContext';
 interface Order {
   id: number;
@@ -8,6 +10,7 @@ interface Order {
 }
 
 function Confirmation() {
+  const { products } = useContext(ProductContext);
   const theme = useMantineTheme();
   const { orders } = useShoppingCart();
   const lastOrder = orders[orders.length - 1];
@@ -66,7 +69,8 @@ function Confirmation() {
                 (product, index) =>
                   'id' in product && (
                     <List.Item key={index}>
-                      {product.title} - Quantity: {product.quantity}
+                      {product.title} - {product.price}€ - Quantity:
+                      {product.quantity}
                     </List.Item>
                   )
               )}
