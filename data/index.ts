@@ -104,7 +104,7 @@ export const products: Product[] = [
   {
     id: '6',
     image:
-      'https://img.freepik.com/free-photo/laptop-wooden-table_1252-909.jpg?w=1060&t=st=1679504066~exp=1679504666~hmac=256bb895cdf56ad66145625f453c4fdc6a477c66a96b7cdf22bf62c26d094fed',
+      'https://images.unsplash.com/flagged/1/apple-gear-looking-pretty.jpg?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80',
     title: 'TravelBook Mini',
     description:
       'The TravelBook Mini is the perfect laptop for those who are always on-the-go. With its compact size and long-lasting battery, you can take it with you wherever you go. The 11-inch display delivers crisp visuals, while the lightweight design ensures you can carry it with ease.',
