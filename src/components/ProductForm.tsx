@@ -26,6 +26,10 @@ function ProductForm({
       title: '',
       description: '',
       price: 0,
+      secondImage: '',
+      summary: [],
+      rating: 0,
+      usersRated: 0,
     },
   });
 
@@ -66,6 +70,11 @@ function ProductForm({
           required
           {...form.getInputProps('image')}
           data-cy="product-image"
+        />
+        <TextInput
+          label="Second Image URL"
+          required
+          {...form.getInputProps('secondImage')}
         />
         <TextInput
           label="Description"
