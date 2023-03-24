@@ -5,11 +5,13 @@ import { Link } from 'react-router-dom';
 import { Product } from '../../data/index';
 import { useShoppingCart } from '../contexts/ShoppingCartContext';
 
-interface Props {
+export interface Props {
   product: Product;
+  sortDirection: 'lowest' | 'highest';
+  sortedProducts: Product[];
 }
 
-function ProductCard({ product }: Props) {
+function ProductCard({ product, sortDirection, sortedProducts }: Props) {
   const {
     getProductQuantity,
     increaseCartQuantity,
@@ -18,6 +20,11 @@ function ProductCard({ product }: Props) {
   } = useShoppingCart();
   const quantity = getProductQuantity(product.id);
   const link = '/product/' + product.id;
+
+  const price =
+    sortDirection === 'lowest'
+      ? sortedProducts[0].price
+      : sortedProducts[sortedProducts.length - 1].price;
 
   return (
     <>

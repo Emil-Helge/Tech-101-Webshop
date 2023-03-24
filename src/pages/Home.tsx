@@ -1,20 +1,44 @@
 import {
   Box,
+  Button,
   Container,
+  Group,
   MediaQuery,
   SimpleGrid,
   Text,
   Title,
   useMantineTheme,
 } from '@mantine/core';
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
+import { Product } from '../../data';
 import HeroSlide from '../components/HeroSlide';
 import ProductCard from '../components/ProductCard';
 import { ProductContext } from '../contexts/ProductContext';
 
+type Props = {
+  products: Product[];
+  sortedProducts: Product[];
+  sortDirection: 'ascending' | 'descending';
+};
+
 function Home() {
   const theme = useMantineTheme();
   const { products } = useContext(ProductContext);
+  const [sortDirection, setSortDirection] = useState('ascending');
+  const [sortedProducts, setSortedProducts] = useState(products);
+
+  function sortProductsByLowestPrice() {
+    const sorted = [...products].sort((a, b) => a.price - b.price);
+    setSortedProducts(sorted);
+    setSortDirection('ascending');
+  }
+
+  function sortProductsByHighestPrice() {
+    const sorted = [...products].sort((a, b) => b.price - a.price);
+    setSortedProducts(sorted);
+    setSortDirection('descending');
+  }
+
   return (
     <Container size="xl">
       <HeroSlide />
@@ -57,19 +81,42 @@ function Home() {
             boxShadow: '0px 4px 4px rgba(0, 0, 0, 0.25)',
           }}
         >
-          <img src="./assets/recycable-parts.svg" alt="recycable parts icon" />
+          <img src="/assets/recycable-parts.svg" alt="recycable parts icon" />
           <img
             src="./assets/sustainable-transports.svg"
             alt="sustainable transports icon"
           />
-          <img src="./assets/free-deliveries.svg" alt="free deliveries icon" />
-          <img src="./assets/price-guarantee.svg" alt="price guarantee icon" />
-          <img src="./assets/free-returns.svg" alt="free returns icon" />
+          <img src="/assets/free-deliveries.svg" alt="free deliveries icon" />
+          <img src="/assets/price-guarantee.svg" alt="price guarantee icon" />
+          <img src="/assets/free-returns.svg" alt="free returns icon" />
         </Box>
       </MediaQuery>
       <Title sx={{ marginBottom: '1rem' }} ta="center">
         Browse our collection
       </Title>
+      <Group spacing={5}>
+        <Button
+          variant="light"
+          size="xs"
+          radius="sm"
+          onClick={sortProductsByLowestPrice}
+        >
+          Sort by lowest price
+        </Button>
+        <Button
+          size="xs"
+          variant="light"
+          radius="sm"
+          onClick={sortProductsByHighestPrice}
+        >
+          Sort by highest price
+        </Button>
+      </Group>
+      {sortedProducts.length > 0 && (
+        <Text ta="center" mb="lg" mt="lg">
+          Sorted by {sortDirection === 'ascending' ? 'lowest' : 'highest'} price
+        </Text>
+      )}
       <SimpleGrid
         cols={3}
         spacing="xl"
@@ -79,8 +126,13 @@ function Home() {
           { maxWidth: '36rem', cols: 1, spacing: 'sm' },
         ]}
       >
-        {products.map((product) => (
-          <ProductCard key={product.id} product={product} />
+        {sortedProducts.map((product) => (
+          <ProductCard
+            key={product.id}
+            product={product}
+            sortedProducts={sortedProducts}
+            sortDirection={sortDirection === 'ascending' ? 'lowest' : 'highest'}
+          />
         ))}
       </SimpleGrid>
     </Container>
