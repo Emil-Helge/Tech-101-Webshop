@@ -10,33 +10,29 @@ import {
   useMantineTheme,
 } from '@mantine/core';
 import { useContext, useState } from 'react';
-import { Product } from '../../data';
 import HeroSlide from '../components/HeroSlide';
 import ProductCard from '../components/ProductCard';
 import { ProductContext } from '../contexts/ProductContext';
 
-type Props = {
-  products: Product[];
-  sortedProducts: Product[];
-  sortDirection: 'ascending' | 'descending';
-};
-
 function Home() {
   const theme = useMantineTheme();
   const { products } = useContext(ProductContext);
-  const [sortDirection, setSortDirection] = useState('ascending');
+  const [sortDirection, setSortDirection] = useState('');
   const [sortedProducts, setSortedProducts] = useState(products);
+  const [activeButton, setActiveButton] = useState('');
 
   function sortProductsByLowestPrice() {
     const sorted = [...products].sort((a, b) => a.price - b.price);
     setSortedProducts(sorted);
     setSortDirection('ascending');
+    setActiveButton('lowest');
   }
 
   function sortProductsByHighestPrice() {
     const sorted = [...products].sort((a, b) => b.price - a.price);
     setSortedProducts(sorted);
     setSortDirection('descending');
+    setActiveButton('highest');
   }
 
   return (
@@ -94,8 +90,11 @@ function Home() {
       <Title sx={{ marginBottom: '1rem' }} ta="center">
         Browse our collection
       </Title>
-      <Group spacing={5}>
+      <Group spacing={5} mb="md">
         <Button
+          sx={{
+            border: activeButton === 'lowest' ? '2px solid lightblue' : 'none',
+          }}
           variant="light"
           size="xs"
           radius="sm"
@@ -104,6 +103,10 @@ function Home() {
           Sort by lowest price
         </Button>
         <Button
+          sx={{
+            border:
+              activeButton === 'highest' ? '2px solid lightblue ' : 'none',
+          }}
           size="xs"
           variant="light"
           radius="sm"
@@ -112,11 +115,11 @@ function Home() {
           Sort by highest price
         </Button>
       </Group>
-      {sortedProducts.length > 0 && (
+      {/* {sortDirection && (
         <Text ta="center" mb="lg" mt="lg">
           Sorted by {sortDirection === 'ascending' ? 'lowest' : 'highest'} price
         </Text>
-      )}
+      )} */}
       <SimpleGrid
         cols={3}
         spacing="xl"

@@ -46,13 +46,8 @@ function ProductCard({ product, sortDirection, sortedProducts }: Props) {
             New!
           </Badge>
         </Group>
-        <ul>
-          {Array.isArray(product.summary) &&
-            product.summary.map((item) => <li key={item}>{item}</li>)}
-        </ul>
-        {/* <Text size="sm" weight={500} align="center">
-          {product.description}
-        </Text> */}
+        {Array.isArray(product.summary) &&
+          product.summary.map((item) => <li key={item}>{item}</li>)}
         <Group position="left" mt="md" mb="xs">
           <Link to={link}>
             <Button variant="outline" mt="md" radius="md">
