@@ -4,8 +4,8 @@ import { FooterCentered } from './components/T101Footer';
 
 function App() {
   const headerLinks: HeaderResponsiveProps['links'] = [
-    { link: '/', label: 'Home' },
-    { link: '/store', label: 'Store' },
+    { link: '/', label: 'Store' },
+    { link: '/faq', label: 'FAQ' },
   ];
 
   const footerLinks = [

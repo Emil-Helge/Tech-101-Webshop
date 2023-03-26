@@ -1,4 +1,4 @@
-import { Badge, Button, Card, Group, Image, Title } from '@mantine/core';
+import { Badge, Button, Card, Group, Image, List, Title } from '@mantine/core';
 import { notifications } from '@mantine/notifications';
 import { IconShoppingCartPlus } from '@tabler/icons-react';
 import { Link } from 'react-router-dom';
@@ -46,8 +46,12 @@ function ProductCard({ product, sortDirection, sortedProducts }: Props) {
             New!
           </Badge>
         </Group>
-        {Array.isArray(product.summary) &&
-          product.summary.map((item) => <li key={item}>{item}</li>)}
+        <List>
+          {Array.isArray(product.summary) &&
+            product.summary.map((item) => (
+              <List.Item key={item}>{item}</List.Item>
+            ))}
+        </List>
         <Group position="left" mt="md" mb="xs">
           <Link to={link}>
             <Button variant="outline" mt="md" radius="md">
