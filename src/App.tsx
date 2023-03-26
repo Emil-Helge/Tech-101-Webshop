@@ -1,17 +1,17 @@
 import { Outlet } from 'react-router-dom';
+import { FooterCentered } from './components/Footer';
 import { HeaderResponsive, HeaderResponsiveProps } from './components/Navbar';
-import { FooterCentered } from './components/T101Footer';
 
 function App() {
   const headerLinks: HeaderResponsiveProps['links'] = [
     { link: '/', label: 'Store' },
     { link: '/faq', label: 'FAQ' },
+    { link: '/contact', label: 'Contact Us' },
   ];
 
   const footerLinks = [
     { link: '/terms-of-service', label: 'Terms of Service' },
     { link: '/privacy-policy', label: 'Privacy Policy' },
-    { link: '/contact-us', label: 'Contact Us' },
   ];
 
   return (

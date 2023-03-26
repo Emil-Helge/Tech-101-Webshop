@@ -19,6 +19,7 @@ import './index.css';
 import Admin from './pages/Admin';
 import Cart from './pages/Cart';
 import Confirmation from './pages/Confirmation';
+import { Contact } from './pages/Contact';
 import EditProduct from './pages/EditProduct';
 import { Faq } from './pages/Faq';
 import Home from './pages/Home';
@@ -30,6 +31,7 @@ const router = createBrowserRouter(
     <Route path="/" element={<App />}>
       <Route index element={<Home />} />
       <Route path="/faq" element={<Faq />} />
+      <Route path="/contact" element={<Contact />} />
       <Route path="/product/:id" element={<ProductDetails />} />
       <Route path="/checkout" element={<Cart />} />
       <Route path="/admin" element={<Admin />} />
