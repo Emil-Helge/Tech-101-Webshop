@@ -1,14 +1,17 @@
-import { Button, Card, Group, Image, Title } from '@mantine/core';
+import { Badge, Button, Card, Group, Image, List, Title } from '@mantine/core';
 import { notifications } from '@mantine/notifications';
-import { Link } from 'react-router-dom';
+import { IconShoppingCartPlus } from '@tabler/icons-react';
+import { Link, NavLink } from 'react-router-dom';
 import { Product } from '../../data/index';
 import { useShoppingCart } from '../contexts/ShoppingCartContext';
 
-interface Props {
+export interface Props {
   product: Product;
+  sortDirection: 'lowest' | 'highest';
+  sortedProducts: Product[];
 }
 
-function ProductCard({ product }: Props) {
+function ProductCard({ product, sortDirection, sortedProducts }: Props) {
   const {
     getProductQuantity,
     increaseCartQuantity,
@@ -17,26 +20,39 @@ function ProductCard({ product }: Props) {
   } = useShoppingCart();
   const quantity = getProductQuantity(product.id);
   const link = '/product/' + product.id;
+
+  const price =
+    sortDirection === 'lowest'
+      ? sortedProducts[0].price
+      : sortedProducts[sortedProducts.length - 1].price;
+
   return (
     <>
       <Card shadow="xl" padding="md" radius="lg" withBorder data-cy="product">
-        <Card.Section>
-          <Link to={link}>
+        <NavLink to={link} style={{ textDecoration: 'none', color: 'inherit' }}>
+          <Card.Section>
             <Image src={product.image} height={230} fit="cover" />
-          </Link>
-        </Card.Section>
-        <Group position="center" mt="xl" mb="xl">
-          <Title order={2} data-cy="product-title">
-            {product.title}
-          </Title>
-        </Group>
-        {/* <Text size="sm" weight={500} align="center">
-          {product.description}
-        </Text> */}
-        <Title order={3} align="center" data-cy="product-price">
-          {product.price}€
-        </Title>
-        <Group position="center" mt="md" mb="xs">
+          </Card.Section>
+          <Group
+            mt="xl"
+            mb="xl"
+            style={{ display: 'flex', justifyContent: 'space-between' }}
+          >
+            <Title order={2} data-cy="product-title">
+              {product.title}
+            </Title>
+            <Badge color="blue" variant="light" size="lg">
+              New!
+            </Badge>
+          </Group>
+        </NavLink>
+        <List>
+          {Array.isArray(product.summary) &&
+            product.summary.map((item) => (
+              <List.Item key={item}>{item}</List.Item>
+            ))}
+        </List>
+        <Group position="left" mt="md" mb="xs">
           <Link to={link}>
             <Button variant="outline" mt="md" radius="md">
               Product Page
@@ -49,13 +65,7 @@ function ProductCard({ product }: Props) {
             onClick={() => {
               increaseCartQuantity(product.id);
               notifications.show({
-                icon: (
-                  <img
-                    src="/assets/checked-icon.svg"
-                    width="38px"
-                    alt="checked icon"
-                  />
-                ),
+                icon: <IconShoppingCartPlus />,
                 title: `${product.title}`,
                 message: 'has been added',
               });
@@ -64,6 +74,14 @@ function ProductCard({ product }: Props) {
           >
             Add to cart
           </Button>
+          <Title
+            style={{ marginLeft: 'auto', marginTop: '.5rem' }}
+            order={2}
+            align="left"
+            data-cy="product-price"
+          >
+            {product.price}€
+          </Title>
         </Group>
       </Card>
     </>

@@ -40,7 +40,11 @@ function ProductForm({
       image: '',
       title: '',
       description: '',
-      price: '',
+      price: 0,
+      secondImage: '',
+      summary: [],
+      rating: 0,
+      usersRated: 0,
     },
   });
   console.log('Form errors:', form.errors);
@@ -80,6 +84,11 @@ function ProductForm({
           label="Image URL"
           {...form.getInputProps('image')}
           data-cy="product-image"
+          errorProps={{ 'data-cy': 'product-image-error' }}
+        />
+        <TextInput
+          label="Second Image URL"
+          {...form.getInputProps('secondImage')}
           errorProps={{ 'data-cy': 'product-image-error' }}
         />
         <TextInput

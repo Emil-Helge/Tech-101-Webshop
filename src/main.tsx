@@ -19,17 +19,19 @@ import './index.css';
 import Admin from './pages/Admin';
 import Cart from './pages/Cart';
 import Confirmation from './pages/Confirmation';
+import { Contact } from './pages/Contact';
 import EditProduct from './pages/EditProduct';
+import { Faq } from './pages/Faq';
 import Home from './pages/Home';
 import NewProduct from './pages/NewProduct';
 import ProductDetails from './pages/ProductDetails';
-import Store from './pages/Store';
 
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<App />}>
       <Route index element={<Home />} />
-      <Route path="/store" element={<Store />} />
+      <Route path="/faq" element={<Faq />} />
+      <Route path="/contact" element={<Contact />} />
       <Route path="/product/:id" element={<ProductDetails />} />
       <Route path="/checkout" element={<Cart />} />
       <Route path="/admin" element={<Admin />} />

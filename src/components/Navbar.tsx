@@ -129,9 +129,9 @@ export function HeaderResponsive({ links }: HeaderResponsiveProps) {
 
   const logo =
     logoType === 'dark' ? (
-      <img src="./assets/T101-logo.svg" alt="T101 logo" />
+      <img src="/assets/T101-logo.svg" alt="T101 logo" />
     ) : (
-      <img src="./assets/T101-logo-darkmode.svg" alt="T101 logo" />
+      <img src="/assets/T101-logo-darkmode.svg" alt="T101 logo" />
     );
 
   const items = links.map((link, index) => (
@@ -192,6 +192,14 @@ export function HeaderResponsive({ links }: HeaderResponsiveProps) {
     );
   }
 
+  function handleLinkClick() {
+    setActive(links[0].link);
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth',
+    });
+  }
+
   return (
     <Header
       height={HEADER_HEIGHT}
@@ -209,7 +217,9 @@ export function HeaderResponsive({ links }: HeaderResponsiveProps) {
             },
           }}
         >
-          <Group spacing={1}>{logo}</Group>
+          <Link to="./" onClick={handleLinkClick}>
+            <Group spacing={1}>{logo}</Group>
+          </Link>
         </MediaQuery>
         <Group spacing={5} className={classes.links}>
           {items}

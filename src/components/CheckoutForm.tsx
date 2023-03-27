@@ -109,7 +109,7 @@ function CheckoutForm() {
           errorProps={{ 'data-cy': 'customer-zipcode-error' }}
         />
         <TextInput
-          autoComplete="city"
+          autoComplete="address-level2"
           withAsterisk
           label="City"
           placeholder="ex: Gothenburg"
