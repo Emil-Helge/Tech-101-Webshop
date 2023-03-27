@@ -1,7 +1,8 @@
 import { Box, Button, Group, TextInput } from '@mantine/core';
-import { useForm } from '@mantine/form';
+import { useForm, yupResolver } from '@mantine/form';
 import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import * as Yup from 'yup';
 import { Product } from '../../data';
 import generateID from '../utils/generateID';
 
@@ -12,6 +13,19 @@ interface ProductFormProps {
   product?: Product;
 }
 
+const schema = Yup.object().shape({
+  image: Yup.string().url('Invalid URL').required('Image URL is required'),
+  title: Yup.string()
+    .min(2, 'Title should have at least 2 letters')
+    .required('Title is required'),
+  description: Yup.string()
+    .min(5, 'Description should have at least 5 letters')
+    .required('Description is required'),
+  price: Yup.string()
+    .min(3, 'Nothing is this cheap...')
+    .required('Price is required'),
+});
+
 function ProductForm({
   onSubmit,
   addProduct,
@@ -20,6 +34,7 @@ function ProductForm({
 }: ProductFormProps) {
   const navigate = useNavigate();
   const form = useForm<Product>({
+    validate: yupResolver(schema),
     initialValues: {
       id: '',
       image: '',
@@ -32,16 +47,14 @@ function ProductForm({
       usersRated: 0,
     },
   });
-
+  console.log('Form errors:', form.errors);
   useEffect(() => {
     if (isEditing && product) {
       form.setValues(product);
     }
-  }, [product]);
+  }, [product, isEditing, form.setValues]);
 
-  const handleSubmit = (event: React.FormEvent) => {
-    event.preventDefault();
-    const values = form.values;
+  const handleSubmit = (values: Product) => {
     const editedProduct = { ...values, id: product?.id || '' };
     if (isEditing) {
       onSubmit(editedProduct);
@@ -55,39 +68,43 @@ function ProductForm({
   return (
     <Box maw={300} mx="auto">
       <form
-        onSubmit={(event) => handleSubmit(event)}
+        onSubmit={form.onSubmit(handleSubmit)}
         data-cy="product-form"
         id="product-form"
       >
         <TextInput
+          withAsterisk
           label="Title"
-          required
           {...form.getInputProps('title')}
           data-cy="product-title"
+          errorProps={{ 'data-cy': 'product-title-error' }}
         />
         <TextInput
+          withAsterisk
           label="Image URL"
-          required
           {...form.getInputProps('image')}
           data-cy="product-image"
+          errorProps={{ 'data-cy': 'product-image-error' }}
         />
         <TextInput
           label="Second Image URL"
-          required
           {...form.getInputProps('secondImage')}
+          errorProps={{ 'data-cy': 'product-image-error' }}
         />
         <TextInput
+          withAsterisk
           label="Description"
-          required
           {...form.getInputProps('description')}
           data-cy="product-description"
+          errorProps={{ 'data-cy': 'product-description-error' }}
         />
         <TextInput
+          withAsterisk
           type="number"
           label="Price"
-          required
           {...form.getInputProps('price')}
           data-cy="product-price"
+          errorProps={{ 'data-cy': 'product-price-error' }}
         />
         <Group mt="xl">
           <Button type="submit">
