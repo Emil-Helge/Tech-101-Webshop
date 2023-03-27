@@ -1,7 +1,8 @@
 import { createContext, ReactNode, useContext } from 'react';
-import { CartItem, products } from '../../data';
+import { CartItem } from '../../data';
 import { FormValues } from '../components/CheckoutForm';
 import useLocalStorage from '../hooks/useLocalStorage';
+import { ProductContext } from './ProductContext';
 
 interface ShoppingCartContext {
   getProductQuantity: (id: string) => number;
@@ -32,6 +33,7 @@ interface Props {
 }
 
 function ShoppingCartProvider({ children }: Props) {
+  const { products } = useContext(ProductContext);
   const [cartProducts, setCartProducts] = useLocalStorage<CartItem[]>(
     'cart',
     []

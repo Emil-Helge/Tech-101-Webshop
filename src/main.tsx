@@ -62,11 +62,11 @@ function Root() {
           withNormalizeCSS
         >
           <Notifications data-cy="added-to-cart-toast" />
-          <ShoppingCartProvider>
-            <ProductProvider>
+          <ProductProvider>
+            <ShoppingCartProvider>
               <RouterProvider router={router} />
-            </ProductProvider>
-          </ShoppingCartProvider>
+            </ShoppingCartProvider>
+          </ProductProvider>
         </MantineProvider>
       </ColorSchemeProvider>
     </React.StrictMode>

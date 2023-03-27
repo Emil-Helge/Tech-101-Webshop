@@ -1,7 +1,7 @@
 import { Badge, Button, Card, Group, Image, List, Title } from '@mantine/core';
 import { notifications } from '@mantine/notifications';
 import { IconShoppingCartPlus } from '@tabler/icons-react';
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import { Product } from '../../data/index';
 import { useShoppingCart } from '../contexts/ShoppingCartContext';
 
@@ -29,23 +29,23 @@ function ProductCard({ product, sortDirection, sortedProducts }: Props) {
   return (
     <>
       <Card shadow="xl" padding="md" radius="lg" withBorder data-cy="product">
-        <Card.Section>
-          <Link to={link}>
+        <NavLink to={link} style={{ textDecoration: 'none', color: 'inherit' }}>
+          <Card.Section>
             <Image src={product.image} height={230} fit="cover" />
-          </Link>
-        </Card.Section>
-        <Group
-          mt="xl"
-          mb="xl"
-          style={{ display: 'flex', justifyContent: 'space-between' }}
-        >
-          <Title order={2} data-cy="product-title">
-            {product.title}
-          </Title>
-          <Badge color="blue" variant="light" size="lg">
-            New!
-          </Badge>
-        </Group>
+          </Card.Section>
+          <Group
+            mt="xl"
+            mb="xl"
+            style={{ display: 'flex', justifyContent: 'space-between' }}
+          >
+            <Title order={2} data-cy="product-title">
+              {product.title}
+            </Title>
+            <Badge color="blue" variant="light" size="lg">
+              New!
+            </Badge>
+          </Group>
+        </NavLink>
         <List>
           {Array.isArray(product.summary) &&
             product.summary.map((item) => (
