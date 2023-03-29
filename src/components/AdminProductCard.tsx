@@ -46,7 +46,7 @@ function AdminProductCard({ product, onDelete }: Props) {
       >
         <Card.Section>
           <Image src={product.image} height={230} fit="cover" />
-          <Box pl="sm" pr="sm">
+          <Box pl="md" pr="md">
             <Group position="left" mt="sm" mb="sm">
               <Text
                 weight={500}
