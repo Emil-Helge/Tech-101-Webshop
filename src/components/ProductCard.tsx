@@ -41,7 +41,7 @@ function ProductCard({ product, sortDirection, sortedProducts }: Props) {
         <Card.Section>
           <Link to={link} style={{ textDecoration: 'none', color: 'inherit' }}>
             <Image src={product.image} height={230} fit="cover" />
-            <Box pl="sm" pr="sm">
+            <Box pl="md" pr="md">
               <Group
                 mt="xl"
                 mb="xl"
