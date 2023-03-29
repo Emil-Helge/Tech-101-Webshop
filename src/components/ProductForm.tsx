@@ -75,7 +75,7 @@ function ProductForm({
         <TextInput
           withAsterisk
           label="Title"
-          placeholder="ex: ComputerBook 2000"
+          placeholder="ComputerBook 2000"
           {...form.getInputProps('title')}
           data-cy="product-title"
           errorProps={{ 'data-cy': 'product-title-error' }}
@@ -83,21 +83,21 @@ function ProductForm({
         <TextInput
           withAsterisk
           label="Image URL"
-          placeholder="ex: https://www.image.com/image1.png"
+          placeholder="https://www.image.com/image1.png"
           {...form.getInputProps('image')}
           data-cy="product-image"
           errorProps={{ 'data-cy': 'product-image-error' }}
         />
         <TextInput
           label="Second Image URL"
-          placeholder="ex: https://www.image.com/image2.png"
+          placeholder="https://www.image.com/image2.png"
           {...form.getInputProps('secondImage')}
           errorProps={{ 'data-cy': 'product-image-error' }}
         />
         <TextInput
           withAsterisk
           label="Description"
-          placeholder="ex: This is the description of this product."
+          placeholder="This is the description of this product."
           {...form.getInputProps('description')}
           data-cy="product-description"
           errorProps={{ 'data-cy': 'product-description-error' }}
@@ -106,7 +106,7 @@ function ProductForm({
           withAsterisk
           type="number"
           label="Price"
-          placeholder="ex: 1000"
+          placeholder="1000"
           {...form.getInputProps('price')}
           data-cy="product-price"
           errorProps={{ 'data-cy': 'product-price-error' }}
