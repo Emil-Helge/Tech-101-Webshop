@@ -25,6 +25,7 @@ import * as Yup from 'yup';
 
 const useStyles = createStyles((theme) => ({
   wrapper: {
+    marginTop: '1rem',
     boxSizing: 'border-box',
     backgroundImage: `linear-gradient(-60deg, ${theme.colors.blue[3]} 0%, ${theme.colors.blue[7]} 100%)`,
     borderRadius: theme.radius.md,

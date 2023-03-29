@@ -97,7 +97,7 @@ function ShoppingCartProvider({ children }: Props) {
 
   const addOrder = (cartProducts: CartItem[], formData: FormValues) => {
     const newOrder: Order = {
-      id: orders.length,
+      id: orders.length + 1,
       cartProducts: [...cartProducts, { formData }],
     };
 
