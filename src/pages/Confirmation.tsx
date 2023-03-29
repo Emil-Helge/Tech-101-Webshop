@@ -1,4 +1,12 @@
-import { Card, List, Text, useMantineTheme } from '@mantine/core';
+import {
+  Card,
+  Container,
+  Divider,
+  List,
+  Text,
+  Title,
+  useMantineTheme,
+} from '@mantine/core';
 import { useContext } from 'react';
 import { CartItem } from '../../data';
 import { FormValues } from '../components/CheckoutForm';
@@ -29,59 +37,43 @@ function Confirmation() {
   }
   initBackgroundAnimation();
   return (
-    <div
-      style={{
-        display: 'flex',
-        flexDirection: 'column',
-        justifyContent: 'center',
-        alignItems: 'center',
-        marginTop: '2rem',
-        margin: '0 auto',
-        width: '100%',
-        textAlign: 'center',
-      }}
-    >
+    <Container size="md" mt="xl" mb="xl">
       {lastOrder && formData && (
-        <>
-          <Card
-            sx={{
-              display: 'flex',
-              gap: '1rem',
-              flexDirection: 'column',
-              justifyItems: 'center',
-              alignItems: 'center',
-              marginTop: '0.7rem',
-              border: '0.15rem solid',
-              borderColor: theme.colors.blue[1],
-              maxWidth: '40rem',
-              padding: '0 5rem',
-            }}
-          >
-            <h1>Thank you for your order!</h1>
-            <h2>Order details:</h2>
-            <Text>Name: {formData.fullName}</Text>
-            <Text>Email: {formData.email}</Text>
-            <Text>Address: {formData.adress}</Text>
-            <Text>Zip Code: {formData.zipCode}</Text>
-            <Text>Phone nr: {formData.mobileNr}</Text>
-            <Text>City: {formData.city}</Text>
-            <h2>Ordered Products</h2>
-            <List listStyleType="none">
-              {lastOrder.cartProducts.map(
-                (product, index) =>
-                  'id' in product && (
-                    <List.Item key={index}>
-                      {product.title} - {product.price}€ - Quantity:
-                      {product.quantity}
-                    </List.Item>
-                  )
-              )}
-            </List>
-            <h2>Total price:{calculateLastOrderTotal()} €</h2>
-          </Card>
-        </>
+        <Card shadow="md" sx={{ textAlign: 'center' }}>
+          <Title order={1}>Thank you for your order!</Title>
+          <Divider mt="md" mb="sm" size="xs" />
+          <Text>We have sent a confirmation to: {formData.email}</Text>
+          <Text>Your order number: {lastOrder.id}</Text>
+          <Divider mt="md" mb="sm" size="xs" />
+          <Title mb="xs" order={2}>
+            Order details:
+          </Title>
+          <Text>Name: {formData.fullName}</Text>
+          <Text>Email: {formData.email}</Text>
+          <Text>Address: {formData.adress}</Text>
+          <Text>Zip Code: {formData.zipCode}</Text>
+          <Text>Phone nr: {formData.mobileNr}</Text>
+          <Text>City: {formData.city}</Text>
+          <Divider mt="md" mb="sm" size="xs" />
+          <Title mb="xs" order={2}>
+            Ordered Products
+          </Title>
+          <List listStyleType="none">
+            {lastOrder.cartProducts.map(
+              (product, index) =>
+                'id' in product && (
+                  <List.Item key={index}>
+                    {product.title} - {product.price} € - Quantity:{' '}
+                    {product.quantity}
+                  </List.Item>
+                )
+            )}
+          </List>
+          <Divider mt="lg" mb="sm" size="xs" />
+          <h2>Total price: {calculateLastOrderTotal()}€</h2>
+        </Card>
       )}
-    </div>
+    </Container>
   );
 }
 
