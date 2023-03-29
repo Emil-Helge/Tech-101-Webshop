@@ -40,7 +40,7 @@ function ProductForm({
       image: '',
       title: '',
       description: '',
-      price: 0,
+      price: '',
       secondImage: '',
       summary: [],
       rating: 0,
