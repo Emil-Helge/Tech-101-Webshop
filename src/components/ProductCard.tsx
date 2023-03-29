@@ -1,7 +1,16 @@
-import { Badge, Button, Card, Group, Image, List, Title } from '@mantine/core';
+import {
+  Badge,
+  Box,
+  Button,
+  Card,
+  Group,
+  Image,
+  List,
+  Title,
+} from '@mantine/core';
 import { notifications } from '@mantine/notifications';
 import { IconShoppingCartPlus } from '@tabler/icons-react';
-import { Link, NavLink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { Product } from '../../data/index';
 import { useShoppingCart } from '../contexts/ShoppingCartContext';
 
@@ -28,30 +37,32 @@ function ProductCard({ product, sortDirection, sortedProducts }: Props) {
 
   return (
     <>
-      <Card shadow="xl" padding="md" radius="lg" withBorder data-cy="product">
-        <NavLink to={link} style={{ textDecoration: 'none', color: 'inherit' }}>
-          <Card.Section>
+      <Card shadow="xl" radius="lg" withBorder data-cy="product">
+        <Card.Section>
+          <Link to={link} style={{ textDecoration: 'none', color: 'inherit' }}>
             <Image src={product.image} height={230} fit="cover" />
-          </Card.Section>
-          <Group
-            mt="xl"
-            mb="xl"
-            style={{ display: 'flex', justifyContent: 'space-between' }}
-          >
-            <Title order={2} data-cy="product-title">
-              {product.title}
-            </Title>
-            <Badge color="blue" variant="light" size="lg">
-              New!
-            </Badge>
-          </Group>
-        </NavLink>
-        <List>
-          {Array.isArray(product.summary) &&
-            product.summary.map((item) => (
-              <List.Item key={item}>{item}</List.Item>
-            ))}
-        </List>
+            <Box pl="sm" pr="sm">
+              <Group
+                mt="xl"
+                mb="xl"
+                style={{ display: 'flex', justifyContent: 'space-between' }}
+              >
+                <Title order={2} data-cy="product-title">
+                  {product.title}
+                </Title>
+                <Badge color="blue" variant="light" size="lg">
+                  New!
+                </Badge>
+              </Group>
+              <List>
+                {Array.isArray(product.summary) &&
+                  product.summary.map((item) => (
+                    <List.Item key={item}>{item}</List.Item>
+                  ))}
+              </List>
+            </Box>
+          </Link>
+        </Card.Section>
         <Group position="left" mt="md" mb="xs">
           <Link to={link}>
             <Button variant="outline" mt="md" radius="md">
