@@ -1,6 +1,7 @@
 import {
   ActionIcon,
   Button,
+  Container,
   createStyles,
   Group,
   rem,
@@ -94,49 +95,51 @@ export function Contact() {
 
   return (
     <div className={classes.wrapper}>
-      <SimpleGrid
-        cols={2}
-        spacing={50}
-        breakpoints={[{ maxWidth: 'sm', cols: 1 }]}
-      >
-        <div>
-          <Title className={classes.title}>Contact us</Title>
-          <Text className={classes.description} mt="sm" mb={30}>
-            Leave your email and we will get back to you as quicky as possible.
-            Usually within 48 hours.
-          </Text>
+      <Container>
+        <SimpleGrid
+          cols={2}
+          spacing={50}
+          breakpoints={[{ maxWidth: 'sm', cols: 1 }]}
+        >
+          <div>
+            <Title className={classes.title}>Contact us</Title>
+            <Text className={classes.description} mt="sm" mb={30}>
+              Leave your email and we will get back to you as quicky as
+              possible. Usually within 48 hours.
+            </Text>
 
-          <Group mt="xl">{icons}</Group>
-        </div>
-        <div className={classes.form}>
-          <form>
-            <TextInput
-              label="Email"
-              placeholder="your@email.com"
-              required
-              classNames={{ input: classes.input, label: classes.inputLabel }}
-            />
-            <TextInput
-              label="Name"
-              placeholder="Your name here"
-              mt="md"
-              classNames={{ input: classes.input, label: classes.inputLabel }}
-            />
-            <Textarea
-              required
-              label="Your message"
-              placeholder="You can type your question here..."
-              minRows={4}
-              mt="md"
-              classNames={{ input: classes.input, label: classes.inputLabel }}
-            />
+            <Group mt="xl">{icons}</Group>
+          </div>
+          <div className={classes.form}>
+            <form>
+              <TextInput
+                label="Email"
+                placeholder="your@email.com"
+                required
+                classNames={{ input: classes.input, label: classes.inputLabel }}
+              />
+              <TextInput
+                label="Name"
+                placeholder="Your name here"
+                mt="md"
+                classNames={{ input: classes.input, label: classes.inputLabel }}
+              />
+              <Textarea
+                required
+                label="Your message"
+                placeholder="You can type your question here..."
+                minRows={4}
+                mt="md"
+                classNames={{ input: classes.input, label: classes.inputLabel }}
+              />
 
-            <Group position="right" mt="md">
-              <Button className={classes.control}>Send message</Button>
-            </Group>
-          </form>
-        </div>
-      </SimpleGrid>
+              <Group position="right" mt="md">
+                <Button className={classes.control}>Send message</Button>
+              </Group>
+            </form>
+          </div>
+        </SimpleGrid>
+      </Container>
     </div>
   );
 }
