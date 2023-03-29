@@ -92,6 +92,9 @@ const schema = Yup.object().shape({
   name: Yup.string()
     .min(2, 'Name should have at least 2 letters')
     .required('This field is required'),
+  message: Yup.string()
+    .min(10, 'Message should have at least 10 characters')
+    .required('Message is required'),
 });
 
 export function Contact() {
@@ -163,6 +166,7 @@ export function Contact() {
                 placeholder="You can type your question here..."
                 minRows={4}
                 mt="md"
+                {...form.getInputProps('message')}
                 classNames={{ input: classes.input, label: classes.inputLabel }}
               />
               <Group position="right" mt="md">
