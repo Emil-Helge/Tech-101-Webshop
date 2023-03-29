@@ -11,11 +11,13 @@ import {
   TextInput,
   Title,
 } from '@mantine/core';
+import { useForm, yupResolver } from '@mantine/form';
 import {
   IconBrandInstagram,
   IconBrandTwitter,
   IconBrandYoutube,
 } from '@tabler/icons-react';
+import * as Yup from 'yup';
 
 const useStyles = createStyles((theme) => ({
   wrapper: {
@@ -78,9 +80,26 @@ const useStyles = createStyles((theme) => ({
 }));
 
 const social = [IconBrandTwitter, IconBrandYoutube, IconBrandInstagram];
+const schema = Yup.object().shape({
+  email: Yup.string()
+    .email('Invalid email')
+    .matches(/^[^\s@]+@[^\s@]+\.[^\s@]+$/, 'Invalid email')
+    .required('Email is required'),
+  name: Yup.string()
+    .min(2, 'Name should have at least 2 letters')
+    .required('This field is required'),
+});
 
 export function Contact() {
   const { classes } = useStyles();
+  const form = useForm({
+    validate: yupResolver(schema),
+    initialValues: {
+      email: '',
+      name: '',
+      message: '',
+    },
+  });
 
   const icons = social.map((Icon, index) => (
     <ActionIcon
@@ -92,6 +111,15 @@ export function Contact() {
       <Icon size="1.4rem" stroke={1.5} />
     </ActionIcon>
   ));
+
+  // const [opened, { open, close }] = useDisclosure(false);
+
+  const handleSubmit = () => {
+    console.log('Contact');
+    // <Modal opened={opened} onClose={close} title="Message sent" centered>
+    // <Text>Hejsan hoppsan lillebror</Text>
+    //   </Modal>
+  };
 
   return (
     <div className={classes.wrapper}>
@@ -111,30 +139,34 @@ export function Contact() {
             <Group mt="xl">{icons}</Group>
           </div>
           <div className={classes.form}>
-            <form>
+            <form onSubmit={form.onSubmit(handleSubmit)}>
               <TextInput
                 label="Email"
+                withAsterisk
                 placeholder="your@email.com"
-                required
+                {...form.getInputProps('email')}
                 classNames={{ input: classes.input, label: classes.inputLabel }}
               />
               <TextInput
                 label="Name"
+                withAsterisk
                 placeholder="Your name here"
                 mt="md"
+                {...form.getInputProps('name')}
                 classNames={{ input: classes.input, label: classes.inputLabel }}
               />
               <Textarea
-                required
-                label="Your message"
+                label="Message"
+                withAsterisk
                 placeholder="You can type your question here..."
                 minRows={4}
                 mt="md"
                 classNames={{ input: classes.input, label: classes.inputLabel }}
               />
-
               <Group position="right" mt="md">
-                <Button className={classes.control}>Send message</Button>
+                <Button type="submit" className={classes.control}>
+                  Send message
+                </Button>
               </Group>
             </form>
           </div>
