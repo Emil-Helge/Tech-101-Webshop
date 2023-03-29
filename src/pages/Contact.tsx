@@ -1,9 +1,11 @@
 import {
   ActionIcon,
+  Box,
   Button,
   Container,
   createStyles,
   Group,
+  Modal,
   rem,
   SimpleGrid,
   Text,
@@ -12,10 +14,12 @@ import {
   Title,
 } from '@mantine/core';
 import { useForm, yupResolver } from '@mantine/form';
+import { useDisclosure } from '@mantine/hooks';
 import {
   IconBrandInstagram,
   IconBrandTwitter,
   IconBrandYoutube,
+  IconCircleCheck,
 } from '@tabler/icons-react';
 import * as Yup from 'yup';
 
@@ -112,14 +116,12 @@ export function Contact() {
     </ActionIcon>
   ));
 
-  // const [opened, { open, close }] = useDisclosure(false);
-
   const handleSubmit = () => {
     console.log('Contact');
-    // <Modal opened={opened} onClose={close} title="Message sent" centered>
-    // <Text>Hejsan hoppsan lillebror</Text>
-    //   </Modal>
+    open();
   };
+
+  const [opened, { open, close }] = useDisclosure(false);
 
   return (
     <div className={classes.wrapper}>
@@ -172,6 +174,14 @@ export function Contact() {
           </div>
         </SimpleGrid>
       </Container>
+      <Modal opened={opened} onClose={close} title="Message sent!" centered>
+        <Text>
+          Thank you for your message! We'll get back to you within 48 hours.
+        </Text>
+        <Box sx={{ textAlign: 'center' }}>
+          <IconCircleCheck size="3rem" stroke="0.05rem" />
+        </Box>
+      </Modal>
     </div>
   );
 }
