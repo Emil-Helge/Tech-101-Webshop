@@ -1,4 +1,4 @@
-import { Button, Card, Group, Image, Text, Title } from '@mantine/core';
+import { Box, Button, Card, Group, Image, Text, Title } from '@mantine/core';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Product } from '../../data/index';
@@ -32,26 +32,39 @@ function AdminProductCard({ product, onDelete }: Props) {
 
   return (
     <>
-      <Card shadow="xl" padding="md" radius="lg" withBorder data-cy="product">
+      <Card
+        shadow="xl"
+        padding="md"
+        radius="lg"
+        withBorder
+        sx={{
+          display: 'flex',
+          flexDirection: 'column',
+          justifyContent: 'space-between',
+        }}
+        data-cy="product"
+      >
         <Card.Section>
           <Image src={product.image} height={230} fit="cover" />
+          <Box pl="sm" pr="sm">
+            <Group position="left" mt="sm" mb="sm">
+              <Text
+                weight={500}
+                size={29}
+                transform="uppercase"
+                data-cy="product-title"
+              >
+                {product.title}
+              </Text>
+            </Group>
+            <Group position="left" mt="sm" mb="md">
+              <Text color="dimmed">Product id:</Text>
+              <Text color="dimmed" data-cy="product-id">
+                {product.id}
+              </Text>
+            </Group>
+          </Box>
         </Card.Section>
-        <Group position="left" mt="xl" mb="xl">
-          <Text
-            weight={500}
-            size={29}
-            transform="uppercase"
-            data-cy="product-title"
-          >
-            {product.title}
-          </Text>
-        </Group>
-        <Group position="left" mt="xl" mb="xl">
-          <Text color="dimmed">Product id:</Text>
-          <Text color="dimmed" data-cy="product-id">
-            {product.id}
-          </Text>
-        </Group>
         <Text size="md" align="left">
           {product.description}
         </Text>
