@@ -5,11 +5,6 @@ import { Link } from 'react-router-dom';
 import AdminProductCard from '../components/AdminProductCard';
 import { ProductContext } from '../contexts/ProductContext';
 
-// interface ProductFormProps {
-//   onSubmit: (product: Product) => void;
-//   addProduct: (product: Product) => void;
-// }
-
 function Admin() {
   const { products, deleteProduct } = useContext(ProductContext);
 
