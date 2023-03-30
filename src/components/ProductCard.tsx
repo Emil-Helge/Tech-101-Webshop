@@ -21,12 +21,7 @@ export interface Props {
 }
 
 function ProductCard({ product, sortDirection, sortedProducts }: Props) {
-  const {
-    getProductQuantity,
-    increaseCartQuantity,
-    decreaseCartQuantity, // Not in use yet
-    removeFromCart, // Not in use yet
-  } = useShoppingCart();
+  const { getProductQuantity, increaseCartQuantity } = useShoppingCart();
   const quantity = getProductQuantity(product.id);
   const link = '/product/' + product.id;
 
