@@ -1,26 +1,12 @@
-import {
-  Card,
-  Container,
-  Divider,
-  List,
-  Text,
-  Title,
-  useMantineTheme,
-} from '@mantine/core';
+import { Card, Container, Divider, List, Text, Title } from '@mantine/core';
 import { useContext } from 'react';
-import { CartItem } from '../../data';
 import { FormValues } from '../components/CheckoutForm';
 import initBackgroundAnimation from '../components/ConfirmationPageAnimation';
 import { ProductContext } from '../contexts/ProductContext';
 import { useShoppingCart } from '../contexts/ShoppingCartContext';
-interface Order {
-  id: number;
-  cartProducts: (CartItem | { formData: FormValues })[];
-}
 
 function Confirmation() {
   const { products } = useContext(ProductContext);
-  const theme = useMantineTheme();
   const { orders } = useShoppingCart();
   const lastOrder = orders[orders.length - 1];
   const formData = lastOrder.cartProducts.find(
