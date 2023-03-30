@@ -1,4 +1,4 @@
-import { Box, Button, Group, TextInput } from '@mantine/core';
+import { Box, Button, Group, TextInput, Title } from '@mantine/core';
 import { useForm, yupResolver } from '@mantine/form';
 import { useNavigate } from 'react-router';
 import * as Yup from 'yup';
@@ -59,7 +59,17 @@ function CheckoutForm() {
   });
 
   return (
-    <Box maw={300} mx="auto">
+    <Box
+      sx={{
+        width: '22rem',
+        '@media(max-width:721px)': {
+          flexDirection: 'column',
+          width: '20rem',
+        },
+      }}
+    >
+      {/* <Box sx={{ maxWidth: '22rem' }}> */}
+      <Title order={3}>Customer details</Title>
       <form onSubmit={form.onSubmit(onSubmit)} data-cy="customer-form">
         <TextInput
           autoComplete="name"
@@ -89,14 +99,13 @@ function CheckoutForm() {
           errorProps={{ 'data-cy': 'customer-address-error' }}
         />
         <TextInput
-          autoComplete="tel"
-          type="number"
+          autoComplete="address-level2"
           withAsterisk
-          label="Mobile nr"
-          placeholder="ex: 0700415160"
-          {...form.getInputProps('mobileNr')}
-          data-cy="customer-phone"
-          errorProps={{ 'data-cy': 'customer-phone-error' }}
+          label="City"
+          placeholder="ex: Gothenburg"
+          {...form.getInputProps('city')}
+          data-cy="customer-city"
+          errorProps={{ 'data-cy': 'customer-city-error' }}
         />
         <TextInput
           autoComplete="postal-code"
@@ -109,17 +118,19 @@ function CheckoutForm() {
           errorProps={{ 'data-cy': 'customer-zipcode-error' }}
         />
         <TextInput
-          autoComplete="address-level2"
+          autoComplete="tel"
+          type="number"
           withAsterisk
-          label="City"
-          placeholder="ex: Gothenburg"
-          {...form.getInputProps('city')}
-          data-cy="customer-city"
-          errorProps={{ 'data-cy': 'customer-city-error' }}
+          label="Mobile nr"
+          placeholder="ex: 0700415160"
+          {...form.getInputProps('mobileNr')}
+          data-cy="customer-phone"
+          errorProps={{ 'data-cy': 'customer-phone-error' }}
         />
-
         <Group position="right" mt="md">
-          <Button type="submit">Submit</Button>
+          <Button sx={{ width: '100%' }} type="submit">
+            Place order
+          </Button>
         </Group>
       </form>
     </Box>
