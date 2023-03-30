@@ -29,9 +29,7 @@ function ProductDetails() {
   const { id } = useParams();
   const { products } = useContext(ProductContext);
   const product = products.find((p) => p.id === id);
-
   const { increaseCartQuantity } = useShoppingCart();
-  console.log(products);
 
   const goBack = () => {
     window.history.back();
@@ -46,7 +44,7 @@ function ProductDetails() {
     return (
       <Container>
         <Link to="/">
-          <Button variant="outline">Back</Button>
+          <Button variant="outline">Go back</Button>
         </Link>
         <Title>Sorry! Product not found</Title>
       </Container>
