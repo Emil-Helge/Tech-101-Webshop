@@ -1,4 +1,5 @@
-import { Button, Card, Group, Image, Input, Text } from '@mantine/core';
+import { Box, Button, Group, Image, Input, Text } from '@mantine/core';
+import { IconPlus } from '@tabler/icons-react';
 import { useContext } from 'react';
 import { CartItem } from '../../data/index';
 import { ProductContext } from '../contexts/ProductContext';
@@ -15,11 +16,21 @@ function CartProduct({ cartItem }: Props) {
   products.find((i) => i.id === cartItem.id);
 
   return (
-    <Card shadow="sm" mt="sm" padding="sm" radius="sm" data-cy="cart-item">
-      <Card.Section>
-        <Image src={cartItem.image} height={190} fit="cover" />
-      </Card.Section>
-      <Group position="center" mt="sm" mb="sm">
+    <Box
+      mt="sm"
+      p="sm"
+      sx={{
+        display: 'flex',
+        justifyContent: 'space-between',
+        '@media(max-width:721px)': {
+          flexDirection: 'column',
+        },
+      }}
+      data-cy="cart-item"
+    >
+      <Image src={cartItem.image} height={150} width={220} fit="cover" />
+
+      <Group position="center" pl="xs" pr="xs" mt="sm" mb="sm">
         <Text
           weight={500}
           size={20}
@@ -29,54 +40,47 @@ function CartProduct({ cartItem }: Props) {
           {cartItem.title}
         </Text>
       </Group>
-      <Group position="center" mt="xs" mb="xs" data-cy="product-quantity">
-        {' '}
-        <Button
-          variant="light"
-          mt="sm"
-          radius="sm"
-          onClick={() => decreaseCartQuantity(cartItem.id)}
-          data-cy="decrease-quantity-button"
-        >
-          -
-        </Button>
-        <Input
-          mt="sm"
-          readOnly
-          variant="unstyled"
-          type="number"
-          value={cartItem.quantity}
-          rightSectionWidth="0px"
-          sx={{
-            width: '1.2rem',
-          }}
-        />
-        <Button
-          variant="light"
-          mt="sm"
-          radius="md"
-          onClick={() => increaseCartQuantity(cartItem.id)}
-          data-cy="increase-quantity-button"
-        >
-          +
-        </Button>
+      <Group>
+        <Group sx={{ display: 'flex' }} position="center" mt="xs" mb="xs">
+          {' '}
+          <Button
+            variant="light"
+            mt="sm"
+            radius="sm"
+            onClick={() => decreaseCartQuantity(cartItem.id)}
+            data-cy="decrease-quantity-button"
+          >
+            -
+          </Button>
+          <Input
+            data-cy="product-quantity"
+            mt="sm"
+            readOnly
+            variant="unstyled"
+            type="number"
+            value={cartItem.quantity}
+            rightSectionWidth="0px"
+            sx={{
+              width: '1.2rem',
+            }}
+          />
+          <Button
+            variant="light"
+            mt="sm"
+            radius="md"
+            onClick={() => increaseCartQuantity(cartItem.id)}
+            data-cy="increase-quantity-button"
+          >
+            <IconPlus size="1.2rem" stroke="0.1rem" />
+          </Button>
+        </Group>
+        <Group position="center" mt="xs" mb="xs">
+          <Text mt="sm" weight={500} size={15} data-cy="product-price">
+            x{cartItem.price * cartItem.quantity}€
+          </Text>
+        </Group>
       </Group>
-      <Group position="center" mt="xs" mb="xs">
-        <Button
-          variant="light"
-          mt="sm"
-          radius="md"
-          onClick={() => removeFromCart(cartItem.id)}
-        >
-          Remove
-        </Button>
-      </Group>
-      <Group position="center" mt="xs" mb="xs">
-        <Text mt="sm" weight={500} size={15} data-cy="product-price">
-          x{cartItem.price * cartItem.quantity}€
-        </Text>
-      </Group>
-    </Card>
+    </Box>
   );
 }
 
