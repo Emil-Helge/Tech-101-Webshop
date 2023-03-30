@@ -115,11 +115,6 @@ function Home() {
           Sort by highest price
         </Button>
       </Group>
-      {/* {sortDirection && (
-        <Text ta="center" mb="lg" mt="lg">
-          Sorted by {sortDirection === 'ascending' ? 'lowest' : 'highest'} price
-        </Text>
-      )} */}
       <SimpleGrid
         cols={3}
         spacing="xl"
