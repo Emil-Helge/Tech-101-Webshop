@@ -21,9 +21,10 @@ const schema = Yup.object().shape({
   description: Yup.string()
     .min(5, 'Description should have at least 5 letters')
     .required('Description is required'),
-  price: Yup.string()
-    .min(3, 'Nothing is this cheap...')
-    .required('Price is required'),
+  price: Yup.number()
+    .min(1, 'Nothing is this cheap...')
+    .required('Price is required')
+    .strict(),
 });
 
 function ProductForm({
@@ -40,14 +41,13 @@ function ProductForm({
       image: '',
       title: '',
       description: '',
-      price: '',
+      price: '' as any,
       secondImage: '',
       summary: [],
       rating: 0,
       usersRated: 0,
     },
   });
-  console.log('Form errors:', form.errors);
   useEffect(() => {
     if (isEditing && product) {
       form.setValues(product);
@@ -108,6 +108,7 @@ function ProductForm({
           label="Price"
           placeholder="1000"
           {...form.getInputProps('price')}
+          onChange={(e) => form.setFieldValue('price', Number(e.target.value))}
           data-cy="product-price"
           errorProps={{ 'data-cy': 'product-price-error' }}
         />

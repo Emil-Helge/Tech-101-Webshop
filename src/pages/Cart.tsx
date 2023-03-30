@@ -8,7 +8,7 @@ import {
   Text,
 } from '@mantine/core';
 import { useMantineTheme } from '@mantine/styles';
-import { useContext, useState } from 'react';
+import { Fragment, useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
 import CartProduct from '../components/CartProduct';
 import CheckoutForm from '../components/CheckoutForm';
@@ -75,10 +75,10 @@ function Cart() {
         <Flex gap="3rem" wrap="wrap" justify="center" align="flex-start">
           <Box>
             {cartProducts.map((product) => (
-              <>
-                <CartProduct key={product.id} cartItem={product} />
+              <Fragment key={product.id}>
+                <CartProduct cartItem={product} />
                 <Divider mt="md" mb="sm" size="xs" />
-              </>
+              </Fragment>
             ))}
           </Box>
           <Box

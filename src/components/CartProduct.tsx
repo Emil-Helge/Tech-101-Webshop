@@ -1,5 +1,5 @@
 import { Box, Button, Group, Image, Input, Text } from '@mantine/core';
-import { IconMinus, IconPlus } from '@tabler/icons-react';
+import { IconPlus } from '@tabler/icons-react';
 import { useContext } from 'react';
 import { CartItem } from '../../data/index';
 import { ProductContext } from '../contexts/ProductContext';
@@ -28,19 +28,7 @@ function CartProduct({ cartItem }: Props) {
       }}
       data-cy="cart-item"
     >
-      <Image
-        src={cartItem.image}
-        height={150}
-        width={220}
-        fit="cover"
-        sx={
-          {
-            // '@media(max-width:721px)': {
-            //   width: '85%',
-            // },
-          }
-        }
-      />
+      <Image src={cartItem.image} height={150} width={220} fit="cover" />
 
       <Group position="center" pl="xs" pr="xs" mt="sm" mb="sm">
         <Text
@@ -53,13 +41,7 @@ function CartProduct({ cartItem }: Props) {
         </Text>
       </Group>
       <Group>
-        <Group
-          sx={{ display: 'flex' }}
-          position="center"
-          mt="xs"
-          mb="xs"
-          data-cy="product-quantity"
-        >
+        <Group sx={{ display: 'flex' }} position="center" mt="xs" mb="xs">
           {' '}
           <Button
             variant="light"
@@ -68,9 +50,10 @@ function CartProduct({ cartItem }: Props) {
             onClick={() => decreaseCartQuantity(cartItem.id)}
             data-cy="decrease-quantity-button"
           >
-            <IconMinus size="1.2rem" stroke="0.1rem" />
+            -
           </Button>
           <Input
+            data-cy="product-quantity"
             mt="sm"
             readOnly
             variant="unstyled"
@@ -91,16 +74,6 @@ function CartProduct({ cartItem }: Props) {
             <IconPlus size="1.2rem" stroke="0.1rem" />
           </Button>
         </Group>
-        {/* <Group position="center" mt="xs" mb="xs">
-          <Button
-            variant="light"
-            mt="sm"
-            radius="md"
-            onClick={() => removeFromCart(cartItem.id)}
-          >
-            Remove
-          </Button>
-        </Group> */}
         <Group position="center" mt="xs" mb="xs">
           <Text mt="sm" weight={500} size={15} data-cy="product-price">
             x{cartItem.price * cartItem.quantity}€
