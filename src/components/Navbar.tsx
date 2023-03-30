@@ -172,7 +172,7 @@ export function HeaderResponsive({ links }: HeaderResponsiveProps) {
   }, [opened]);
 
   function ToggleDarkAndLightMode() {
-    const { colorScheme, toggleColorScheme } = useMantineColorScheme();
+    const { colorScheme } = useMantineColorScheme();
     const dark = colorScheme === 'dark';
 
     return (
