@@ -2,21 +2,20 @@ import { Button, Container, Group, SimpleGrid, Title } from '@mantine/core';
 import { IconShieldPlus } from '@tabler/icons-react';
 import { useContext } from 'react';
 import { Link } from 'react-router-dom';
-import { Product } from '../../data';
 import AdminProductCard from '../components/AdminProductCard';
 import { ProductContext } from '../contexts/ProductContext';
 
-interface ProductFormProps {
-  onSubmit: (product: Product) => void;
-  addProduct: (product: Product) => void;
-}
+// interface ProductFormProps {
+//   onSubmit: (product: Product) => void;
+//   addProduct: (product: Product) => void;
+// }
 
 function Admin() {
-  const { products, deleteProduct, addProduct } = useContext(ProductContext);
+  const { products, deleteProduct } = useContext(ProductContext);
 
   return (
     <Container size="xl">
-      <Title sx={{ marginBottom: '1rem' }} ta="center">
+      <Title mb="lg" ta="center">
         Admin - Product Management
       </Title>
       <Group position="center" mb="xl">
