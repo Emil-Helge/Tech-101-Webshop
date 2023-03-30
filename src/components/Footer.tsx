@@ -1,18 +1,19 @@
 import {
   ActionIcon,
   Anchor,
+  Box,
   Button,
   createStyles,
   Group,
-  Input,
   rem,
+  TextInput,
+  Title,
 } from '@mantine/core';
 import {
   IconBrandInstagram,
   IconBrandTwitter,
   IconBrandYoutube,
 } from '@tabler/icons-react';
-import { useState } from 'react';
 
 const useStyles = createStyles((theme) => ({
   footer: {
@@ -92,27 +93,22 @@ export function FooterCentered({ links }: FooterCenteredProps) {
     </Anchor>
   ));
 
-  const [email, setEmail] = useState('');
-
-  const handleFormSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-  };
-
   return (
     <footer className={classes.footer}>
       <div className={classes.inner}>
         <Group className={classes.links}>{items}</Group>
-
-        <form onSubmit={handleFormSubmit} className={classes.form}>
-          <label htmlFor="email"></label>
-          <Input
-            className={classes.input}
-            placeholder="Enter your email"
-            value={email}
-            onChange={(event) => setEmail(event.currentTarget.value)}
-          />
-          <Button variant="outline">Sign up</Button>
-        </form>
+        <Box>
+          <Title order={3} align="center" mb="md">
+            Sign up to our newsletter!
+          </Title>
+          <form className={classes.form}>
+            <TextInput
+              className={classes.input}
+              placeholder="Enter your email"
+            />
+            <Button variant="outline">Sign up</Button>
+          </form>
+        </Box>
 
         <Group spacing="xs" position="right" noWrap mt={10}>
           <ActionIcon
