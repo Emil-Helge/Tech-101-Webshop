@@ -72,7 +72,7 @@ function Cart() {
   } else {
     return (
       <Container size={'1680px'} sx={{ marginTop: '0.5rem' }}>
-        <Flex gap="2rem" wrap="wrap" justify="center" align="flex-start">
+        <Flex gap="3rem" wrap="wrap" justify="center" align="flex-start">
           <Box>
             {cartProducts.map((product) => (
               <>
@@ -105,6 +105,7 @@ function Cart() {
               }}
             >
               <Card
+                shadow="md"
                 sx={{
                   width: '22rem',
                   display: 'flex',

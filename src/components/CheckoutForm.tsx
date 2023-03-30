@@ -69,7 +69,9 @@ function CheckoutForm() {
       }}
     >
       {/* <Box sx={{ maxWidth: '22rem' }}> */}
-      <Title order={3}>Customer details</Title>
+      <Title mb="sm" order={3}>
+        Your details
+      </Title>
       <form onSubmit={form.onSubmit(onSubmit)} data-cy="customer-form">
         <TextInput
           autoComplete="name"

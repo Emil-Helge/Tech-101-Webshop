@@ -1,4 +1,5 @@
 import { Box, Button, Group, Image, Input, Text } from '@mantine/core';
+import { IconMinus, IconPlus } from '@tabler/icons-react';
 import { useContext } from 'react';
 import { CartItem } from '../../data/index';
 import { ProductContext } from '../contexts/ProductContext';
@@ -41,7 +42,7 @@ function CartProduct({ cartItem }: Props) {
         }
       />
 
-      <Group position="center" mt="sm" mb="sm">
+      <Group position="center" pl="xs" pr="xs" mt="sm" mb="sm">
         <Text
           weight={500}
           size={20}
@@ -67,7 +68,7 @@ function CartProduct({ cartItem }: Props) {
             onClick={() => decreaseCartQuantity(cartItem.id)}
             data-cy="decrease-quantity-button"
           >
-            -
+            <IconMinus size="1.2rem" stroke="0.1rem" />
           </Button>
           <Input
             mt="sm"
@@ -87,7 +88,7 @@ function CartProduct({ cartItem }: Props) {
             onClick={() => increaseCartQuantity(cartItem.id)}
             data-cy="increase-quantity-button"
           >
-            +
+            <IconPlus size="1.2rem" stroke="0.1rem" />
           </Button>
         </Group>
         {/* <Group position="center" mt="xs" mb="xs">
