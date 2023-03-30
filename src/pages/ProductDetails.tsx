@@ -56,7 +56,7 @@ function ProductDetails() {
   return (
     <Container>
       <Button variant="outline" mb="sm" mt="sm" onClick={goBack}>
-        Back
+        Back to Store
       </Button>
       <Flex direction={{ base: 'column', sm: 'row' }}>
         <Card sx={{ flex: 1 }}>

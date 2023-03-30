@@ -21,19 +21,13 @@ export interface Props {
 }
 
 function ProductCard({ product, sortDirection, sortedProducts }: Props) {
-  const {
-    getProductQuantity,
-    increaseCartQuantity,
-    decreaseCartQuantity, // Not in use yet
-    removeFromCart, // Not in use yet
-  } = useShoppingCart();
-  const quantity = getProductQuantity(product.id);
+  const { increaseCartQuantity } = useShoppingCart();
   const link = '/product/' + product.id;
 
-  const price =
-    sortDirection === 'lowest'
-      ? sortedProducts[0].price
-      : sortedProducts[sortedProducts.length - 1].price;
+  // const price =
+  //   sortDirection === 'lowest'
+  //     ? sortedProducts[0].price
+  //     : sortedProducts[sortedProducts.length - 1].price;
 
   return (
     <>

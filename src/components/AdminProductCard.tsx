@@ -63,11 +63,11 @@ function AdminProductCard({ product, onDelete }: Props) {
                 {product.id}
               </Text>
             </Group>
+            <Text size="md" align="left">
+              {product.description}
+            </Text>
           </Box>
         </Card.Section>
-        <Text size="md" align="left">
-          {product.description}
-        </Text>
         <Group position="left" mt="md" mb="xs">
           {showConfirmDelete ? (
             <Button

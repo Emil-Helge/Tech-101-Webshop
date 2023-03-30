@@ -33,6 +33,7 @@ function Cart() {
         sx={{
           display: 'flex',
           flexDirection: 'column',
+          alignItems: 'center',
           justifyContent: 'center',
           marginTop: '2rem',
         }}
@@ -43,13 +44,18 @@ function Cart() {
           alt="a sad box indicating that the cart is empty"
         />
         <Text
-          style={{ color: '#E92D37', fontWeight: '500', fontSize: '1.5rem' }}
+          style={{
+            color: '#E92D37',
+            fontWeight: '500',
+            fontSize: '1.5rem',
+            textAlign: 'center',
+          }}
         >
           Oops! Your cart is empty!
         </Text>
         <Text>Looks like you haven´t added anything to your cart yet</Text>
         <Link to="/">
-          <Button variant="light" mt="md" radius="md" sx={{ maxWidth: '50%' }}>
+          <Button variant="light" mt="md" radius="md">
             Shop Now
           </Button>
         </Link>
