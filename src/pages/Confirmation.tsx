@@ -10,6 +10,7 @@ import {
 import { useContext } from 'react';
 import { CartItem } from '../../data';
 import { FormValues } from '../components/CheckoutForm';
+import initBackgroundAnimation from '../components/ConfirmationPageAnimation';
 import { ProductContext } from '../contexts/ProductContext';
 import { useShoppingCart } from '../contexts/ShoppingCartContext';
 interface Order {
@@ -34,6 +35,7 @@ function Confirmation() {
       return total;
     }, 0);
   }
+  initBackgroundAnimation();
   return (
     <Container size="md" mt="xl" mb="xl">
       {lastOrder && formData && (
