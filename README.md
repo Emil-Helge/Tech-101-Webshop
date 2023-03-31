@@ -182,5 +182,5 @@ https://mantine.dev/pages/getting-started/
 
 Klona ner projektet och kör följande commands i terminalen:
 
-`npm install`
+`npm install` <Br/>
 `npm run dev`
