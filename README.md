@@ -158,29 +158,44 @@ _Gjorda krav ska kryssas för._
 
 <!-- --------------------------------------------------------------------------------------------- -->
 
-# Tech 101
+# Tech 101 Webshop
 
-Detta är ett skolprojekt där vi skapade en webshop.
-I våran stack så använder vi React, Typescript & Mantine.
-I projektet så använder vi oss av tekniker som state management, routing med React-router, Context. <Br/>
-Detta använder vi då vi ville få till funktionalitet så att man skulle kunna "logga in" som en admin och redigera, lägga till eller ta bort de befintliga produkterna som vi säljer.
+Välkommen till Tech 101 – ett skolprojekt där vi har skapat en modern och funktionell webshop för teknikentusiaster. Vår webbapplikation är utvecklad med hjälp av populära teknologier och bibliotek som React, TypeScript och Mantine.
 
-Annars så har vi i regel försökt behålla samma feeling som de andra tech shop giganterna har på sina sidor.
+## Funktioner och Tekniker
 
-[Ta en kik på våran demo!](https://www.youtube.com/watch?v=oHg5SJYRHA0) (Obs: denna länken kommer fungera bättre i framtiden!!)
+Vi har implementerat flera avancerade tekniker och funktioner för att uppnå en sömlös användarupplevelse, inklusive:
 
-Skapare av Tech 101.
+- State management
+- Routing med React-router
+- Användning av Context
+
+En av våra huvudfunktioner är möjligheten för administratörer att "logga in" och redigera, lägga till eller ta bort befintliga produkter i webshoppen. Vi har även strävat efter att återskapa känslan som finns hos andra stora tech shop-giganter.
+
+## Live Demo
+
+[Utforska vår live demo här!](https://www.youtube.com/watch?v=oHg5SJYRHA0) (OBS: Länken kommer att uppdateras och fungera bättre inom en snar framtid.)
+
+## Teamet bakom Tech 101
 
 - [Sebastian Johansson](https://github.com/Sebastianjohansson123)
 - [Emil Helgesson](https://github.com/Emil-Helge)
 - [Gabriel Lugo Méndez](https://github.com/gabriel-lugo)
 - [Hampus Isebring](https://github.com/Isebring)
 
-https://mantine.dev/pages/getting-started/
+## Ytterligare Resurser
 
-## För utvecklare:
+För mer information om Mantine, besök [deras dokumentation](https://mantine.dev/pages/getting-started/).
 
-Klona ner projektet och kör följande commands i terminalen:
+## Instruktioner för utvecklare
+
+För att komma igång med utveckling, följ dessa steg:
+
+1. Klona ner projektet till din lokala maskin.
+2. Öppna en terminal och navigera till projektets rotmapp.
+3. Kör följande kommandon:
 
 `npm install` <Br/>
 `npm run dev`
+
+Därefter bör projektet vara igång och köra på din lokala utvecklingsserver.
