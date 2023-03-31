@@ -155,3 +155,23 @@ _Gjorda krav ska kryssas för._
 - [x] Samtliga fält för adminsidans formulär ska ha valideringsregler
 
 _Gjorda krav ska kryssas för._
+
+<!-- --------------------------------------------------------------------------------------------- -->
+
+# Tech 101
+
+Detta är ett skolprojekt där vi skapade en webshop.
+I våran stack så använder vi React, Typescript & mantine.
+I projektet så använder vi oss av tekniker som state management, routing med React-router, Context.
+Detta använder vi då vi ville få till funktionalitet så att man skulle kunna "logga in" som en admin och redigera, lägga till eller ta bort de befintliga produkterna som vi säljer.
+
+Annars så har vi i regel försökt behålla samma feeling som de andra tech shop giganterna har på sina sidor.
+
+[Ta en kik på våran demo!](https://www.youtube.com/watch?v=oHg5SJYRHA0) (Obs: denna länken kommer fungera bättre i framtiden!!)
+
+Skapare av Tech 101.
+
+- [Sebastian Johansson](https://github.com/Sebastianjohansson123)
+- [Emil Helgesson](https://github.com/Emil-Helge)
+- [Gabriel Lugo Méndez](https://github.com/gabriel-lugo)
+- [Hampus Isebring](https://github.com/Isebring)
