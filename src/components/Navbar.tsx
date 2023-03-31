@@ -232,7 +232,13 @@ export function HeaderResponsive({ links }: HeaderResponsiveProps) {
             </Button>
           </Link>
           <Link to="/checkout">
-            <Button size="xs" variant="subtle" data-cy="cart-link" radius="xl">
+            <Button
+              onClick={handleLinkClick}
+              size="xs"
+              variant="subtle"
+              data-cy="cart-link"
+              radius="xl"
+            >
               <IconShoppingCart size="1.8rem" stroke="1.2" />
               {cartQuantity > 0 && (
                 <Box

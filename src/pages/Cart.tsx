@@ -72,7 +72,13 @@ function Cart() {
   } else {
     return (
       <Container size={'1680px'} sx={{ marginTop: '0.5rem' }}>
-        <Flex gap="3rem" wrap="wrap" justify="center" align="flex-start">
+        <Flex
+          gap="3rem"
+          wrap="wrap"
+          direction="column"
+          justify="center"
+          align="center"
+        >
           <Box>
             {cartProducts.map((product) => (
               <Fragment key={product.id}>
