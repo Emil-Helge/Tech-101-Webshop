@@ -161,8 +161,8 @@ _Gjorda krav ska kryssas för._
 # Tech 101
 
 Detta är ett skolprojekt där vi skapade en webshop.
-I våran stack så använder vi React, Typescript & mantine.
-I projektet så använder vi oss av tekniker som state management, routing med React-router, Context.
+I våran stack så använder vi React, Typescript & Mantine.
+I projektet så använder vi oss av tekniker som state management, routing med React-router, Context. <Br/>
 Detta använder vi då vi ville få till funktionalitet så att man skulle kunna "logga in" som en admin och redigera, lägga till eller ta bort de befintliga produkterna som vi säljer.
 
 Annars så har vi i regel försökt behålla samma feeling som de andra tech shop giganterna har på sina sidor.
