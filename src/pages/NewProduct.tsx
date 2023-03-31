@@ -12,7 +12,7 @@ function NewProduct() {
         <Title>New Product</Title>
       </Group>
       <ProductForm
-        onSubmit={(product) => console.log(product)}
+        onSubmit={addProduct}
         addProduct={addProduct}
         isEditing={false}
       />

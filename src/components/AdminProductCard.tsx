@@ -2,7 +2,6 @@ import { Box, Button, Card, Group, Image, Text, Title } from '@mantine/core';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Product } from '../../data/index';
-import { useShoppingCart } from '../contexts/ShoppingCartContext';
 
 interface Props {
   product: Product;
@@ -10,14 +9,6 @@ interface Props {
 }
 
 function AdminProductCard({ product, onDelete }: Props) {
-  const {
-    getProductQuantity,
-    increaseCartQuantity,
-    decreaseCartQuantity, // Not in use yet
-    removeFromCart, // Not in use yet
-  } = useShoppingCart();
-  const quantity = getProductQuantity(product.id);
-
   const edit = '/admin/product/' + product.id + '/edit';
 
   const [showConfirmDelete, setShowConfirmDelete] = useState(false);

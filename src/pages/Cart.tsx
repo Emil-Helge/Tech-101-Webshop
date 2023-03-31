@@ -7,8 +7,7 @@ import {
   Flex,
   Text,
 } from '@mantine/core';
-import { useMantineTheme } from '@mantine/styles';
-import { Fragment, useContext, useState } from 'react';
+import { Fragment, useContext } from 'react';
 import { Link } from 'react-router-dom';
 import CartProduct from '../components/CartProduct';
 import CheckoutForm from '../components/CheckoutForm';
@@ -16,15 +15,8 @@ import { ProductContext } from '../contexts/ProductContext';
 import { useShoppingCart } from '../contexts/ShoppingCartContext';
 
 function Cart() {
-  const theme = useMantineTheme();
-  const { cartProducts, orders, cartQuantity } = useShoppingCart();
-  const [showLastOrder, setShowLastOrder] = useState(false);
-  const lastOrder = orders[orders.length - 1];
+  const { cartProducts, cartQuantity } = useShoppingCart();
   const { products } = useContext(ProductContext);
-
-  function showOrderOnSubmit() {
-    setShowLastOrder(true);
-  }
 
   <Text weight={500} size={29}>
     total:{' '}
@@ -85,7 +77,6 @@ function Cart() {
             sx={{
               display: 'flex',
               alignItems: 'center',
-              // flexDirection: 'column',
               justifyContent: 'space-between',
               flexWrap: 'wrap',
               gap: '3rem',

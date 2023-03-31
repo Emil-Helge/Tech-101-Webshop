@@ -20,14 +20,9 @@ export interface Props {
   sortedProducts: Product[];
 }
 
-function ProductCard({ product, sortDirection, sortedProducts }: Props) {
+function ProductCard({ product }: Props) {
   const { increaseCartQuantity } = useShoppingCart();
   const link = '/product/' + product.id;
-
-  // const price =
-  //   sortDirection === 'lowest'
-  //     ? sortedProducts[0].price
-  //     : sortedProducts[sortedProducts.length - 1].price;
 
   return (
     <>

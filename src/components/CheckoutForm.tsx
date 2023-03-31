@@ -68,7 +68,6 @@ function CheckoutForm() {
         },
       }}
     >
-      {/* <Box sx={{ maxWidth: '22rem' }}> */}
       <Title mb="sm" order={3}>
         Your details
       </Title>
