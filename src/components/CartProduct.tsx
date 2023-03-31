@@ -1,5 +1,5 @@
 import { Box, Button, Group, Image, Input, Text } from '@mantine/core';
-import { IconPlus } from '@tabler/icons-react';
+import { IconMinus, IconPlus } from '@tabler/icons-react';
 import { useContext } from 'react';
 import { CartItem } from '../../data/index';
 import { ProductContext } from '../contexts/ProductContext';
@@ -50,7 +50,7 @@ function CartProduct({ cartItem }: Props) {
             onClick={() => decreaseCartQuantity(cartItem.id)}
             data-cy="decrease-quantity-button"
           >
-            -
+            <IconMinus size="1.2rem" stroke="0.1rem" />
           </Button>
           <Input
             data-cy="product-quantity"
