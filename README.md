@@ -175,3 +175,12 @@ Skapare av Tech 101.
 - [Emil Helgesson](https://github.com/Emil-Helge)
 - [Gabriel Lugo Méndez](https://github.com/gabriel-lugo)
 - [Hampus Isebring](https://github.com/Isebring)
+
+https://mantine.dev/pages/getting-started/
+
+## För utvecklare:
+
+Klona ner projektet och kör följande commands i terminalen:
+
+`npm install`
+`npm run dev`
