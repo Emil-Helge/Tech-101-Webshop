@@ -13,6 +13,7 @@ Vi har implementerat flera avancerade tekniker och funktioner för att uppnå en
 En av våra huvudfunktioner är möjligheten för administratörer att "logga in" och redigera, lägga till eller ta bort befintliga produkter i webshoppen. Vi har även strävat efter att återskapa känslan som finns hos andra stora tech shop-giganter.
 
 ## Live Demo
+[Tech 101](https://tech-101-webshop.netlify.app/)
 
 ## Teamet bakom Tech 101
 
